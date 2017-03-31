@@ -37,9 +37,7 @@ public class Bill {
 	
 	private Date datePaid;
 	
-	private int memberId;
 	
-	private int familyId;
 	
 	private boolean paid;
 
@@ -107,21 +105,6 @@ public class Bill {
 		this.datePaid = datePaid;
 	}
 
-	public int getMemberId() {
-		return memberId;
-	}
-
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
-	}
-
-	public int getFamilyId() {
-		return familyId;
-	}
-
-	public void setFamilyId(int familyId) {
-		this.familyId = familyId;
-	}
 
 	public boolean isPaid() {
 		return paid;
@@ -135,7 +118,7 @@ public class Bill {
 	public String toString() {
 		return "Bill [id=" + id + ", billResponsibilities=" + billResponsibilities + ", family=" + family + ", member="
 				+ member + ", name=" + name + ", amount=" + amount + ", dateDue=" + dateDue + ", datePaid=" + datePaid
-				+ ", memberId=" + memberId + ", familyId=" + familyId + ", paid=" + paid + "]";
+				+" paid=" + paid + "]";
 	}
 	
 }

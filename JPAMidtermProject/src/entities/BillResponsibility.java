@@ -24,9 +24,6 @@ public class BillResponsibility {
 	
 	private int percent;
 	
-	private int memberId;
-	
-	private int billId;
 
 	public int getId() {
 		return id;
@@ -60,26 +57,12 @@ public class BillResponsibility {
 		this.percent = percent;
 	}
 
-	public int getMemberId() {
-		return memberId;
-	}
 
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
-	}
-
-	public int getBillId() {
-		return billId;
-	}
-
-	public void setBillId(int billId) {
-		this.billId = billId;
-	}
 
 	@Override
 	public String toString() {
 		return "BillResponsibility [id=" + id + ", member=" + member + ", bill=" + bill + ", percent=" + percent
-				+ ", memberId=" + memberId + ", billId=" + billId + "]";
+				+ ", memberId=" +  "]";
 	}
 	
 }

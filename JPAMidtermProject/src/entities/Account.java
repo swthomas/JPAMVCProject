@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,7 +21,8 @@ public class Account {
 	private Double frugalSum;
 
 	@OneToOne
-	private int memberId;
+	@JoinColumn(name="memberId")
+	private Member member;
 
 	public int getId() {
 		return id;
@@ -46,18 +48,20 @@ public class Account {
 		this.frugalSum = frugalSum;
 	}
 
-	public int getMemberId() {
-		return memberId;
+
+
+	public Member getMember() {
+		return member;
 	}
 
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", bankAccount=" + bankAccount + ", frugalSum=" + frugalSum + ", memberId="
-				+ memberId + "]";
+				+ "]";
 	}
-
 }

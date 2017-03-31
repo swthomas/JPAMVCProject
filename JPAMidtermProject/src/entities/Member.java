@@ -28,8 +28,7 @@ public class Member {
 	@OneToMany(mappedBy="member")
 	private List<Bill> bills;
 	
-	@OneToOne
-    @JoinColumn(name="member")
+	@OneToOne(mappedBy="member")
     private Account account;
 	
 	private String username;
@@ -39,9 +38,7 @@ public class Member {
 	private String fName;
 	
 	private String lName;
-	
-	private int familyId;
-	
+		
 	private Boolean admin;
 
 	public int getId() {
@@ -116,13 +113,7 @@ public class Member {
 		this.lName = lName;
 	}
 
-	public int getFamilyId() {
-		return familyId;
-	}
-
-	public void setFamilyId(int familyId) {
-		this.familyId = familyId;
-	}
+	
 
 	public Boolean getAdmin() {
 		return admin;
@@ -136,7 +127,7 @@ public class Member {
 	public String toString() {
 		return "Member [id=" + id + ", family=" + family + ", billResponsibilities=" + billResponsibilities + ", bills="
 				+ bills + ", account=" + account + ", username=" + username + ", password=" + password + ", fName="
-				+ fName + ", lName=" + lName + ", familyId=" + familyId + ", admin=" + admin + "]";
+				+ fName + ", lName=" + lName + ", familyId="  + ", admin=" + admin + "]";
 	}
 	
 }
