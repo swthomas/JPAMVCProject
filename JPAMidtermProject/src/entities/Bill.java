@@ -37,10 +37,10 @@ public class Bill {
 	
 	private Date datePaid;
 	
-	
-	
 	private boolean paid;
 
+	
+	
 	public int getId() {
 		return id;
 	}
