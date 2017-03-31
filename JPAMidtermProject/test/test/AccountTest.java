@@ -11,7 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entities.Account;
-import entities.BillResponsibility;
+
+
 
 public class AccountTest {
 	private EntityManagerFactory emf = null;
