@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="2.0">
+=======
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+>>>>>>> 39ee41893ffa9b4eb6b24c4850b803ba1a126a84
 	<wb-module deploy-name="JPAMidtermProject">
 		<wb-resource deploy-path="/" source-path="src"/>
 	</wb-module>
