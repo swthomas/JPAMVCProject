@@ -138,11 +138,11 @@ DROP TABLE IF EXISTS `billResponsibility` ;
 CREATE TABLE IF NOT EXISTS `billResponsibility` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `percent` INT NOT NULL,
-  `member_id` INT NOT NULL,
+  `memberId` INT NOT NULL,
   `billId` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_billResponsibility_member1`
-    FOREIGN KEY (`member_id`)
+    FOREIGN KEY (`memberId`)
     REFERENCES `member` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `billResponsibility` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_billResponsibility_member1_idx` ON `billResponsibility` (`member_id` ASC);
+CREATE INDEX `fk_billResponsibility_member1_idx` ON `billResponsibility` (`memberId` ASC);
 
 CREATE INDEX `fk_billResponsibility_bill1_idx` ON `billResponsibility` (`billId` ASC);
 
@@ -285,30 +285,30 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `frugaldb`;
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (1, 25, 1, 1);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (2, 75, 2, 1);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (3, 50, 1, 2);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (4, 50, 2, 2);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (5, 10, 3, 5);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (6, 90, 4, 5);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (7, 25, 3, 6);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (8, 75, 4, 6);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (9, 30, 5, 9);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (10, 70, 6, 9);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (11, 60, 5, 10);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (12, 40, 6, 10);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (13, 50, 7, 13);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (14, 50, 8, 13);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (15, 20, 7, 14);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (16, 80, 8, 14);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (17, 45, 9, 17);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (18, 55, 10, 17);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (19, 65, 9, 18);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (20, 35, 10, 18);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (21, 10, 11, 21);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (22, 90, 12, 21);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (23, 23, 11, 22);
-INSERT INTO `billResponsibility` (`id`, `percent`, `member_id`, `billId`) VALUES (24, 77, 12, 22);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (1, 25, 1, 1);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (2, 75, 2, 1);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (3, 50, 1, 2);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (4, 50, 2, 2);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (5, 10, 3, 5);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (6, 90, 4, 5);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (7, 25, 3, 6);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (8, 75, 4, 6);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (9, 30, 5, 9);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (10, 70, 6, 9);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (11, 60, 5, 10);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (12, 40, 6, 10);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (13, 50, 7, 13);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (14, 50, 8, 13);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (15, 20, 7, 14);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (16, 80, 8, 14);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (17, 45, 9, 17);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (18, 55, 10, 17);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (19, 65, 9, 18);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (20, 35, 10, 18);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (21, 10, 11, 21);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (22, 90, 12, 21);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (23, 23, 11, 22);
+INSERT INTO `billResponsibility` (`id`, `percent`, `memberId`, `billId`) VALUES (24, 77, 12, 22);
 
 COMMIT;
 
