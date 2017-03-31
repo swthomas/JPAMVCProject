@@ -157,6 +157,13 @@ CREATE INDEX `fk_billResponsibility_member1_idx` ON `billResponsibility` (`membe
 
 CREATE INDEX `fk_billResponsibility_bill1_idx` ON `billResponsibility` (`billId` ASC);
 
+SET SQL_MODE = '';
+GRANT USAGE ON *.* TO student@localhost;
+ DROP USER student@localhost;
+SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+CREATE USER 'student'@'localhost' IDENTIFIED BY 'student';
+
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'student'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
