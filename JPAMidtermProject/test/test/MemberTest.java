@@ -10,10 +10,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Account;
-import entities.BillResponsibility;
+import entities.Family;
+import entities.Member;
 
-public class AccountTest {
+public class MemberTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
 
@@ -32,9 +32,10 @@ public class AccountTest {
 
 	@Test
 	public void test() {
-		Account acc = em.find(Account.class, 1);
-		assertEquals(1, acc.getId());
+		Member member = em.find(Member.class, 1);
+		assertEquals(1, member.getId());
 
 	}
+
 
 }

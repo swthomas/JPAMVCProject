@@ -25,19 +25,8 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-<<<<<<< HEAD
 	</buildSpec>
 	<natures>
-=======
-		<buildCommand>
-			<name>org.springframework.ide.eclipse.core.springbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-	</buildSpec>
-	<natures>
-		<nature>org.springframework.ide.eclipse.core.springnature</nature>
->>>>>>> 39ee41893ffa9b4eb6b24c4850b803ba1a126a84
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
