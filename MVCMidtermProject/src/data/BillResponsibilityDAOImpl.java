@@ -32,5 +32,4 @@ public class BillResponsibilityDAOImpl implements BillResponsibilityDAO {
 		em.persist(br);
 		return null;
 	}
-
 }
