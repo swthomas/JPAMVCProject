@@ -30,7 +30,7 @@ public class AccountDAOTest {
 
 		@Before
 		public void setUp() {
-			dao = (AccountDAO) wac.getBean("dao");
+			dao = (AccountDAO) wac.getBean("accountDao");
 		}
 
 		@Test

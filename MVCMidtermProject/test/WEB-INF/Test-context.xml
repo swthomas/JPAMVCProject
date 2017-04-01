@@ -9,12 +9,12 @@
 
 	<context:component-scan base-package="controllers" />
 
-	<bean id="dao" class="data.AccountDAOImpl" /> 
-	<!-- <bean id="dao" class="dao.BillDAOImpl" /> 
-	<bean id="dao" class="dao.BillResponsibilityDAOImpl" /> 
-	<bean id="dao" class="dao.FamilyDAOImpl" /> 
-	<bean id="dao" class="dao.IncomeDAOImpl" /> 
-	<bean id="dao" class="dao.MemberDAOImpl" />  -->
+	<bean id="accountDao" class="data.AccountDAOImpl" /> 
+	<bean id="billDao" class="data.BillDAOImpl" /> 
+	<!-- <bean id="dao" class="data.BillResponsibilityDAOImpl" /> 
+	<bean id="dao" class="data.FamilyDAOImpl" /> 
+	<bean id="dao" class="data.IncomeDAOImpl" /> 
+	<bean id="dao" class="data.MemberDAOImpl" />  -->
 
 	<bean id="myEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

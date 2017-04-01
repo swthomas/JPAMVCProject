@@ -65,7 +65,6 @@ public class BillDAOImpl implements BillDAO {
 //
 //		return bills;
 //	}
-	//
 
 	@Override
 	public List<Bill> getMemberBills(int id) {
