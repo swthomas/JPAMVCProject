@@ -2,6 +2,7 @@ package data;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import entities.Account;
 
@@ -10,41 +11,30 @@ public class AccountDAOImpl implements AccountDAO {
 	private EntityManager em;
 
 	@Override
-	public Account getAccount(Account a) {
-		em.getTransaction().begin();
+	public Account getMemberAccount(int id) {
+		TypedQuery query = em.createQuery("SELECT a FROM Account a WHERE " + "a.id = :id", Account.class);
 
-		em.getTransaction().commit();
-		return em.find(Account.class, a);
+		return (Account) query.setParameter("id", id).getSingleResult();
 
 	}
 
 	@Override
-	public Account setBankAccount(Account a) {
-		em.getTransaction().begin();
+	public Account setBankAccount(Account account) {
+		Account acc = em.find(Account.class, account.getId());
+		acc.setBankAccount(account.getBankAccount());
+		acc.setFrugalSum(account.getFrugalSum());
 
-		if (a.getBankAccount() == null) {
-			a.setBankAccount(null);
-		} else {
-			a.getBankAccount();
-		}
-		em.persist(a);
-		em.getTransaction().commit();
-		return a;
-
+		return acc;
 	}
 
 	@Override
 	public Account setFrugalSum(Account a) {
-		em.getTransaction().begin();
+		Account acc = em.find(Account.class, a.getId());
 
-		if (a.getFrugalSum() == null) {
-			a.setFrugalSum(null);
-		} else {
-			a.getFrugalSum();
-		}
-		em.persist(a);
-		em.getTransaction().commit();
-		return a;
+		acc.setBankAccount(a.getBankAccount());
+		acc.setFrugalSum(a.getFrugalSum());
+		return acc;
 
 	}
+
 }
