@@ -34,7 +34,7 @@ public class FamilyDAOImpl implements FamilyDAO {
 		Family f = em.find(Family.class, id);
 
 		if (f != null) {
-			em.remove(id);
+			em.remove(f);
 			return true;
 		}
 		return false;
