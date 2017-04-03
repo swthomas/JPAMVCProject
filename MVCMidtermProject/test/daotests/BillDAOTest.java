@@ -51,13 +51,13 @@ public class BillDAOTest {
 	@Test
 	public void test_get_all_family_bills() { // test getFamilyBills method
 		List<Bill> bills = dao.getFamilyBills(1);
-		assertEquals(1000, bills.size());
+		assertEquals(2, bills.size());
 	}
 
 	@Test
 	public void test_get_all_member_bills() { // test getMemberBills method
 		List<Bill> bills = dao.getMemberBills(1);
-		assertEquals(1000, bills.size());
+		assertEquals(1, bills.size());
 	}
 
 }
