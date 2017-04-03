@@ -1,4 +1,4 @@
-package daoTests;
+package daotests;
 
 import static org.junit.Assert.assertNotNull;
 
