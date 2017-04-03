@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,36 +39,19 @@ public class CreateController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "Create.do", method = RequestMethod.POST)
-	public ModelAndView createMembers(@RequestParam("family") Family f) {
-		ModelAndView mv = new ModelAndView();
-		
-		if(f == null){
-	    	mv.setViewName("error");
-	    }
-	    else{
-	    	mv.addObject("family", f);
-	    	mv.setViewName("createMembers");
-	    }
-		return mv;
-	}
 	
-	@RequestMapping(path = "Create.do", method = RequestMethod.POST)
-	public ModelAndView createMembers(List<Member> memberList) {
+	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
+	public ModelAndView createMembers(Family family, List<Member> memberList) {
 		ModelAndView mv = new ModelAndView();
 		
 		if(memberList == null){
 	    	mv.setViewName("error");
 	    }
 	    else{
-	    	List<Member> members = memberDao.createMembersList(memberList);
+	    	List<Member> members = memberDao.createMembersList(memberList, family);
 	    	mv.addObject("members", members);
 	    	mv.setViewName("confirmation");
 	    }
 		return mv;
 	}
-	
-	
-	
-
 }
