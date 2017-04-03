@@ -1,5 +1,8 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,8 +19,36 @@ public class MemberDAOImpl implements MemberDAO{
 	@PersistenceContext
 	private EntityManager em;
 
+	public List<Member> createMembersList(List<Member> memberList) {
+		List<Member> list = new ArrayList<>();
+		
+		for (Member m: memberList) {
+			Member member = new Member();
+			member = m;
+			
+			Account a = new Account();
+			a.setBankAccount(0.00);
+			a.setFrugalSum(0.00);
+			
+			em.persist(a);
+			em.flush();
+			
+			member.setAccount(a);
+			
+			em.persist(member);
+			em.flush();
+			
+			list.add(member);
+		}
+		return list;
+	}
+
+	
 	@Override
 	public Member createMember(Member member) {		
+		Member m = new Member();
+		m = member;
+		
 		Account a = new Account();
 		a.setBankAccount(0.00);
 		a.setFrugalSum(0.00);
@@ -25,10 +56,9 @@ public class MemberDAOImpl implements MemberDAO{
 		em.persist(a);
 		em.flush();
 		
-		System.out.println(a.getId());
-		member.setAccount(a);
+		m.setAccount(a);
 		
-		em.persist(member);
+		em.persist(m);
 		em.flush();
 
 		return member;
