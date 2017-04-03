@@ -16,9 +16,6 @@ public class Family {
 	private int id;
 	
 	@OneToMany(mappedBy="family")
-	private List<Bill> bills;
-	
-	@OneToMany(mappedBy="family")
 	private List<Member> members;
 	
 	private String name;
@@ -29,14 +26,6 @@ public class Family {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<Bill> getBills() {
-		return bills;
-	}
-
-	public void setBills(List<Bill> bills) {
-		this.bills = bills;
 	}
 
 	public List<Member> getMembers() {
@@ -57,7 +46,9 @@ public class Family {
 
 	@Override
 	public String toString() {
-		return "Family [id=" + id + ", bills=" + bills + ", members=" + members + ", name=" + name + "]";
+		return "Family [id=" + id + ", members=" + members + ", name=" + name + "]";
 	}
+
+	
 	
 }
