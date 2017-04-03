@@ -2,6 +2,8 @@ package daotests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.sql.SQLException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -41,7 +43,7 @@ public class MyLoginDAOTest {
 		}
 
 		@Test
-		public void test_login() {
+		public void test_login() throws SQLException {
 			String u = "JohnWaldorf";
 			String p = "password";
 			

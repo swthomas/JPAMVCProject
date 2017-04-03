@@ -1,5 +1,7 @@
 package data;
 
+import java.sql.SQLException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -11,11 +13,17 @@ public class MyLoginDAOImpl implements MyLoginDAO {
 	private EntityManager em;
 
 	@Override
-	public Member checkUserPassword(String username, String password) {
+	public Member checkUserPassword(String username, String password) throws SQLException{
+		Member m = null;
 		
-		String query = "SELECT m FROM Member m WHERE m.username = :username and password = :password";
-
-		Member m  = em.createQuery(query, Member.class).setParameter("username", username).setParameter("password", password).getSingleResult();
+		
+		try {
+			String query = "SELECT m FROM Member m WHERE m.username = :username and password = :password";
+			m  = em.createQuery(query, Member.class).setParameter("username", username).setParameter("password", password).getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		if (m != null) {
 			return m;

@@ -1,5 +1,7 @@
 package controllers;
 
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +36,7 @@ public class LoginController {
 
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Member member, String username,
-			String password) {
+			String password) throws SQLException {
 		System.out.println("****");
 		ModelAndView mv = new ModelAndView();
 
