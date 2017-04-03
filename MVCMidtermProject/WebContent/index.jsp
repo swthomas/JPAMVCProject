@@ -9,6 +9,7 @@
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,6 +27,13 @@
 			<p>Through acrimonious amalgamation, you and your partner can
 				climb the mountain to financial freedom.</p>
 		</div>
+		
+	<c:if test="${! empty badLogin}">
+		<br>
+			${badLogin}
+		<br>
+	</c:if>
+		
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
