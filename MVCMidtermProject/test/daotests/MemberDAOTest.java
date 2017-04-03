@@ -56,21 +56,21 @@ public class MemberDAOTest {
 	}
 	
 	@Test
-//	public void test_create_new_member() {
-//		Member m = new Member();
-//
-//		Family f = em.find(Family.class, 1);
-//		
-//		m.setFamily(f);
-//		m.setfName("John");
-//		m.setlName("Roxstart");
-//		m.setUsername("testUserName");
-//		m.setPassword("johnJohnson");
-//		m.setAdmin(true);
-//		
-//		Member member = dao.createMember(m);
-//		assertEquals("Roxstart", em.find(Member.class, member.getId()).getlName());	
-//	}
+	public void test_create_new_member() {
+		Member m = new Member();
+
+		Family f = em.find(Family.class, 1);
+		
+		m.setFamily(f);
+		m.setfName("John");
+		m.setlName("Roxstart");
+		m.setUsername("testUserName");
+		m.setPassword("johnJohnson");
+		m.setAdmin(true);
+		
+		Member member = dao.createMember(m);
+		assertEquals("Roxstart", em.find(Member.class, member.getId()).getlName());	
+	}
 	
 	@Test
 	public void test_show_member() {
