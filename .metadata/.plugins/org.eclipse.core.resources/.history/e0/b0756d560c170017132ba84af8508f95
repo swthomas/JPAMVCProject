@@ -1,0 +1,45 @@
+package data;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import entities.Account;
+
+public class AccountDAOImpl implements AccountDAO{
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public Account getAccount(Account a) {
+		em.getTransaction().begin();
+
+		em.getTransaction().commit();
+		return em.find(Account.class, a);
+		
+	}
+
+	@Override
+	public Account setBankAccount(Account a) {
+		em.getTransaction().begin();
+
+		if (a.getBankAccount() == null) {
+			a.setBankAccount();
+		} else {
+			actor.getFilms().add(film);
+		}
+
+		em.persist(a);
+
+		em.getTransaction().commit();
+		return a;
+
+	}
+		return null;
+	}
+
+	@Override
+	public Account setFrugalSum(Account a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

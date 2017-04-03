@@ -1,0 +1,47 @@
+package data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import entities.Account;
+
+public class AccountDAOImpl implements AccountDAO {
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public List<Account> getAccount(int id) {
+TypedQuery<Account> query = em.createQuery("SELECT a FROM account a WHERE a.account.id = :id", Account.class);
+		
+		return query.setParameter("id", id).getResultList();
+
+	}
+
+	@Override
+	public Account setBankAccount(Account account) {
+		Account acc = em.find(Account.class, account.getId());
+
+        acc.setBankAccount(account.getBankAccount());
+        acc.setFrugalSum(account.getFrugalSum());
+       
+        return acc;
+	}
+
+//	@Override
+//	public Account setFrugalSum(Account a) {
+//		em.getTransaction().begin();
+//
+//		if (a.getFrugalSum() == null) {
+//			a.setFrugalSum(null);
+//		} else {
+//			a.getFrugalSum();
+//		}
+//		em.persist(a);
+//		em.getTransaction().commit();
+//		return a;
+//
+//	}
+}
