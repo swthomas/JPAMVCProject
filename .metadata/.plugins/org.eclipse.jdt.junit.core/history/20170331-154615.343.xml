@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="AccountTest" project="JPAMidtermProject" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="test.AccountTest" time="3.634">
-    <testcase name="test" classname="test.AccountTest" time="3.634"/>
-  </testsuite>
-</testrun>
