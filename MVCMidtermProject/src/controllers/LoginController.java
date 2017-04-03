@@ -24,15 +24,15 @@ public class LoginController {
 		return new Member();
 	}
 
-	@RequestMapping(value = "SignIn.do", method = RequestMethod.GET)
+	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public ModelAndView displayLogin(@ModelAttribute("sessionUser") Member member) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("sessionUser", member);
-		mv.setViewName("index.html");
+		mv.setViewName("index");
 		return mv;
 	}
 
-	@RequestMapping(value = "CheckLogin.do", method = RequestMethod.POST)
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Member member, String username,
 			String password) {
 		System.out.println("****");
@@ -54,7 +54,7 @@ public class LoginController {
 			String badLogin = "Unable to find Username and/or Password combination";
 //			model.addAttribute("sessionUser");
 			mv.addObject("badLogin", badLogin);
-			mv.setViewName("index.html");
+			mv.setViewName("index");
 		}
 
 		return mv;

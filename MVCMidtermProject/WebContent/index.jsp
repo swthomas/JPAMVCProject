@@ -19,7 +19,7 @@
 
 	<div class="container">
 		<div class="row text-center" id="h1">
-			<h1>frügal</h1>
+			<h1>frugal</h1>
 			<p>Budgeting through amalgamation.</p>
 		</div>
 		<div class="row text-center">
@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-					<form class="" method="POST" action="CheckLogin.do">
+					<form class="" method="POST" action="login.do">
 
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
@@ -60,9 +60,9 @@
 							<button type="submit" class="btn btn-default btn-block">Sign In</button>
 						</div>
 					</form>
-					<form action="SignUp.do" method="POST">
+					<form action="login.do" method="POST">
 						<div class="form-group text-center">
-							<button><a href="signup.jsp" type="submit" class="btn btn-default btn-block">Sign Up</a></button>
+							<button type="submit" class="btn btn-default btn-block">Sign Up</button>
 						</div>
 					</form>
 				</div>
