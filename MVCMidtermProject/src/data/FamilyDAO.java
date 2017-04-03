@@ -3,5 +3,11 @@ package data;
 import entities.Family;
 
 public interface FamilyDAO {
-	public Family createFamily(Family family);
+
+	Family addFamily(Family newFam);
+
+	Family updateFamily(Family fam);
+
+	String deleteFamily(int id);
+	
 }

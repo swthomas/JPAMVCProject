@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.AccountDAO;
@@ -16,9 +17,9 @@ public class AccountController {
 	AccountDAO accountdao;
 	
 	@RequestMapping(path = "GetBankAccount.do", method = RequestMethod.GET)
-	public ModelAndView GetAccount(Account a) {
+	public ModelAndView GetAccount(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView();
-		Account account = accountdao.getAccount(a);
+		Account account = accountdao.getMemberAccount(id);
 
 		mv.addObject("account", account);
 		mv.setViewName("*******");

@@ -77,6 +77,12 @@ public class MemberDAOTest {
 		Member m = dao.showMember(1);
 		assertEquals("John", m.getfName());
 	}
+	
+//	@Test
+//	public void test_delete_member() {
+//		em.remove(em.find(Member.class, ***));
+//		assertEquals(null, em.find(Member.class, ***));
+//	}
 
 	@Test
 	public void test_true() {
