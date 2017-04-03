@@ -1,6 +1,6 @@
 package entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Bill {
@@ -33,8 +35,10 @@ public class Bill {
 	
 	private double amount;
 	
+	@Temporal(TemporalType.DATE)
 	private Date dateDue;
 	
+	@Temporal(TemporalType.DATE)
 	private Date datePaid;
 	
 	private boolean paid;

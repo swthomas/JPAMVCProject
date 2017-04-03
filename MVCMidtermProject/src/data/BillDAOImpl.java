@@ -21,7 +21,7 @@ public class BillDAOImpl implements BillDAO {
 
 	@Override
 	public Bill updateBill(Bill bill) {
-		Bill billUpdate = em.find(Bill.class, bill);
+		Bill billUpdate = em.find(Bill.class, bill.getId());
 
 		billUpdate.setName(bill.getName());
 		billUpdate.setAmount(bill.getAmount());
@@ -38,33 +38,12 @@ public class BillDAOImpl implements BillDAO {
 		return bill;
 	}
 
-	// @Override
-	// public List<Bill> getFamilyBills(int id) {
-	// Query query = em.createQuery("SELECT b FROM Bill b WHERE b.family.id =
-	// :id");
-	// query.setParameter("id", id);
-	// List<Bill> bills = query.getResultList(); // not sure what I'm doing
-	// wrong
-	//
-	// return bills;
-	// }
-
 	@Override
 	public List<Bill> getFamilyBills(int id) {
 		TypedQuery<Bill> query = em.createQuery("SELECT b FROM Bill b WHERE b.family.id = :id", Bill.class);
 		
 		return query.setParameter("id", id).getResultList();
 	}
-
-//	@Override
-//	public List<Bill> getMemberBills(int id) {
-//		Query query = em.createQuery("SELECT b from Bill b WHERE b.member.id = :id");
-//		query.setParameter("id", id);
-//		List<Bill> bills = query.getResultList(); // not sure what I'm doing
-//													// wrong
-//
-//		return bills;
-//	}
 
 	@Override
 	public List<Bill> getMemberBills(int id) {
