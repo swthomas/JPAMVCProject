@@ -2,6 +2,9 @@ package daotests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -17,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import data.MemberDAO;
+import entities.Bill;
+import entities.BillResponsibility;
 import entities.Family;
 import entities.Member;
 
@@ -68,7 +73,14 @@ public class MemberDAOTest {
 		m.setPassword("johnJohnson");
 		m.setAdmin(true);
 		
+		List<Bill> bills = new ArrayList<>();
+		m.setBills(bills);
+		
+		List<BillResponsibility> br = new ArrayList<>();
+		m.setBillResponsibilities(br);
+		
 		Member member = dao.createMember(m);
+		System.out.println("***************DO NOT REACH****************");
 		assertEquals("Roxstart", em.find(Member.class, member.getId()).getlName());	
 	}
 	

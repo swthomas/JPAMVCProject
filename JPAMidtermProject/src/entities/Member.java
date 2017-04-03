@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +23,13 @@ public class Member {
 	@JoinColumn(name="familyId")
 	private Family family;
 	
-	@OneToMany(mappedBy="member")
+	@OneToMany(mappedBy="member", cascade = {CascadeType.PERSIST})
 	private List<BillResponsibility> billResponsibilities;
 	
-	@OneToMany(mappedBy="member")
+	@OneToMany(mappedBy="member", cascade = {CascadeType.PERSIST})
 	private List<Bill> bills;
 	
-	@OneToOne(mappedBy="member")
+	@OneToOne(mappedBy="member", cascade = {CascadeType.PERSIST})
     private Account account;
 	
 	private String username;

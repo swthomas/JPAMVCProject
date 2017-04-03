@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import entities.Account;
+import entities.Family;
 import entities.Member;
 
 @Transactional
@@ -19,7 +20,8 @@ public class MemberDAOImpl implements MemberDAO{
 	@PersistenceContext
 	private EntityManager em;
 
-	public List<Member> createMembersList(List<Member> memberList) {
+	@Override
+	public List<Member> createMembersList(List<Member> memberList, Family family) {
 		List<Member> list = new ArrayList<>();
 		
 		for (Member m: memberList) {
@@ -30,10 +32,10 @@ public class MemberDAOImpl implements MemberDAO{
 			a.setBankAccount(0.00);
 			a.setFrugalSum(0.00);
 			
-			em.persist(a);
-			em.flush();
-			
 			member.setAccount(a);
+			a.setMember(member);
+			
+			member.setFamily(family);
 			
 			em.persist(member);
 			em.flush();
@@ -53,10 +55,8 @@ public class MemberDAOImpl implements MemberDAO{
 		a.setBankAccount(0.00);
 		a.setFrugalSum(0.00);
 		
-		em.persist(a);
-		em.flush();
-		
 		m.setAccount(a);
+		a.setMember(m);
 		
 		em.persist(m);
 		em.flush();
@@ -87,5 +87,4 @@ public class MemberDAOImpl implements MemberDAO{
 	public Member showMember(int id) {
 		return em.find(Member.class, id);
 	}
-
 }

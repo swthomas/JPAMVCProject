@@ -15,6 +15,7 @@
 	<bean id="billResponsibilityDao" class="data.BillResponsibilityDAOImpl" /> 
 	<bean id="familyDao" class="data.FamilyDAOImpl" /> 
 	<bean id="memberDao" class="data.MemberDAOImpl" />
+	<bean id="loginDao" class="data.MyLoginDAOImpl" />
 
 	<bean id="myEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
