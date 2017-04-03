@@ -27,7 +27,7 @@ public class CreateController {
 	@RequestMapping(path = "CreateFamily.do", method = RequestMethod.POST)
 	public ModelAndView createFamily(Family family) {
 		ModelAndView mv = new ModelAndView();
-		Family f = familyDao.createFamily(family);
+		Family f = familyDao.addFamily(family);
 		
 		if(f == null){
 	    	mv.setViewName("error");
