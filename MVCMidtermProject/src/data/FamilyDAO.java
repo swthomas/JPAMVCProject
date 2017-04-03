@@ -4,10 +4,7 @@ import entities.Family;
 
 public interface FamilyDAO {
 
-	Family addFamily(Family newFam);
-
+	Family createFamily(Family newFam);
 	Family updateFamily(Family fam);
-
 	String deleteFamily(int id);
-	
 }

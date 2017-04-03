@@ -30,10 +30,8 @@ public class MemberDAOImpl implements MemberDAO{
 			a.setBankAccount(0.00);
 			a.setFrugalSum(0.00);
 			
-			em.persist(a);
-			em.flush();
-			
 			member.setAccount(a);
+			a.setMember(m);
 			
 			em.persist(member);
 			em.flush();
@@ -53,10 +51,8 @@ public class MemberDAOImpl implements MemberDAO{
 		a.setBankAccount(0.00);
 		a.setFrugalSum(0.00);
 		
-		em.persist(a);
-		em.flush();
-		
 		m.setAccount(a);
+		a.setMember(m);
 		
 		em.persist(m);
 		em.flush();

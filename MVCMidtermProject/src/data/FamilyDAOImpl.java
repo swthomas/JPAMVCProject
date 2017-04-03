@@ -22,7 +22,7 @@ public class FamilyDAOImpl implements FamilyDAO {
 	}
 
 	@Override
-	public Family addFamily(Family newFam) {
+	public Family createFamily(Family newFam) {
 		
 		int id = newFam.getId();
 		String name = newFam.getName();
