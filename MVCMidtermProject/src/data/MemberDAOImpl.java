@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import entities.Account;
 import entities.Member;
 
 @Transactional
@@ -17,15 +18,25 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public Member createMember(Member member) {		
-		Member m = new Member();
-		em.persist(m);
+		Account a = new Account();
+		a.setBankAccount(0.00);
+		a.setFrugalSum(0.00);
+		
+		em.persist(a);
 		em.flush();
-		return m;
+		
+		System.out.println(a.getId());
+		member.setAccount(a);
+		
+		em.persist(member);
+		em.flush();
+
+		return member;
 	}
 
 	@Override
-	public Member updateMember(int id, Member member) {
-		Member m = em.find(Member.class, id);
+	public Member updateMember(Member member) {
+		Member m = em.find(Member.class, member.getId());
 		m.setUsername(member.getUsername());
 		m.setPassword(member.getPassword());
 		return m;

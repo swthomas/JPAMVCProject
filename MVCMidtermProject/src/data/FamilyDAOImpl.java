@@ -105,11 +105,5 @@ public class FamilyDAOImpl implements FamilyDAO {
         }
         return response;
     }
-//
-	@Override
-	public Family createFamily(Family family) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

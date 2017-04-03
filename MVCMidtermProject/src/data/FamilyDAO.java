@@ -10,6 +10,4 @@ public interface FamilyDAO {
 
 	String deleteFamily(int id);
 	
-	public Family createFamily(Family family);
-	
 }

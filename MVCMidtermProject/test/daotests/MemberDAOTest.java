@@ -1,10 +1,6 @@
 package daotests;
 
-import static org.junit.Assert.*;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import static org.junit.Assert.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,27 +16,28 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import data.IncomeDAO;
-import entities.Income;
+import data.MemberDAO;
+import entities.Family;
+import entities.Member;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "../WEB-INF/Test-context.xml" })
 @WebAppConfiguration
 @Transactional
-public class IncomeDAOTest {
-	
+public class MemberDAOTest {
+
 	@Autowired
 	private WebApplicationContext wac;
 
 	@Autowired
-	private IncomeDAO dao;
+	private MemberDAO dao;
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Before
 	public void setUp() {
-		dao = (IncomeDAO)wac.getBean("incomeDao");
+		dao = (MemberDAO) wac.getBean("memberDao");
 	}
 
 	@After
@@ -49,26 +46,41 @@ public class IncomeDAOTest {
 		em = null;
 		wac = null;
 	}
-	
+
 	@Test
-	public void test_get_income() { // not sure if this is right
-		Income income = em.find(Income.class, 1);
-//		income.setId(1);
-		Income inc = dao.getIncome(income);
-		assertEquals(1, inc.getId());
+	public void test_update_member() { 
+		Member m = em.find(Member.class, 1);
+		m.setUsername("Brian");
+		m.setPassword("password1");
+		assertEquals("Brian", dao.updateMember(m).getUsername());
 	}
 	
 	@Test
-	public void test_set_income() throws ParseException {
-		Income inc = new Income();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = fmt.parse("2013-05-06");
-		inc.setId(11);
-		inc.setName("test");
-		inc.setDate(date);
-		inc.setAmount(20.00);
-		Income i = dao.setIncome(inc);
-		assertEquals("test", i.getName());
+	public void test_create_new_member() {
+		Member m = new Member();
+
+		Family f = em.find(Family.class, 1);
+		
+		m.setFamily(f);
+		m.setfName("John");
+		m.setlName("Roxstart");
+		m.setUsername("testUserName");
+		m.setPassword("johnJohnson");
+		m.setAdmin(true);
+		
+		Member member = dao.createMember(m);
+		assertEquals("Roxstart", em.find(Member.class, member.getId()).getlName());	
+	}
+	
+	@Test
+	public void test_show_member() {
+		Member m = dao.showMember(1);
+		assertEquals("John", m.getfName());
 	}
 
+	@Test
+	public void test_true() {
+		boolean pass = true;
+		assertEquals(pass, true);
+	}
 }

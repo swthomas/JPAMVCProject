@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import data.BillDAO;
+import entities.Account;
 import entities.Bill;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -77,15 +78,14 @@ public class BillDAOTest {
 		bill.setPaid(false);
 		bill.setDatePaid(datePaid);
 
-		dao.addBill(bill);
+		Bill b = dao.addBill(bill);
 
-		assertEquals("test", bill.getName());
+		assertEquals("test", b.getName());
 	}
 
 	@Test
-	public void test_update_bill() throws ParseException { // test updateBill
-															// method
-		Bill bill = new Bill();
+	public void test_update_bill() throws ParseException { // test updateBill method
+		Bill bill = em.find(Bill.class, 1);
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateDue = fmt.parse("2013-05-06");
 		Date datePaid = fmt.parse("2013-05-06");
@@ -98,7 +98,7 @@ public class BillDAOTest {
 		Bill b = dao.updateBill(bill);
 
 		assertEquals("test2", b.getName());
-
+		assertEquals(50.00, b.getAmount(), 0.1);
 	}
 
 }

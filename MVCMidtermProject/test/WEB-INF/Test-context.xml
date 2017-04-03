@@ -12,9 +12,9 @@
 	<bean id="accountDao" class="data.AccountDAOImpl" /> 
 	<bean id="billDao" class="data.BillDAOImpl" /> 
 	<bean id="incomeDao" class="data.IncomeDAOImpl" /> 
-	<!-- <bean id="dao" class="data.BillResponsibilityDAOImpl" /> 
-	<bean id="dao" class="data.FamilyDAOImpl" /> 
-	<bean id="dao" class="data.MemberDAOImpl" />  -->
+	<bean id="billResponsibilityDao" class="data.BillResponsibilityDAOImpl" /> 
+	<bean id="familyDao" class="data.FamilyDAOImpl" /> 
+	<bean id="memberDao" class="data.MemberDAOImpl" />
 
 	<bean id="myEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
