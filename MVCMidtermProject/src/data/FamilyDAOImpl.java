@@ -1,109 +1,50 @@
 package data;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import entities.Family;
 
+@Transactional
+@Repository
 public class FamilyDAOImpl implements FamilyDAO {
-	
-	private static String url = "jdbc:mysql://localhost:3306/Frugaldb";
-	private String user = "admin";
-	private String pass = "admin";
-	
-	public FamilyDAOImpl() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			System.err.println("Error loading MySQL Driver!!!");
-		}
+
+	@PersistenceContext
+	private EntityManager em;
+
+	public Family addFamily(Family family) {
+		em.persist(family);
+		
+		return family;
 	}
 
 	@Override
-	public Family addFamily(Family newFam) {
-		
-		int id = newFam.getId();
-		String name = newFam.getName();
-
-
-		String sql = "INSERT INTO family (id, name)";
-		
-		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
-			PreparedStatement stmt = conn.prepareStatement(sql); // or (sql, Statement.RETURN_GENERATED_KEYS);)
-
-			stmt.setInt(1, id);
-			stmt.setString(2, name);
-		
-
-			int uc = stmt.executeUpdate();
-			if (uc > 0) {
-				return newFam;
-			}
-			stmt.close();
-			conn.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	public Family updateFamily(Family family) {
+		Family f = em.find(Family.class, family.getId());
+		f.setId(family.getId());
+		f.setName(family.getName());
+		return f;
 	}
 
 	@Override
-	public Family updateFamily(Family fam) {
+	public boolean deleteFamily(int id) {
+		Family f = em.find(Family.class, id);
+
+		if (f != null) {
+			em.remove(id);
+			return true;
+		}
+		return false;
+	}
+	
+	public Family getFamilyById(int id) {
+		Family fam = em.find(Family.class, id);
 		
-
-		int id = fam.getId();
-		String name = fam.getName();
-        
-        String sql = "UPDATE family SET id =?, "
-        		+ "name = ?";
-
-        try {
-            Connection conn = DriverManager.getConnection(url, user, pass);
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-            stmt.setInt(1, id);
-			stmt.setString(2, name);
-
-  
-            int uc = stmt.executeUpdate();
-
-            stmt.close();
-            conn.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return fam;
-    }
-
-	@Override
-	public String deleteFamily(int id) {
-		String response = null;
-        String sql = "DELETE FROM family WHERE id = ?";
-
-        try {
-            Connection conn = DriverManager.getConnection(url, user, pass);
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            int uc = stmt.executeUpdate();
-            if (uc > 0 ) {
-                response = "Family Deleted!";
-            }
-            else {
-                response = "No Such Family Found!";
-            }
-            
-            stmt.close();
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            response = "Unable to delete Family!";
-        }
-        return response;
-    }
+		return fam;
+		
+	}
 
 }

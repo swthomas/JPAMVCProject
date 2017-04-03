@@ -4,10 +4,12 @@ import entities.Family;
 
 public interface FamilyDAO {
 
-	Family addFamily(Family newFam);
+	public Family addFamily(Family family);
 
-	Family updateFamily(Family fam);
+	Family updateFamily(Family family);
 
-	String deleteFamily(int id);
+	boolean deleteFamily(int id);
+	
+	public Family getFamilyById(int id);
 	
 }

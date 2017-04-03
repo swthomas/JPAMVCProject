@@ -15,9 +15,6 @@ public class Family {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-//	@OneToMany(mappedBy="family")
-//	private List<Bill> bills;
-	
 	@OneToMany(mappedBy="family")
 	private List<Member> members;
 	
@@ -30,14 +27,6 @@ public class Family {
 	public void setId(int id) {
 		this.id = id;
 	}
-//
-//	public List<Bill> getBills() {
-//		return bills;
-//	}
-//
-//	public void setBills(List<Bill> bills) {
-//		this.bills = bills;
-//	}
 
 	public List<Member> getMembers() {
 		return members;
@@ -55,9 +44,11 @@ public class Family {
 		this.name = name;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Family [id=" + id + ", bills=" + bills + ", members=" + members + ", name=" + name + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Family [id=" + id + ", members=" + members + ", name=" + name + "]";
+	}
+
+	
 	
 }
