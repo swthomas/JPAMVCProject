@@ -6,4 +6,4 @@ build
 .gradle
 .metadata
 .recommenders/
-Servers
+Servers*

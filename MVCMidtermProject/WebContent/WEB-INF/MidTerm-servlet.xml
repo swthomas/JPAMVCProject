@@ -8,12 +8,22 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<context:component-scan base-package="controllers" />
-
-	<!-- <bean id="dao" class="dao.ActorDAOImpl" /> -->
+	
+	<bean id="accountDao" class="data.AccountDAOImpl" /> 
+	<bean id="billDao" class="data.BillDAOImpl" /> 
+	<bean id="incomeDao" class="data.IncomeDAOImpl" /> 
+	<bean id="billResponsibilityDao" class="data.BillResponsibilityDAOImpl" /> 
+	<bean id="familyDao" class="data.FamilyDAOImpl" /> 
+	<bean id="memberDao" class="data.MemberDAOImpl" />
+	<bean id="loginDao" class="data.MyLoginDAOImpl" />
 
 	<bean id="myEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="MidTerm" />
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" />
 	</bean>
 
 	<bean id="myTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
