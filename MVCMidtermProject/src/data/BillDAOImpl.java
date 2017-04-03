@@ -35,6 +35,7 @@ public class BillDAOImpl implements BillDAO {
 	@Override
 	public Bill addBill(Bill bill) {
 		em.persist(bill);
+		em.flush();
 		return bill;
 	}
 

@@ -52,8 +52,8 @@ public class IncomeDAOTest {
 	
 	@Test
 	public void test_get_income() { // not sure if this is right
-		Income income = new Income();
-		income.setId(1);
+		Income income = em.find(Income.class, 1);
+//		income.setId(1);
 		Income inc = dao.getIncome(income);
 		assertEquals(1, inc.getId());
 	}
