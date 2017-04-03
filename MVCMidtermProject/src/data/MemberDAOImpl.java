@@ -34,6 +34,7 @@ public class MemberDAOImpl implements MemberDAO{
 			
 			member.setAccount(a);
 			a.setMember(member);
+			
 			member.setFamily(family);
 			
 			em.persist(member);
