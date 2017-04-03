@@ -30,6 +30,7 @@ public class BillResponsibilityDAOImpl implements BillResponsibilityDAO {
 	@Override
 	public BillResponsibility createResponsibility(BillResponsibility br) {
 		em.persist(br);
-		return null;
+		em.flush();
+		return br;
 	}
 }
