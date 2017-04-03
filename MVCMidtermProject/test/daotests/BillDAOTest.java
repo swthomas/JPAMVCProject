@@ -29,7 +29,7 @@ import entities.Bill;
 @WebAppConfiguration
 @Transactional
 public class BillDAOTest {
-	
+
 	@Autowired
 	private WebApplicationContext wac;
 
@@ -41,7 +41,7 @@ public class BillDAOTest {
 
 	@Before
 	public void setUp() {
-		dao = (BillDAO)wac.getBean("billDao");
+		dao = (BillDAO) wac.getBean("billDao");
 	}
 
 	@After
@@ -50,7 +50,7 @@ public class BillDAOTest {
 		em = null;
 		wac = null;
 	}
-	
+
 	@Test
 	public void test_get_all_family_bills() { // test getFamilyBills method
 		List<Bill> bills = dao.getFamilyBills(1);
@@ -61,10 +61,9 @@ public class BillDAOTest {
 	public void test_get_all_member_bills() { // test getMemberBills method
 		List<Bill> bills = dao.getMemberBills(1);
 		assertEquals(1, bills.size());
-<<<<<<< HEAD
-=======
+
 	}
-	
+
 	@Test
 	public void test_add_bill() throws ParseException { // test addBill method
 		Bill bill = new Bill();
@@ -77,14 +76,15 @@ public class BillDAOTest {
 		bill.setDateDue(dateDue);
 		bill.setPaid(false);
 		bill.setDatePaid(datePaid);
-		
+
 		dao.addBill(bill);
-		
+
 		assertEquals("test", bill.getName());
 	}
-	
+
 	@Test
-	public void test_update_bill() throws ParseException { // test updateBill method
+	public void test_update_bill() throws ParseException { // test updateBill
+															// method
 		Bill bill = new Bill();
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateDue = fmt.parse("2013-05-06");
@@ -96,9 +96,9 @@ public class BillDAOTest {
 		bill.setPaid(false);
 		bill.setDatePaid(datePaid);
 		Bill b = dao.updateBill(bill);
-		
+
 		assertEquals("test2", b.getName());
->>>>>>> 963526f1134a7a9f267fc4413de9876d9932fc2c
+
 	}
 
 }
