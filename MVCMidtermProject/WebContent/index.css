@@ -5,6 +5,12 @@
 /*
  * General styles
  */
+ 
+
+#badlogin {
+	color: red;
+}
+
 #playground-container {
     height: 500px;
     overflow: hidden !important;
@@ -60,7 +66,7 @@ input::-webkit-input-placeholder {
 }
 .form-control {
     height: auto!important;
-padding: 8px 12px !important;
+	padding: 8px 12px !important;
 }
 .input-group {
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
@@ -94,12 +100,12 @@ padding: 8px 12px !important;
  	margin: 0 auto;
  	max-width: 400px;
     padding: 10px 40px;
-	background:#009edf;
+	background:#00bf1c;
 	    color: #FFF;
     text-shadow: none;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
--moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 
 }
 span.input-group-addon i {
