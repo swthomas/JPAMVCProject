@@ -9,6 +9,8 @@
 <body>
 <p>test</p>
 ${member.fName}
+${member.lName}
+
 
 </body>
 </html>
