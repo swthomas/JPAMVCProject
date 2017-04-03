@@ -19,41 +19,42 @@ public class LoginController {
 	@Autowired
 	private MyLoginDAO loginDao;
 
-	@ModelAttribute("user")
+	@ModelAttribute("sessionUser")
 	public Member member() {
 		return new Member();
 	}
 
 	@RequestMapping(value = "SignIn.do", method = RequestMethod.GET)
-	public ModelAndView displayLogin(@ModelAttribute("user") Member member) {
+	public ModelAndView displayLogin(@ModelAttribute("sessionUser") Member member) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index");
-		mv.addObject("user", member);
+		mv.addObject("sessionUser", member);
+		mv.setViewName("index.html");
 		return mv;
 	}
 
-	@RequestMapping(value = "checkLogin.do", method = RequestMethod.POST)
-	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Model model, Member member, String username,
+	@RequestMapping(value = "CheckLogin.do", method = RequestMethod.POST)
+	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Member member, String username,
 			String password) {
+		System.out.println("****");
 		ModelAndView mv = new ModelAndView();
 
 		Member b = loginDao.checkUserPassword(username, password);
 
 		if (b != null) {
 			if (b.getAdmin() == true) {
-				model.addAttribute("sessionUser", b);
+//				model.addAttribute("sessionUser", b);
 				mv.addObject("member", b);
 				mv.setViewName("adminProfile");
 			} else {
-				model.addAttribute("sessionUser", b);
+//				model.addAttribute("sessionUser", b);
 				mv.addObject("member", b);
 				mv.setViewName("profile");
 			}
 		} else {
 			String badLogin = "Unable to find Username and/or Password combination";
-			model.addAttribute("sessionUser");
-			mv.setViewName("index");
+//			model.addAttribute("sessionUser");
 			mv.addObject("badLogin", badLogin);
+			mv.setViewName("index.html");
 		}
 
 		return mv;
