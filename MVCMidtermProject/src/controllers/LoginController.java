@@ -59,12 +59,12 @@ public class LoginController {
 		return mv;
 	}
 
-	@RequestMapping(value = "logout.do", method = RequestMethod.POST)
-	public ModelAndView logout(@ModelAttribute("sessionUser") Model model, Member member) {
-		ModelAndView mv = new ModelAndView();
-		model.
-		
-		
-		return mv;
-	}
+//	@RequestMapping(value = "logout.do", method = RequestMethod.POST)
+//	public ModelAndView logout(@ModelAttribute("sessionUser") Model model, Member member) {
+//		ModelAndView mv = new ModelAndView();
+//		model.
+//		
+//		
+//		return mv;
+//	}
 }
