@@ -60,7 +60,7 @@
 							<button type="submit" class="btn btn-default btn-block">Sign In</button>
 						</div>
 					</form>
-					<form action="login.do" method="POST">
+					<form action="CreateFamily.do" method="POST">
 						<div class="form-group text-center">
 							<button type="submit" class="btn btn-default btn-block">Sign Up</button>
 						</div>
