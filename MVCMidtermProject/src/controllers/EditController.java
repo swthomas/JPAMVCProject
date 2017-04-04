@@ -57,11 +57,20 @@ public class EditController {
 	@RequestMapping(path = "EditAdminBill.do", method = RequestMethod.POST)
 	public ModelAndView editAdminBill(@ModelAttribute("sessionUser") Bill bill) {
 		ModelAndView mv = new ModelAndView();
-		billdao.updateBill(bill);
-		mv.addObject("bill", bill);
-		mv.setViewName("editbill");
+		mv.addObject("bill", billdao.getBill(bill.getId()));
+		mv.setViewName("editadminbill");
 		
 		return mv;
 	}
+	
+	@RequestMapping(path = "EditAdminBillFields.do", method = RequestMethod.POST)
+	public ModelAndView editBeer(Bill bill){
+		billdao.updateBill(bill);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("billlist", billdao.getFamilyBills(bill.getId()));
+		mv.addObject("billlist", billdao.getMemberBills(bill.getId()));
+		mv.setViewName("adminProfile");
+		return mv;
+		}
 
 }

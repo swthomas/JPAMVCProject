@@ -22,7 +22,7 @@
 		<div class="text-center">
 			<h2>Edit Bill</h2>
 		</div>
-		<form class="form-horizontal" action="EditBill.do" method="POST">
+		<form class="form-horizontal" action="EditAdminBillFields.do" method="POST">
 		<input type="hidden" name="id" value="${bill.id}">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Edit name:</label>

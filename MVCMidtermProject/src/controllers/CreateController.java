@@ -67,18 +67,18 @@ public class CreateController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
-	public ModelAndView createMember(@ModelAttribute("sessionUser")Member member, Family family) {
-		ModelAndView mv = new ModelAndView();
-		
-		if(member == null){
-	    	mv.setViewName("error");
-	    }
-	    else{
-	    	Member m = memberDao.createMember(member, family);
-	    	mv.addObject("members", m);
-	    	mv.setViewName("confirmation");
-	    }
-		return mv;
-	}
+//	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
+//	public ModelAndView createMember(@ModelAttribute("sessionUser")Member member, Family family) {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		if(member == null){
+//	    	mv.setViewName("error");
+//	    }
+//	    else{
+//	    	Member m = memberDao.createMember(member, family);
+//	    	mv.addObject("members", m);
+//	    	mv.setViewName("confirmation");
+//	    }
+//		return mv;
+//	}
 }
