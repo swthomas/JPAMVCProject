@@ -22,14 +22,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="bill" items="${familyBills}">
+				<c:forEach var="bill" items="${member.family.bills}">
+						<c:forEach var="br" items="bill.billResponsibilities">
+						<c:if test="${br.member.id == member.id}">
+							<td class="spacing">${bill.name}</td>
+							<td class="spacing">$${bill.amount}</td>
+							<td class="spacing">${bill.dateDue}</td>
+							<td class="spacing">${bill.datePaid}</td>
+							<td class="spacing">${br}</td>
+    					</c:if>
+    					</c:forEach>
 					<tr>
-						<td class="spacing">${bill.name}</td>
-						<td class="spacing">$${bill.amount}</td>
-						<td class="spacing">${bill.dateDue}</td>
-						<td class="spacing">${bill.datePaid}</td>
-						<td class="spacing">${bill.responsibility}</td>
-						
+
 						<td class="editButton"><form action="EditAdminBill.do"
 								method="POST">
 								<button type="submit" name="bill" value="${bill}"
