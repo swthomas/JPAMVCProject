@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,6 +54,13 @@ public class CreateController {
 	
 	
 	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
+<<<<<<< HEAD
+	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
+		ModelAndView mv = new ModelAndView();
+		Family family = familyDao.getFamilyById(id);
+
+	    	List<Member> members = memberDao.createMembersList(member, family);
+=======
 	public ModelAndView createMembers(@ModelAttribute("sessionUser") Member member, Family family, List<Member> memberList) {
 		ModelAndView mv = new ModelAndView();
 		
@@ -61,9 +70,9 @@ public class CreateController {
 	    else{
 	    	List<Member> members = memberDao.createMembersList(memberList, family);
 	    	mv.addObject(member);
+>>>>>>> c3c6312708a262b34e2e9060209f7a7669f931c5
 	    	mv.addObject("members", members);
 	    	mv.setViewName("confirmation");
-	    }
 		return mv;
 	}
 	

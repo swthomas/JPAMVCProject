@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -46,6 +47,16 @@ public class Family {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void addMember(Member member){
+		if(members!= null){
+		members.add(member);
+		}
+		else{
+			members = new ArrayList<Member>();
+			members.add(member);
+		}
 	}
 
 	public List<Bill> getBills() {
