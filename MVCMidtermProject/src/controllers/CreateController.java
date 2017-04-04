@@ -53,26 +53,15 @@ public class CreateController {
 	
 	
 	
-	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
-<<<<<<< HEAD
+	@RequestMapping(path = "CreateMember.do", method = RequestMethod.POST)
 	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 
-	    	List<Member> members = memberDao.createMembersList(member, family);
-=======
-	public ModelAndView createMembers(@ModelAttribute("sessionUser") Member member, Family family, List<Member> memberList) {
-		ModelAndView mv = new ModelAndView();
-		
-		if(memberList == null){
-	    	mv.setViewName("error");
-	    }
-	    else{
-	    	List<Member> members = memberDao.createMembersList(memberList, family);
+	    	Family f = memberDao.createMembersList(member, family);
 	    	mv.addObject(member);
->>>>>>> c3c6312708a262b34e2e9060209f7a7669f931c5
-	    	mv.addObject("members", members);
-	    	mv.setViewName("confirmation");
+	    	mv.addObject("f", f);
+	    	mv.setViewName("index");
 		return mv;
 	}
 	
