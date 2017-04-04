@@ -34,7 +34,7 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-					<form class="" method="POST" action="login.do">
+					<form action="CreateMembers.do" method="POST">
 
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
@@ -48,7 +48,16 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<label for="password" class="cols-sm-2 control-label">First Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+										type="text" class="form-control" name="password" id="email"
+										placeholder="Enter your Password" />
+								</div>
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Last Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i
@@ -65,15 +74,10 @@
 								</c:if>
 							</span>
 						</div>
+				
 						<div class="form-group text-center">
-							<button type="submit" class="btn btn-default btn-block">Sign
-								In</button>
-						</div>
-					</form>
-					<form action="CreateFamilyForm.do" method="POST">
-						<div class="form-group text-center">
-							<button type="submit" class="btn btn-default btn-block">Sign
-								Up</button>
+							<button type="submit" class="btn btn-default btn-block">Create Your Families Account
+								</button>
 						</div>
 					</form>
 				</div>

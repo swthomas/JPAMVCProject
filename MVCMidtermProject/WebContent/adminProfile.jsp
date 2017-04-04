@@ -28,6 +28,7 @@
 						<td class="spacing">$${bill.amount}</td>
 						<td class="spacing">${bill.dateDue}</td>
 						<td class="spacing">${bill.datePaid}</td>
+						<td class="spacing">${bill.responsibility}</td>
 						
 						<td class="editButton"><form action="EditAdminBill.do"
 								method="POST">
@@ -40,20 +41,6 @@
 									class="btn btn-xs btn-danger">delete</button>
 							</form></td>
 					</tr>
-					<c:choose>
-        				<form action="******.do" method="POST" name="bs">
-							<c:when test="${empty user}">
-		        				<td class="spacing"><input type="text" class="form-control" name="name"
-								value="${bill.name}"></td>
-								<td class="spacing"><input type="text" class="form-control" name="amount"
-								value="${bill.amount}"></td>
-								<td class="spacing"><input type="text" class="form-control" name="dateDue"
-								value="${bill.dateDue}"></td>
-								<td class="spacing">$<input type="text" class="form-control" name="datePaid"
-								value="${bill.datePaid}"></td>
-	   						</c:when>
-        				</form>
-					</c:choose>
 				</c:forEach>
 			</tbody>
 		</table>

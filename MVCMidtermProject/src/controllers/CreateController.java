@@ -25,7 +25,9 @@ public class CreateController {
 
 	
 	@RequestMapping(path = "CreateFamily.do", method = RequestMethod.POST)
+	
 	public ModelAndView createFamily(Family family) {
+	System.out.println(family);
 		ModelAndView mv = new ModelAndView();
 		Family f = familyDao.addFamily(family);
 		
@@ -34,16 +36,23 @@ public class CreateController {
 	    }
 	    else{
 	    	mv.addObject("family", f);
-	    	mv.setViewName("createMembers");
+	    	mv.setViewName("createfamily");
 	    }
 		return mv;
 	}
 	
 	
+	@RequestMapping(path = "CreateFamilyForm.do", method = RequestMethod.POST)
+	public ModelAndView goToCreateFamilyForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("signup");
+		return mv;
+		
+	}
 	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
 	public ModelAndView createMembers(Family family, List<Member> memberList) {
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println(family);
 		
 		if(memberList == null){
 	    	mv.setViewName("error");
