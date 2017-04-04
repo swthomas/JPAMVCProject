@@ -40,30 +40,33 @@ SELECT m.fName, m.LName FROM member m WHERE m.familyId = 1;
 </sql:query>
 
 						<c:forEach var="row" items="${result.rows}">
+						
 							<tr>
 								<td><label for="firstname" class="fname"><c:out
 											value="${row.fName}" /></label></td>
 								<td><label for="firstname" class="fname"><c:out
 											value="${row.lName}" /></label></td>
 								<td>
-									<form action="edit.do">
+								</form>
+									<form action="UpdateMemberForm.do">
 										<p align="right">
-											<button type="submit" name="Edit" value="${member.id}">
+											<button type="submit" name="memberId" value="${member.id}">
 												Edit</button>
 										</p>
-								</td>
+								
 					</form>
 
 
-					<td><p align="right">
-						<form action="delete.do">
+					
+						<form action="DeleteMember.do">
+						<p align="right">
 							<p align="right">
 								<button type="submit" name="Delete" value="${member.id}">Delete</button>
 							</p>
 
 						</form>
-						</p></td> <br>
-					</tr>
+						</td> <br>
+					
 					</c:forEach>
 
 					<br /> <br />
@@ -71,10 +74,10 @@ SELECT m.fName, m.LName FROM member m WHERE m.familyId = 1;
 					<!-- Add User -->
 
 
-					<form action="createMembers.do" method="POST">
+					<form action="CreateMember.do" method="POST">
 
 						<h1>Add User</h1>
-
+						<input type="hidden" name="familyId" value="1" />
 						<label for="firstname" class="fname">First Name:</label><input
 							class="form-control" type="text" name="fName"><br> <label
 							for="lastname" class="lname">Last Name:</label><input
