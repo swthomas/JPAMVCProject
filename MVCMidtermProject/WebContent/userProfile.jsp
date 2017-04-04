@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<div class="container-fluid">
+	<%-- <div class="container-fluid">
 		
 			<c:forEach items="${memberBills}" var="bill">
 				<div class="row">
@@ -31,7 +31,7 @@
 							<strong>Date paid:</strong> ${bill.datePaid}<br> <br>
 					</div>
 					<div class="col-sm-3"></div>
-				</div>
+				</div> --%>
 				<%-- <div class="row text-center">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-2">
@@ -48,8 +48,47 @@
 					</div>
 					<div class="col-sm-4"></div>
 				</div> --%>
-			</c:forEach>
-	</div>
+			<%-- </c:forEach>
+	</div> --%>
+	
+	<div class="container" id="inventoryList">
+			<table class="table-hover table-responsive">
+				<thead class="thead-inverse">
+					<tr>
+						<th>Name</th>
+						<th>Amount</th>
+						<th>Date Due</th>
+						<th>Date Paid</th>
+						<th colspan="3">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="bill" items="${memberBills}">
+						<tr>
+							<td class="spacing">${bill.name}</td>
+							<td class="spacing">$${bill.amount}</td>
+							<td class="spacing">${bill.dateDue}</td>
+							<td class="spacing">${bill.datePaid}</td>
+							<td class="viewButton"><form
+									action="ViewProduct.do?ID=${item.ID}" method="GET">
+									<button type="submit" name="ID" value="${item.ID}"
+										class="btn btn-xs btn-primary">view</button>
+								</form></td>
+							<td class="editButton"><form
+									action="EditProduct.do?ID=${item.ID}" method="GET">
+									<button type="submit" name="ID" value="${item.ID}"
+										class="btn btn-xs btn-warning">edit</button>
+								</form></td>
+							<td class="deleteButton"><form action="DeleteProductData.do"
+									method="POST">
+									<button type="submit" name="ID" value="${item.ID}"
+										class="btn btn-xs btn-danger">delete</button>
+								</form></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 
 </body>
 </html>
