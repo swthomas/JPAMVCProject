@@ -35,7 +35,7 @@
 					<tr>
 
 						<td class="editbutton"><form action="EditAdminBill.do"
-								method="GET">
+								method="POST">
 								<button type="submit" name="bill" value="${bill.id}"
 									class="btn btn-xs btn-warning">edit</button>
 							</form></td>
