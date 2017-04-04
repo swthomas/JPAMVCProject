@@ -58,22 +58,13 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 
 		Member m = loginDao.checkUserPassword(username, password);
-		Account account = accountDao.getMemberAccount(m.getId());
-		List<Bill> memberBills = billDao.getFamilyBills(m.getId());
-		List<Member> familyBills = brDao.showFamilyBillAndResponsibility(m.getId());
 
 		if (m != null) {
 			if (m.getAdmin() == true) {
 				mv.addObject("member", m);
-				mv.addObject("memberBills", memberBills);
-				mv.addObject("familyBills", familyBills);
-				mv.addObject("account", account);
 				mv.setViewName("adminProfile");
 			} else {
 				mv.addObject("member", m);
-				mv.addObject("memberBills", memberBills);
-				mv.addObject("familyBills", familyBills);
-				mv.addObject("account", account);
 				mv.setViewName("userProfile");
 			}
 		} else {
