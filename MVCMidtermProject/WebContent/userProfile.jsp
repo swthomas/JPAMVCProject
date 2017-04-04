@@ -20,40 +20,35 @@
 <body>
 
 	<div class="container-fluid">
-		<c:forEach items="${beerlist}" var="beer">
-			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-4" id="beerinfo">
-					<strong>Beer name:</strong> ${beer.name}<br> <strong>Brewery:</strong>
-					${beer.brewery}<br> <strong>City:</strong> ${beer.city},
-					${beer.state}<br> <strong>Alcohol by volume:</strong>
-					${beer.abv}%<br> <br>
-				</div>
-				<div class="col-sm-2 text-center">
-					<div id="beerpic">
-						<img class="resize img-responsive center-block"
-							src="${beer.picURL}" />
+		
+			<c:forEach items="${memberBills}" var="bill">
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6" id="beerinfo">
+							<strong>Bill:</strong> ${bill.name}<br> 
+							<strong>Amount:</strong> $${bill.amount}<br> 
+							<strong>Date due:</strong> ${bill.dateDue}<br> 
+							<strong>Date paid:</strong> ${bill.datePaid}<br> <br>
 					</div>
+					<div class="col-sm-3"></div>
 				</div>
-				<div class="col-sm-3"></div>
-			</div>
-			<div class="row text-center">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-2">
-					<form action="ViewBeer.do" method="GET">
-						<button type="submit" name="name" value="${beer.name}"
-							class="btn btn-primary">Select Beer</button>
-					</form>
-				</div>
-				<div class="col-sm-2">
-					<form action="DeleteBeer.do" method="POST">
-						<button type="submit" name="name" value="${beer.name}"
+				<%-- <div class="row text-center">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-2">
+						<form action="ViewBeer.do" method="GET">
+							<button type="submit" name="name" value="${beer.name}"
+								class="btn btn-primary">Select Beer</button>
+						</form>
+					</div>
+					<div class="col-sm-2">
+						<form action="DeleteBeer.do" method="POST">
+							<button type="submit" name="name" value="${beer.name}"								
 							class="btn btn-danger">Delete Beer</button>
-					</form>
-				</div>
-				<div class="col-sm-4"></div>
-			</div>
-		</c:forEach>
+						</form>
+					</div>
+					<div class="col-sm-4"></div>
+				</div> --%>
+			</c:forEach>
 	</div>
 
 </body>
