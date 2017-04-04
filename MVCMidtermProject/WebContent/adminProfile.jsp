@@ -24,7 +24,7 @@
 		<table>
 		<tr><th>Bill ID</th><th>Bill Name</th><th>Amount</th></tr>
 		<c:forEach items="${memberBills}" var="bill">
-  			  <tr><td>${bill.id}</td><td>${bill.name}</td><td>${bill.amount}</td></tr>
+  			  <tr><td>${bill.id}</td><td>${bill.name}</td><td>${bill.amount}</td><td></td></tr>
 		</c:forEach>
 		</table>
 		</div>
@@ -39,12 +39,7 @@
 		</c:forEach>
 		</table>
 		</div>
-		
-		
 	
-${member.fName}
-${member.lName}
-
 
 </body>
 </html>
