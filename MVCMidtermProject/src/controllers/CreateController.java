@@ -1,11 +1,13 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,18 +52,13 @@ public class CreateController {
 		
 	}
 	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
-	public ModelAndView createMembers(Family family, List<Member> memberList) {
+	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(family);
-		
-		if(memberList == null){
-	    	mv.setViewName("error");
-	    }
-	    else{
-	    	List<Member> members = memberDao.createMembersList(memberList, family);
+		Family family = familyDao.getFamilyById(id);
+
+	    	List<Member> members = memberDao.createMembersList(member, family);
 	    	mv.addObject("members", members);
 	    	mv.setViewName("confirmation");
-	    }
 		return mv;
 	}
 }

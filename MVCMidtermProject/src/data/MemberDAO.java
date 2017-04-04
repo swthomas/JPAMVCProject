@@ -6,7 +6,7 @@ import entities.Family;
 import entities.Member;
 
 public interface MemberDAO {
-	List<Member> createMembersList(List<Member> memberList, Family family);
+	List<Member> createMembersList(Member member, Family family);
 	public Member updateMember(Member member);
 	public Member createMember(Member member);
 	public Member showMember(int id);

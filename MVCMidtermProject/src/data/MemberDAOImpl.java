@@ -21,28 +21,31 @@ public class MemberDAOImpl implements MemberDAO{
 	private EntityManager em;
 
 	@Override
-	public List<Member> createMembersList(List<Member> memberList, Family family) {
-		List<Member> list = new ArrayList<>();
+	public List<Member> createMembersList(Member member, Family family) {
+		member.setFamily(family);
+		member.setPassword("password");
+		member.setAdmin(false);
+		em.persist(member);
 		
-		for (Member m: memberList) {
-			Member member = new Member();
-			member = m;
-			
-			Account a = new Account();
-			a.setBankAccount(0.00);
-			a.setFrugalSum(0.00);
-			
-			member.setAccount(a);
-			a.setMember(member);
-			
-			member.setFamily(family);
-			
-			em.persist(member);
-			em.flush();
-			
-			list.add(member);
-		}
-		return list;
+//		for (Member m: memberList) {
+//			Member member = new Member();
+//			member = m;
+//			
+//			Account a = new Account();
+//			a.setBankAccount(0.00);
+//			a.setFrugalSum(0.00);
+//			
+//			member.setAccount(a);
+//			a.setMember(member);
+//			
+//			member.setFamily(family);
+//			
+//			em.persist(member);
+//			em.flush();
+//			
+//			list.add(member);
+//		}
+		return em.find(Family.class, family.getId()).getMembers();
 	}
 
 	

@@ -25,8 +25,7 @@
 			<!-- <p>Budgeting through amalgamation.</p> -->
 		</div>
 		<div class="row text-center">
-			<p>Through acrimonious amalgamation, you and your partner can
-				climb the mountain to financial freedom.</p>
+			<p>Add your family members.</p>
 		</div>
 
 
@@ -35,7 +34,7 @@
 			<div class="row main">
 				<div class="main-login main-center">
 					<form action="CreateMembers.do" method="POST">
-
+				<input type="hidden" name="familyId" value="${family.id }" />
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
 							<div class="cols-sm-10">
@@ -53,7 +52,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-										type="text" class="form-control" name="password" id="email"
+										type="text" class="form-control" name="fName" id="email"
 										placeholder="Enter your Password" />
 								</div>
 						<div class="form-group">
@@ -62,7 +61,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-										type="text" class="form-control" name="password" id="email"
+										type="text" class="form-control" name="lName" id="email"
 										placeholder="Enter your Password" />
 								</div>
 							</div>
@@ -76,7 +75,7 @@
 						</div>
 				
 						<div class="form-group text-center">
-							<button type="submit" class="btn btn-default btn-block">Create Your Families Account
+							<button type="submit" hidden="family" class="btn btn-default btn-block">Create Your Families Account
 								</button>
 						</div>
 					</form>
