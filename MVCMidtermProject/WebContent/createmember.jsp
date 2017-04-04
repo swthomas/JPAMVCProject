@@ -24,10 +24,11 @@
 		<div class="row main">
 			<div class="main-login main-center">
 				<h5>Frugal Sign Up.</h5>
-				<form action="CreateFamily.do" method="POST">
+				<form action="addmember.do"  method="POST">
+				<input type = "hidden" name = "familyid" value = "${family.id }"/>
 
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Family
+						<label for="name" class="cols-sm-2 control-label">User
 							Name</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
