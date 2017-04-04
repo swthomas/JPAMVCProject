@@ -1,10 +1,10 @@
 package data;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -20,15 +20,14 @@ public class BillDAOImpl implements BillDAO {
 	private EntityManager em;
 
 	@Override
-	public Bill updateBill(Bill bill) {
+	public Bill updateBill(Bill bill, Date dateDue, Date datePaid) {
 		Bill billUpdate = em.find(Bill.class, bill.getId());
 
 		billUpdate.setName(bill.getName());
 		billUpdate.setAmount(bill.getAmount());
-		billUpdate.setDateDue(bill.getDateDue());
-		billUpdate.setDatePaid(bill.getDatePaid());
-		billUpdate.setPaid(bill.isPaid());
-
+		billUpdate.setDateDue(dateDue);
+		billUpdate.setDatePaid(datePaid);
+		System.out.println("EXIT BILLDAO METHOD");
 		return billUpdate;
 	}
 
@@ -56,6 +55,16 @@ public class BillDAOImpl implements BillDAO {
 		TypedQuery<Bill> query = em.createQuery("SELECT b FROM Bill b WHERE b.member.id = :id", Bill.class);
 		
 		return query.setParameter("id", id).getResultList();
+	}
+
+	@Override
+	public boolean deleteBill(int id) {
+		Bill b = em.find(Bill.class, id);
+		if (b != null) {
+			em.remove(id);
+			return true;
+		}
+		return false;
 	}
 
 }
