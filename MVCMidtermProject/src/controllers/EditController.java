@@ -12,6 +12,7 @@ import data.AccountDAO;
 import data.BillDAO;
 import entities.Account;
 import entities.Bill;
+import entities.Member;
 
 @Controller
 @SessionAttributes("sessionUser")
@@ -43,6 +44,16 @@ public class EditController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(path = "editForm.do", method = RequestMethod.GET)
+	public ModelAndView editForm(@ModelAttribute("sessionUser") Member member) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("family", member.getFamily());
+		mv.setViewName("edit");
+		
+		return mv;
+	}
+	
 	
 	@RequestMapping(path = "GetBill.do", method = RequestMethod.POST)
 	public ModelAndView getBill(@ModelAttribute("sessionUser") Bill bill) {
