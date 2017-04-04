@@ -16,7 +16,7 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oxygen'
 	rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="signup.css">
+<link rel="stylesheet" type="text/css" href="index.css">
 <title>Admin</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
 		<div class="row main">
 			<div class="main-login main-center">
 				<h5>Frugal Sign Up.</h5>
-				<form action="CreateFamily.do" method="GET">
+				<form action="CreateFamily.do" method="POST">
 
 					<div class="form-group">
 						<label for="name" class="cols-sm-2 control-label">Family
@@ -47,11 +47,10 @@
 									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
 									type="text" class="form-control" name="email" id="email"
 									placeholder="Enter your Email" />
-								<div class="col-sm-3 text-center">
-
-									<button type=submit class="btn btn-primary btn-lg gradient">Sign
-										Up</button>
-								</div>
+								<form action="CreateFamily.do" method="POST">
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-default btn-block">Sign
+								Up</button>
 				</form>
 
 			</div>

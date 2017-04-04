@@ -59,14 +59,14 @@ public class BillResponsibilityDAOTest {
 
 	}
 
-//	@Test
-//	public void updateResponsibility() {
-//		BillResponsibility br = new BillResponsibility();
-//		br = em.find(BillResponsibility.class, 3);
+	@Test
+	public void updateResponsibility() {
+		BillResponsibility br = new BillResponsibility();
+		br = em.find(BillResponsibility.class, 3);
 //		BillResponsibility b = dao.updateResponsibility(br);
-//		assertEquals(50, b.getMember());
-//
-//	}
+		assertEquals(50, br.getMember());
+
+	}
 
 	@After
 	public void tearDown() {

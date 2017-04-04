@@ -21,33 +21,44 @@ public class MemberDAOImpl implements MemberDAO{
 	private EntityManager em;
 
 	@Override
-	public List<Member> createMembersList(List<Member> memberList, Family family) {
-		List<Member> list = new ArrayList<>();
+	public Family createMembersList(Member member, Family family) {
+		member.setFamily(family);
+		member.setPassword("password");
+		member.setAdmin(false);
+		em.persist(member);
+		Account a = new Account();
+		a.setBankAccount(0.00);
+		a.setFrugalSum(0.00);	
+		a.setMember(member);
+		em.persist(a);
 		
-		for (Member m: memberList) {
-			Member member = new Member();
-			member = m;
-			
-			Account a = new Account();
-			a.setBankAccount(0.00);
-			a.setFrugalSum(0.00);
-			
-			member.setAccount(a);
-			a.setMember(member);
-			
-			member.setFamily(family);
-			
-			em.persist(member);
-			em.flush();
-			
-			list.add(member);
-		}
-		return list;
+//		for (Member m: memberList) {
+//			Member member = new Member();
+//			member = m;
+//			
+//			Account a = new Account();
+//			a.setBankAccount(0.00);
+//			a.setFrugalSum(0.00);
+//			Account a = new Account();
+//			a.setBankAccount(0.00);
+//			a.setFrugalSum(0.00);
+//			
+//			member.setAccount(a);
+//			a.setMember(member);
+//			
+//			member.setFamily(family);
+//			
+//			em.persist(member);
+//			em.flush();
+//			
+//			list.add(member);
+//		}
+		return family;
 	}
 
 	
 	@Override
-	public Member createMember(Member member) {		
+	public Member createMember(Member member, Family family) {		
 		Member m = new Member();
 		m = member;
 		
@@ -57,6 +68,8 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		m.setAccount(a);
 		a.setMember(m);
+		
+		member.setFamily(family);
 		
 		em.persist(m);
 		em.flush();
@@ -87,4 +100,7 @@ public class MemberDAOImpl implements MemberDAO{
 	public Member showMember(int id) {
 		return em.find(Member.class, id);
 	}
+
+
+
 }

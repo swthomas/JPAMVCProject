@@ -1,5 +1,7 @@
 package data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -34,5 +36,11 @@ public class BillResponsibilityDAOImpl implements BillResponsibilityDAO {
 		BillResponsibility respUpdate = em.find(BillResponsibility.class, br.getId());
 		respUpdate.setPercent(br.getPercent());
 		return respUpdate;
+	}
+
+	@Override
+	public List<Member> showFamilyBillAndResponsibility(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

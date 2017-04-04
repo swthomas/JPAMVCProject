@@ -15,7 +15,7 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="*****">
+<link rel="stylesheet" type="text/css" href="profile.css">
 </head>
 <body>
 
@@ -51,7 +51,31 @@
 			<%-- </c:forEach>
 	</div> --%>
 	
-	<div class="container" id="inventoryList">
+	<div class="container" id="list">
+			<table class="table-hover table-responsive">
+				<thead class="thead-inverse">
+					<tr>
+						<th>Name</th>
+						<th>Amount</th>
+						<th>Date Due</th>
+						<th>Date Paid</th>
+						<th colspan="3">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="bill" items="${familyBills}">
+						<tr>
+							<td class="spacing">${bill.name}</td>
+							<td class="spacing">$${bill.amount}</td>
+							<td class="spacing">${bill.dateDue}</td>
+							<td class="spacing">${bill.datePaid}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	
+	<div class="container" id="list">
 			<table class="table-hover table-responsive">
 				<thead class="thead-inverse">
 					<tr>
@@ -69,11 +93,6 @@
 							<td class="spacing">$${bill.amount}</td>
 							<td class="spacing">${bill.dateDue}</td>
 							<td class="spacing">${bill.datePaid}</td>
-							<td class="viewButton"><form
-									action="ViewProduct.do?ID=${item.ID}" method="GET">
-									<button type="submit" name="ID" value="${item.ID}"
-										class="btn btn-xs btn-primary">view</button>
-								</form></td>
 							<td class="editButton"><form
 									action="EditProduct.do?ID=${item.ID}" method="GET">
 									<button type="submit" name="ID" value="${item.ID}"
@@ -89,6 +108,8 @@
 				</tbody>
 			</table>
 		</div>
+		
+		
 
 </body>
 </html>

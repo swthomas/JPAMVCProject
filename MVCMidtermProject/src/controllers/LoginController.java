@@ -29,15 +29,6 @@ public class LoginController {
 	@Autowired
 	private MyLoginDAO loginDao;
 	
-	@Autowired
-	private AccountDAO accountDao;
-	
-	@Autowired
-	private BillDAO billDao;
-	
-	@Autowired
-	private BillResponsibilityDAO brDao;
-
 	@ModelAttribute("sessionUser")
 	public Member member() {
 		return new Member();
@@ -51,29 +42,19 @@ public class LoginController {
 		return mv;
 	}
 
-	@SuppressWarnings("unused")
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Member member, String username,
 			String password) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 
 		Member m = loginDao.checkUserPassword(username, password);
-		Account account = accountDao.getMemberAccount(m.getId());
-		List<Bill> memberBills = billDao.getFamilyBills(m.getId());
-		List<Bill> familyBills = billDao.getMemberBills(m.getId());
 
 		if (m != null) {
 			if (m.getAdmin() == true) {
 				mv.addObject("member", m);
-				mv.addObject("memberBills", memberBills);
-				mv.addObject("familyBills", familyBills);
-				mv.addObject("account", account);
 				mv.setViewName("adminProfile");
 			} else {
 				mv.addObject("member", m);
-				mv.addObject("memberBills", memberBills);
-				mv.addObject("familyBills", familyBills);
-				mv.addObject("account", account);
 				mv.setViewName("userProfile");
 			}
 		} else {
@@ -81,7 +62,6 @@ public class LoginController {
 			mv.addObject("badLogin", badLogin);
 			mv.setViewName("index");
 		}
-
 		return mv;
 	}
 
