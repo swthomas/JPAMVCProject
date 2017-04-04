@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -59,15 +60,16 @@ public class EditController {
 	}
 
 	@RequestMapping(path = "EditAdminBill.do", method = RequestMethod.POST)
-	public ModelAndView editAdminBill(@ModelAttribute("sessionUser") Bill bill) {
+	public ModelAndView editAdminBill(@RequestParam("id")Integer id) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("bill", billdao.getBill(bill.getId()));
+		Bill b = billdao.getBill(id);
+		mv.addObject("bill", b);
 		mv.setViewName("editadminbill");
 		return mv;
 	}
 
 	@RequestMapping(path = "EditAdminBillFields.do", method = RequestMethod.POST)
-	public ModelAndView editAdminFields(@ModelAttribute("sessionUser") Member member, Bill bill) {
+	public ModelAndView editAdminFields(Member member, Bill bill) {
 		billdao.updateBill(bill);
 		Member m = memberdao.showMember(member.getId());
 		ModelAndView mv = new ModelAndView();
@@ -77,7 +79,7 @@ public class EditController {
 	}
 
 	@RequestMapping(path = "EditUserBillFields.do", method = RequestMethod.POST)
-	public ModelAndView editUserFields(@ModelAttribute("sessionUser") Member member, Bill bill) {
+	public ModelAndView editUserFields(Member member, Bill bill) {
 		billdao.updateBill(bill);
 		Member m = memberdao.showMember(member.getId());
 		ModelAndView mv = new ModelAndView();
