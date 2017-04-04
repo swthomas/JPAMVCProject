@@ -29,15 +29,6 @@ public class LoginController {
 	@Autowired
 	private MyLoginDAO loginDao;
 	
-	@Autowired
-	private AccountDAO accountDao;
-	
-	@Autowired
-	private BillDAO billDao;
-	
-	@Autowired
-	private BillResponsibilityDAO brDao;
-
 	@ModelAttribute("sessionUser")
 	public Member member() {
 		return new Member();
@@ -51,7 +42,6 @@ public class LoginController {
 		return mv;
 	}
 
-	@SuppressWarnings("unused")
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Member member, String username,
 			String password) throws SQLException {
@@ -72,7 +62,6 @@ public class LoginController {
 			mv.addObject("badLogin", badLogin);
 			mv.setViewName("index");
 		}
-
 		return mv;
 	}
 

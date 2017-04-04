@@ -64,4 +64,19 @@ public class CreateController {
 	    }
 		return mv;
 	}
+	
+	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
+	public ModelAndView createMember(Family family, Member member) {
+		ModelAndView mv = new ModelAndView();
+		
+		if(member == null){
+	    	mv.setViewName("error");
+	    }
+	    else{
+	    	Member m = memberDao.createMember(member, family);
+	    	mv.addObject("members", m);
+	    	mv.setViewName("confirmation");
+	    }
+		return mv;
+	}
 }
