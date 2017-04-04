@@ -36,6 +36,7 @@
 
 						<sql:query dataSource="${snapshot}" var="result">
 SELECT m.fName, m.LName FROM member m WHERE m.familyId = 1;
+<%-- SELECT m.fName, m.LName FROM member m WHERE m.familyId = ${family.id}; --%>
 </sql:query>
 
 						<c:forEach var="row" items="${result.rows}">
