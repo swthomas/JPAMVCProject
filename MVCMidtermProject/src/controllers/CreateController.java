@@ -36,7 +36,7 @@ public class CreateController {
 	    }
 	    else{
 	    	mv.addObject("family", f);
-	    	mv.setViewName("createmember");
+	    	mv.setViewName("createfamily");
 	    }
 		return mv;
 	}
