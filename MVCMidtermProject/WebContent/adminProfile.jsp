@@ -21,27 +21,27 @@
 					<th colspan="3">Actions</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody>			
 				<c:forEach var="bill" items="${member.family.bills}">
-						<c:forEach var="br" items="bill.billResponsibilities">
-						<c:if test="${br.member.id == member.id}">
+						<c:forEach var="br" items="${bill.billResponsibilities}">
+					 <c:if test="${br.member.id == member.id}">
 							<td class="spacing">${bill.name}</td>
 							<td class="spacing">$${bill.amount}</td>
 							<td class="spacing">${bill.dateDue}</td>
 							<td class="spacing">${bill.datePaid}</td>
-							<td class="spacing">${br}</td>
-    					</c:if>
+							<td class="spacing">${br.percent}</td>
+    					</c:if> 
     					</c:forEach>
 					<tr>
 
 						<td class="editbutton"><form action="EditAdminBill.do"
 								method="GET">
-								<button type="submit" name="bill" value="${bill}"
+								<button type="submit" name="bill" value="${bill.id}"
 									class="btn btn-xs btn-warning">edit</button>
 							</form></td>
 						<td class="deleteButton"><form action="DeleteBill.do"
 								method="POST">
-								<button type="submit" name="bill" value="${bill}"
+								<button type="submit" name="bill" value="${bill.id}"
 									class="btn btn-xs btn-danger">delete</button>
 							</form></td>
 							

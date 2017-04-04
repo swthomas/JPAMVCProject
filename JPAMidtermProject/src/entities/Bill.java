@@ -2,6 +2,7 @@ package entities;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +23,7 @@ public class Bill {
 	private int id;
 	
 	@OneToMany(mappedBy="bill", fetch=FetchType.EAGER)
-	private List<BillResponsibility> billResponsibilities;
+	private Set<BillResponsibility> billResponsibilities;
 	
 	@ManyToOne
 	@JoinColumn(name="familyId")
@@ -54,11 +55,11 @@ public class Bill {
 		this.id = id;
 	}
 
-	public List<BillResponsibility> getBillResponsibilities() {
+	public Set<BillResponsibility> getBillResponsibilities() {
 		return billResponsibilities;
 	}
 
-	public void setBillResponsibilities(List<BillResponsibility> billResponsibilities) {
+	public void setBillResponsibilities(Set<BillResponsibility> billResponsibilities) {
 		this.billResponsibilities = billResponsibilities;
 	}
 

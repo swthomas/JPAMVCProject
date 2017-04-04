@@ -49,7 +49,11 @@ public class LoginController {
 
 		Member m = loginDao.checkUserPassword(username, password);
 
+		
 		if (m != null) {
+			System.out.println("**************************************");
+			System.out.println(m.getFamily().getBills().size());
+			
 			if (m.getAdmin() == true) {
 				mv.addObject("member", m);
 				mv.setViewName("adminProfile");
