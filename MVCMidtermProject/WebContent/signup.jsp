@@ -47,11 +47,10 @@
 									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
 									type="text" class="form-control" name="email" id="email"
 									placeholder="Enter your Email" />
-								<div class="col-sm-3 text-center">
-
-									<button type=submit class="btn btn-primary btn-lg gradient">Sign
-										Up</button>
-								</div>
+								<form action="CreateFamily.do" method="POST">
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-default btn-block">Sign
+								Up</button>
 				</form>
 
 			</div>
