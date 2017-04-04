@@ -56,13 +56,11 @@ public class CreateController {
 	@RequestMapping(path = "CreateMember.do", method = RequestMethod.POST)
 	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
 		ModelAndView mv = new ModelAndView();
-		System.err.println("_________" + member + "___________");
-		System.err.println("*************" + id + "**********");
 		Family family = familyDao.getFamilyById(id);
 
 	    	Family f = memberDao.createMembersList(member, family);
 	    	mv.addObject(member);
-	    	mv.addObject("family", f);
+	    	mv.addObject("f", f);
 	    	mv.setViewName("createfamily");
 		return mv;
 	}

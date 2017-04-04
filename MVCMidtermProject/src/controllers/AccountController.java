@@ -16,19 +16,8 @@ public class AccountController {
 	@Autowired
 	AccountDAO accountdao;
 	
-	@RequestMapping(path = "GetBankAccount.do", method = RequestMethod.GET)
-	public ModelAndView GetAccount(@RequestParam("id") Integer id) {
-		ModelAndView mv = new ModelAndView();
-		Account account = accountdao.getMemberAccount(id);
-
-		mv.addObject("account", account);
-		mv.setViewName("*******");
-
-		return mv;
-	}
-	
 	@RequestMapping(path = "SetBankAccount.do", method = RequestMethod.POST)
-	public ModelAndView SetAccount(Account a) {
+	public ModelAndView SetAccount(Account a, Double income) {
 		ModelAndView mv = new ModelAndView();
 		Account account = accountdao.setBankAccount(a);
 

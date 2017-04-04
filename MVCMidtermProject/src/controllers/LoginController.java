@@ -44,17 +44,12 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Member member, String username,
-			String password) throws SQLException {
+	public ModelAndView checkLogin(@ModelAttribute("sessionUser") Member member, String username, String password) throws SQLException {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(username);
-		System.out.println(password);
+		
 		Member m = loginDao.checkUserPassword(username, password);
-
 		
 		if (m != null) {
-			System.out.println("**************************************");
-			System.out.println(m.getFamily().getBills().size());
 			
 			if (m.getAdmin() == true) {
 				mv.addObject("member", m);
