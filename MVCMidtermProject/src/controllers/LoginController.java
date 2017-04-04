@@ -60,7 +60,7 @@ public class LoginController {
 		Member m = loginDao.checkUserPassword(username, password);
 		Account account = accountDao.getMemberAccount(m.getId());
 		List<Bill> memberBills = billDao.getFamilyBills(m.getId());
-		List<Bill> familyBills = billDao.getMemberBills(m.getId());
+		List<Member> familyBills = brDao.showFamilyBillAndResponsibility(m.getId());
 
 		if (m != null) {
 			if (m.getAdmin() == true) {
