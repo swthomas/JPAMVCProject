@@ -34,7 +34,7 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-					<form action="CreateMember.do" method="POST">
+					<form action="login.do" method="POST">
 						<input type="hidden" name="familyId" value="${family.id }" />
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
@@ -81,7 +81,7 @@
 										class="btn btn-default btn-block">Finish</button>
 								</div>
 					</form>
-					<form action="login.do" method="POST">
+					<form action="CreateMember.do" method="POST">
 						<div class="form-group text-center">
 							<button type="submit" hidden="family"
 								class="btn btn-default btn-block">Add another user</button>

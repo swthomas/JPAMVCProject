@@ -2,6 +2,7 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +22,7 @@ public class Family {
 	private List<Member> members;
 	
 	@OneToMany(mappedBy="family", fetch=FetchType.EAGER)
-	private List<Bill> bills;
+	private Set<Bill> bills;
 	
 	private String name;
 
@@ -59,11 +60,11 @@ public class Family {
 		}
 	}
 
-	public List<Bill> getBills() {
+	public Set<Bill> getBills() {
 		return bills;
 	}
 
-	public void setBills(List<Bill> bills) {
+	public void setBills(Set<Bill> bills) {
 		this.bills = bills;
 	}
 
