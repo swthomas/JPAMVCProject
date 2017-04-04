@@ -50,7 +50,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 	
 	@Override
-	public Member createMember(Member member) {		
+	public Member createMember(Member member, Family family) {		
 		Member m = new Member();
 		m = member;
 		
@@ -60,6 +60,8 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		m.setAccount(a);
 		a.setMember(m);
+		
+		member.setFamily(family);
 		
 		em.persist(m);
 		em.flush();
