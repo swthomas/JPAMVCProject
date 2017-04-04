@@ -23,16 +23,16 @@ public class EditController {
 	@Autowired
 	BillDAO billdao;
 	
-	@RequestMapping(path = "SetBankAccount.do", method = RequestMethod.POST)
-	public ModelAndView SetAccount(@ModelAttribute("sessionUser") Account a) {
-		ModelAndView mv = new ModelAndView();
-		Account account = accountdao.setBankAccount(a);
-
-		mv.addObject("account", account);
-		mv.setViewName("*******");
-
-		return mv;
-	}
+//	@RequestMapping(path = "SetBankAccount.do", method = RequestMethod.POST)
+//	public ModelAndView SetAccount(@ModelAttribute("sessionUser") Account a) {
+//		ModelAndView mv = new ModelAndView();
+//		Account account = accountdao.setBankAccount(a);
+//
+//		mv.addObject("account", account);
+//		mv.setViewName("editbill");
+//
+//		return mv;
+//	}
 	
 	@RequestMapping(path = "EditUserBill.do", method = RequestMethod.POST)
 	public ModelAndView editUserBill(@ModelAttribute("sessionUser") Bill bill) {
