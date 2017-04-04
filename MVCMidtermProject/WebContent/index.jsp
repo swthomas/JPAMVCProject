@@ -54,7 +54,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-										type="text" class="form-control" name="password" id="email"
+										type="text" class="form-control" name="password" id="password"
 										placeholder="Enter your Password" />
 								</div>
 							</div>

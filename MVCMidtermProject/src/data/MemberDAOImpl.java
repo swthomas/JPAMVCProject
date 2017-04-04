@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import entities.Account;
+import entities.Bill;
 import entities.Family;
 import entities.Member;
 
@@ -22,6 +23,8 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public Family createMembersList(Member member, Family family) {
+		List<Bill> bills = new ArrayList<>();
+		member.setBills(bills);
 		member.setFamily(family);
 		member.setPassword("password");
 		member.setAdmin(false);
@@ -31,6 +34,7 @@ public class MemberDAOImpl implements MemberDAO{
 		a.setFrugalSum(0.00);	
 		a.setMember(member);
 		em.persist(a);
+		em.flush();
 		
 //		for (Member m: memberList) {
 //			Member member = new Member();
@@ -59,19 +63,17 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	@Override
 	public Member createMember(Member member, Family family) {		
-		Member m = new Member();
-		m = member;
-		
+		List<Bill> bills = new ArrayList<>();
+		member.setBills(bills);
+		member.setFamily(family);
+		member.setPassword("password");
+		member.setAdmin(false);
+		em.persist(member);
 		Account a = new Account();
 		a.setBankAccount(0.00);
-		a.setFrugalSum(0.00);
-		
-		m.setAccount(a);
-		a.setMember(m);
-		
-		member.setFamily(family);
-		
-		em.persist(m);
+		a.setFrugalSum(0.00);	
+		a.setMember(member);
+		em.persist(a);
 		em.flush();
 
 		return member;
@@ -98,7 +100,10 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public Member showMember(int id) {
-		return em.find(Member.class, id);
+		Member m = null;
+		String q = "SELECT m FROM Member m JOIN FETCH m.bills WHERE m.id = :id";
+		m = em.createQuery(q, Member.class).setParameter("id", id).getSingleResult();
+		return m;
 	}
 
 

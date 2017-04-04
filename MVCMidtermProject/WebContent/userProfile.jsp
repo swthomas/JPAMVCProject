@@ -19,97 +19,80 @@
 </head>
 <body>
 
-	<%-- <div class="container-fluid">
-		
-			<c:forEach items="${memberBills}" var="bill">
-				<div class="row">
-					<div class="col-sm-3"></div>
-					<div class="col-sm-6" id="beerinfo">
-							<strong>Bill:</strong> ${bill.name}<br> 
-							<strong>Amount:</strong> $${bill.amount}<br> 
-							<strong>Date due:</strong> ${bill.dateDue}<br> 
-							<strong>Date paid:</strong> ${bill.datePaid}<br> <br>
-					</div>
-					<div class="col-sm-3"></div>
-				</div> --%>
-				<%-- <div class="row text-center">
-					<div class="col-sm-4"></div>
-					<div class="col-sm-2">
-						<form action="ViewBeer.do" method="GET">
-							<button type="submit" name="name" value="${beer.name}"
-								class="btn btn-primary">Select Beer</button>
-						</form>
-					</div>
-					<div class="col-sm-2">
-						<form action="DeleteBeer.do" method="POST">
-							<button type="submit" name="name" value="${beer.name}"								
-							class="btn btn-danger">Delete Beer</button>
-						</form>
-					</div>
-					<div class="col-sm-4"></div>
-				</div> --%>
-			<%-- </c:forEach>
-	</div> --%>
-	
-	<div class="container" id="list">
-			<table class="table-hover table-responsive">
-				<thead class="thead-inverse">
+	<div class="container" id="userbills">
+	<h2>Family Bills</h2>
+		<table class="table-hover table-responsive">
+			<thead class="thead-inverse">
+				<tr>
+					<th>Name</th>
+					<th>Amount</th>
+					<th>Date Due</th>
+					<th>Date Paid</th>
+					<th colspan="3">Percent</th>
+				</tr>
+			</thead>
+			<tbody>			
+				<c:forEach var="bill" items="${member.family.bills}">
 					<tr>
-						<th>Name</th>
-						<th>Amount</th>
-						<th>Date Due</th>
-						<th>Date Paid</th>
-						<th colspan="3">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="bill" items="${familyBills}">
-						<tr>
+						<c:forEach var="br" items="${bill.billResponsibilities}">
+					 <c:if test="${br.member.id == member.id}">
 							<td class="spacing">${bill.name}</td>
 							<td class="spacing">$${bill.amount}</td>
 							<td class="spacing">${bill.dateDue}</td>
 							<td class="spacing">${bill.datePaid}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	
-	<div class="container" id="list">
-			<table class="table-hover table-responsive">
-				<thead class="thead-inverse">
-					<tr>
-						<th>Name</th>
-						<th>Amount</th>
-						<th>Date Due</th>
-						<th>Date Paid</th>
-						<th colspan="3">Actions</th>
+							<td class="spacing">${br.percent}%</td>
+    					</c:if> 
+    					</c:forEach>
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="bill" items="${memberBills}">
-						<tr>
+				</c:forEach>
+				
+			</tbody>
+		</table>
+	</div>
+	
+		<div class="container" id="memberbills">
+		<h2>Your Bills</h2>
+		<table class="table-hover table-responsive">
+			<thead class="thead-inverse">
+				<tr>
+					<th>Name</th>
+					<th>Amount</th>
+					<th>Date Due</th>
+					<th>Date Paid</th>
+				</tr>
+			</thead>
+			<tbody>			
+				<c:forEach var="bill" items="${member.bills}">
+							<tr>
 							<td class="spacing">${bill.name}</td>
 							<td class="spacing">$${bill.amount}</td>
 							<td class="spacing">${bill.dateDue}</td>
 							<td class="spacing">${bill.datePaid}</td>
-							<td class="editButton"><form
-									action="EditProduct.do?ID=${item.ID}" method="GET">
-									<button type="submit" name="ID" value="${item.ID}"
-										class="btn btn-xs btn-warning">edit</button>
-								</form></td>
-							<td class="deleteButton"><form action="DeleteProductData.do"
-									method="POST">
-									<button type="submit" name="ID" value="${item.ID}"
-										class="btn btn-xs btn-danger">delete</button>
-								</form></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		
-		
+							</tr>
+					<tr>
+
+						<td class="editbutton"><form action="EditUserBill.do"
+								method="POST">
+								<button type="submit" name="id" value="${bill.id}"
+									class="btn btn-xs btn-warning">edit</button>
+							</form></td>
+						<td class="deleteButton"><form action="DeleteBill.do"
+								method="POST">
+								<button type="submit" name="id" value="${bill.id}"
+									class="btn btn-xs btn-danger">delete</button>
+							</form></td>
+						<td class="paidButton"><form action="PayBill.do"
+								method="POST">
+								<button type="submit" name="id" value="${bill.id}"
+									class="btn btn-xs btn-danger">paid</button>
+							</form></td>
+							
+					</tr>
+				</c:forEach>
+				
+			</tbody>
+		</table>
+	</div>
 
 </body>
 </html>
