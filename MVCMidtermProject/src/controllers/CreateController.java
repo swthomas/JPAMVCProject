@@ -61,7 +61,7 @@ public class CreateController {
 	    	Family f = memberDao.createMembersList(member, family);
 	    	mv.addObject(member);
 	    	mv.addObject("f", f);
-	    	mv.setViewName("index");
+	    	mv.setViewName("createfamily");
 		return mv;
 	}
 	
