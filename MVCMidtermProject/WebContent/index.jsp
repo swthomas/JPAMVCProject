@@ -27,7 +27,7 @@
 		<div class="row text-center">
 			<p>Through acrimonious amalgamation, you and your partner can
 				climb the mountain to financial freedom.</p><hr>
-				<img src="tree.jpg">
+				<img src="pics/tree.jpg">
 		</div>
 
 
