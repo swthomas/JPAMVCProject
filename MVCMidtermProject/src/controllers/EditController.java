@@ -45,7 +45,7 @@ public class EditController {
 		return mv;
 	}
 	
-	// Method to supply family.id from logged in user to the edit.jsp
+	// Method to forward user and supply family.id to the edit.jsp
 	@RequestMapping(path = "editForm.do", method = RequestMethod.GET)
 	public ModelAndView editForm(@ModelAttribute("sessionUser") Member member) {
 		ModelAndView mv = new ModelAndView();
