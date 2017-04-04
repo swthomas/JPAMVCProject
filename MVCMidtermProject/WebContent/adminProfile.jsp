@@ -9,7 +9,6 @@
 </head>
 <body>
 <p>test</p>
-<<<<<<< HEAD
 
 		${member.fName}  ${member.lName}<br>
 		${member.family.name}<br>
@@ -43,11 +42,9 @@
 		
 		
 	
-=======
 ${member.fName}
 ${member.lName}
 
->>>>>>> 7dc768bb70d5bbfc83ee6a96748be878c5e24bab
 
 </body>
 </html>

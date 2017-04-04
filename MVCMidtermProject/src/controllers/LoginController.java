@@ -74,7 +74,7 @@ public class LoginController {
 				mv.addObject("memberBills", memberBills);
 				mv.addObject("familyBills", familyBills);
 				mv.addObject("account", account);
-				mv.setViewName("profile");
+				mv.setViewName("userProfile");
 			}
 		} else {
 			String badLogin = "Unable to find Username and/or Password combination";

@@ -13,6 +13,7 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
@@ -40,7 +41,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i
-										class="fa fa-users fa" aria-hidden="true"></i></span> <input
+										class="fa fa-user fa" aria-hidden="true"></i></span> <input
 										type="text" class="form-control" name="username"
 										id="usernamename" placeholder="Enter your Username" />
 								</div>
@@ -51,7 +52,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i
-										class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
+										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 										type="text" class="form-control" name="password" id="email"
 										placeholder="Enter your Password" />
 								</div>
