@@ -34,7 +34,7 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-					<form action="login.do" method="POST">
+					<form action="CreateMember.do" method="POST">
 						<input type="hidden" name="familyId" value="${family.id }" />
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
@@ -75,17 +75,20 @@
 								</c:if>
 									</span>
 								</div>
-
-								<div class="form-group text-center">
-									<button type="submit" hidden="family"
-										class="btn btn-default btn-block">Finish</button>
 								</div>
-					</form>
-					<form action="CreateMember.do" method="POST">
+								</div>
+
 						<div class="form-group text-center">
-							<button type="submit" hidden="family"
+							<button type="submit" name="familyId" value="${family.id}" hidden="family"
 								class="btn btn-default btn-block">Add another user</button>
 						</div>
+					</form>
+					<form action="goHome.do" method="GET">
+								<div class="form-group text-center">
+									<button type="submit" hidden="family" name="goHome" value="goHome"
+	
+										class="btn btn-default btn-block">Finish</button>
+								</div>
 
 					</form>
 				</div>
