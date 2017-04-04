@@ -40,6 +40,11 @@ public class BillDAOImpl implements BillDAO {
 	}
 
 	@Override
+	public Bill getBill(int id) {
+		return em.find(Bill.class, id);
+	}
+
+	@Override
 	public List<Bill> getFamilyBills(int id) {
 		TypedQuery<Bill> query = em.createQuery("SELECT b FROM Bill b WHERE b.family.id = :id", Bill.class);
 		

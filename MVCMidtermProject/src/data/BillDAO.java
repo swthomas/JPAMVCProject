@@ -11,5 +11,6 @@ public interface BillDAO {
 	public List<Bill> getMemberBills(int id);
 //	add member bill?
 //	add family bill?
+	public Bill getBill(int id);
 	
 }

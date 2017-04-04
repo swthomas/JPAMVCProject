@@ -1,1 +1,39 @@
-@CHARSET "UTF-8";
+#list {
+	margin 0 auto;
+	width: 100%;
+}
+
+table {
+	margin-bottom: 50px;
+}
+
+table tr {
+	width: 100%;
+	text-align: center;
+}
+
+table th {
+    font-weight: bold;
+    padding-left: 50px;
+
+}
+
+table td {
+	text-align:right;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.viewButton {
+	padding-left: 120px;
+}
+
+.addButtonTop {
+	position:fixed;
+	right:0;
+}
+
+.thead-inverse {
+	background: black;
+	color: #fff;
+}
