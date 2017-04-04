@@ -7,6 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="login.css">
     </head>
     <body>
+<a href="editForm.do">Edit</a>
+    
         <div class="container">
            
             <header>
