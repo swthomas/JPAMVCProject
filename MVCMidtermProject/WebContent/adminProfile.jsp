@@ -39,8 +39,6 @@
 		</c:forEach>
 		</table>
 		</div>
-		
-		
 	
 
 </body>

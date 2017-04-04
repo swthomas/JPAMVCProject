@@ -19,42 +19,76 @@
 </head>
 <body>
 
-	<div class="container-fluid">
-		<c:forEach items="${beerlist}" var="beer">
-			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-4" id="beerinfo">
-					<strong>Beer name:</strong> ${beer.name}<br> <strong>Brewery:</strong>
-					${beer.brewery}<br> <strong>City:</strong> ${beer.city},
-					${beer.state}<br> <strong>Alcohol by volume:</strong>
-					${beer.abv}%<br> <br>
-				</div>
-				<div class="col-sm-2 text-center">
-					<div id="beerpic">
-						<img class="resize img-responsive center-block"
-							src="${beer.picURL}" />
+	<%-- <div class="container-fluid">
+		
+			<c:forEach items="${memberBills}" var="bill">
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6" id="beerinfo">
+							<strong>Bill:</strong> ${bill.name}<br> 
+							<strong>Amount:</strong> $${bill.amount}<br> 
+							<strong>Date due:</strong> ${bill.dateDue}<br> 
+							<strong>Date paid:</strong> ${bill.datePaid}<br> <br>
 					</div>
-				</div>
-				<div class="col-sm-3"></div>
-			</div>
-			<div class="row text-center">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-2">
-					<form action="ViewBeer.do" method="GET">
-						<button type="submit" name="name" value="${beer.name}"
-							class="btn btn-primary">Select Beer</button>
-					</form>
-				</div>
-				<div class="col-sm-2">
-					<form action="DeleteBeer.do" method="POST">
-						<button type="submit" name="name" value="${beer.name}"
+					<div class="col-sm-3"></div>
+				</div> --%>
+				<%-- <div class="row text-center">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-2">
+						<form action="ViewBeer.do" method="GET">
+							<button type="submit" name="name" value="${beer.name}"
+								class="btn btn-primary">Select Beer</button>
+						</form>
+					</div>
+					<div class="col-sm-2">
+						<form action="DeleteBeer.do" method="POST">
+							<button type="submit" name="name" value="${beer.name}"								
 							class="btn btn-danger">Delete Beer</button>
-					</form>
-				</div>
-				<div class="col-sm-4"></div>
-			</div>
-		</c:forEach>
-	</div>
+						</form>
+					</div>
+					<div class="col-sm-4"></div>
+				</div> --%>
+			<%-- </c:forEach>
+	</div> --%>
+	
+	<div class="container" id="inventoryList">
+			<table class="table-hover table-responsive">
+				<thead class="thead-inverse">
+					<tr>
+						<th>Name</th>
+						<th>Amount</th>
+						<th>Date Due</th>
+						<th>Date Paid</th>
+						<th colspan="3">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="bill" items="${memberBills}">
+						<tr>
+							<td class="spacing">${bill.name}</td>
+							<td class="spacing">$${bill.amount}</td>
+							<td class="spacing">${bill.dateDue}</td>
+							<td class="spacing">${bill.datePaid}</td>
+							<td class="viewButton"><form
+									action="ViewProduct.do?ID=${item.ID}" method="GET">
+									<button type="submit" name="ID" value="${item.ID}"
+										class="btn btn-xs btn-primary">view</button>
+								</form></td>
+							<td class="editButton"><form
+									action="EditProduct.do?ID=${item.ID}" method="GET">
+									<button type="submit" name="ID" value="${item.ID}"
+										class="btn btn-xs btn-warning">edit</button>
+								</form></td>
+							<td class="deleteButton"><form action="DeleteProductData.do"
+									method="POST">
+									<button type="submit" name="ID" value="${item.ID}"
+										class="btn btn-xs btn-danger">delete</button>
+								</form></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 
 </body>
 </html>
