@@ -44,6 +44,7 @@ public class CreateController {
 	public ModelAndView createMembers(Family family, List<Member> memberList) {
 		ModelAndView mv = new ModelAndView();
 		
+		
 		if(memberList == null){
 	    	mv.setViewName("error");
 	    }
