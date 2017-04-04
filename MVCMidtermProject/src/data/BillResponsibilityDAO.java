@@ -1,9 +1,12 @@
 package data;
 
+import java.util.List;
+
 import entities.BillResponsibility;
+import entities.Member;
 
 public interface BillResponsibilityDAO {
-	public BillResponsibility showResponsibility(int id);
+	public List<Member> showFamilyBillAndResponsibility(int id);
 	public BillResponsibility createResponsibility(BillResponsibility br);
 	public BillResponsibility updateResponsibility(BillResponsibility br);
 }
