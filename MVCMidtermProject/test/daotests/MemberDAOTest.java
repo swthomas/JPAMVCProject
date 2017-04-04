@@ -79,7 +79,7 @@ public class MemberDAOTest {
 		List<BillResponsibility> br = new ArrayList<>();
 		m.setBillResponsibilities(br);
 		
-		Member member = dao.createMember(m);
+		Member member = dao.createMember(m, f);
 		System.out.println("***************DO NOT REACH****************");
 		assertEquals("Roxstart", em.find(Member.class, member.getId()).getlName());	
 	}
