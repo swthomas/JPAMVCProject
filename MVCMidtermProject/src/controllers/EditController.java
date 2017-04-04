@@ -1,6 +1,15 @@
 package controllers;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,15 +58,15 @@ public class EditController {
 		return mv;
 	}
 
-	@RequestMapping(path = "EditUserBill.do", method = RequestMethod.POST)
-	public ModelAndView editUserBill(@ModelAttribute("sessionUser") Bill bill) {
-		ModelAndView mv = new ModelAndView();
-		billdao.updateBill(bill);
-		mv.addObject("bill", bill);
-		mv.setViewName("editbill");
-		
-		return mv;
-	}
+//	@RequestMapping(path = "EditUserBill.do", method = RequestMethod.POST)
+//	public ModelAndView editUserBill(@ModelAttribute("sessionUser") Integer id) {
+//		ModelAndView mv = new ModelAndView();
+//		billdao.updateBill(bill);
+//		mv.addObject("bill", bill);
+//		mv.setViewName("editbill");
+//		
+//		return mv;
+//	}
 
 	@RequestMapping(path = "EditAdminBill.do", method = RequestMethod.POST)
 	public ModelAndView editAdminBill(@RequestParam("id")Integer id) {
@@ -69,8 +78,19 @@ public class EditController {
 	}
 
 	@RequestMapping(path = "EditAdminBillFields.do", method = RequestMethod.POST)
-	public ModelAndView editAdminFields(Member member, Bill bill) {
-		billdao.updateBill(bill);
+	public ModelAndView editAdminFields(HttpSession session,
+			@ModelAttribute("sessionUser") Member member,
+			@RequestParam("id") int id,
+			@RequestParam("name") String name,
+			@RequestParam("amount") double amount,
+			@RequestParam("dateDue") String dueDate,
+			@RequestParam("datePaid") String paidDate
+			) throws ParseException {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		Date dDate = format.parse(dueDate);
+		Date pDate = format.parse(paidDate);
+		Bill bill = billdao.getBill(id);
+		billdao.updateBill(bill, dDate, pDate);
 		Member m = memberdao.showMember(member.getId());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("member", m);
@@ -79,13 +99,35 @@ public class EditController {
 	}
 
 	@RequestMapping(path = "EditUserBillFields.do", method = RequestMethod.POST)
-	public ModelAndView editUserFields(Member member, Bill bill) {
-		billdao.updateBill(bill);
+	public ModelAndView editUserFields(HttpSession session,
+			@ModelAttribute("sessionUser") Member member,
+			@RequestParam("id") int id,
+			@RequestParam("name") String name,
+			@RequestParam("amount") double amount,
+			@RequestParam("dateDue") String dueDate,
+			@RequestParam("datePaid") String paidDate
+			) throws ParseException {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		Date dDate = format.parse(dueDate);
+		Date pDate = format.parse(paidDate);
+		Bill bill = billdao.getBill(id);
+		billdao.updateBill(bill, dDate, pDate);
 		Member m = memberdao.showMember(member.getId());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("member", m);
 		mv.setViewName("userProfile");
 		return mv;
 	}
+	
+	@RequestMapping(path="DeleteBill.do",
+			 method=RequestMethod.POST)
+	 public ModelAndView removeBill(@ModelAttribute("sessionUser") Member member, @RequestParam("id")Integer id) {
+		billdao.deleteBill(id);
+		ModelAndView mv = new ModelAndView();
+		 mv.addObject("member", member);
+		 mv.setViewName("userProfile");
+		 return mv;
+
+	 }
 
 }

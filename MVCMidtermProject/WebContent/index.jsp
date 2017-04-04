@@ -26,7 +26,8 @@
 		</div>
 		<div class="row text-center">
 			<p>Through acrimonious amalgamation, you and your partner can
-				climb the mountain to financial freedom.</p>
+				climb the mountain to financial freedom.</p><hr>
+				<img src="pics/tree.jpg">
 		</div>
 
 
@@ -53,7 +54,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-										type="text" class="form-control" name="password" id="email"
+										type="text" class="form-control" name="password" id="password"
 										placeholder="Enter your Password" />
 								</div>
 							</div>
