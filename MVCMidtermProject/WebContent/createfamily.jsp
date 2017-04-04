@@ -34,7 +34,7 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-					<form action="CreateMember.do" method="POST">
+					<form  method="POST">
 						<input type="hidden" name="familyId" value="${family.id }" />
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
@@ -79,19 +79,19 @@
 								</div>
 
 						<div class="form-group text-center">
-							<button type="submit" name="familyId" value="${family.id}" hidden="family"
+							<button formaction="CreateMember.do" type="submit" name="familyId" value="${family.id}" hidden="family"
 								class="btn btn-default btn-block">Add another user</button>
 						</div>
-					</form>
-					<form action="goHome.do" method="GET">
+					<!-- <form action="goHome.do" method="POST"> -->
 								<div class="form-group text-center">
-									<button type="submit" hidden="family" name="goHome" value="goHome"
+									<button formaction="goHome.do"  type="submit" name="familyId" value="${family.id}" hidden="family"
 	
 										class="btn btn-default btn-block">Finish</button>
 								</div>
 
+<!-- 					</form>
+ -->				</div>
 					</form>
-				</div>
 			</div>
 		</div>
 	</div>
