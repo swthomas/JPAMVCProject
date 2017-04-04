@@ -50,6 +50,24 @@ public class CreateController {
 	    }
 		return mv;
 	}
+	@RequestMapping(path = "CreateFamilyAdmin.do", method = RequestMethod.POST)
+	public ModelAndView createFamilyAdmin(@ModelAttribute("sessionUser") Member member, Family family) {
+		
+		ModelAndView mv = new ModelAndView();
+		Family f = familyDao.addFamily(family);
+		Member m = new Member();
+		
+		if(f == null){
+			mv.setViewName("error");
+		}
+		else{
+			m.setAdmin(true);
+			mv.addObject(member);
+			mv.addObject("family", f);
+			mv.setViewName("createfamily");
+		}
+		return mv;
+	}
 	
 	
 	

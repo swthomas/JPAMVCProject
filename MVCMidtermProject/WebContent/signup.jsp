@@ -47,7 +47,7 @@
 									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
 									type="text" class="form-control" name="email" id="email"
 									placeholder="Enter your Email" />
-								<form action="CreateFamily.do" method="POST">
+								<form action="CreateFamilyAdmin.do" method="POST">
 						<div class="form-group text-center">
 							<button type="submit" class="btn btn-default btn-block">Sign
 								Up</button>
