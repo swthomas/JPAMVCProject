@@ -101,6 +101,14 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<div class="account">
+			<h2>Family Frugal Account</h2>
+			$${member.account.frugalSum}
+			<h2>Personal Account</h2>
+			$${member.account.bankAccount}
+			<br><br>
+		</div>
 
 
 		<td class="logoutButton">
