@@ -34,8 +34,8 @@
     					</c:forEach>
 					<tr>
 
-						<td class="editButton"><form action="EditAdminBill.do"
-								method="POST">
+						<td class="editbutton"><form action="EditAdminBill.do"
+								method="GET">
 								<button type="submit" name="bill" value="${bill}"
 									class="btn btn-xs btn-warning">edit</button>
 							</form></td>
@@ -44,6 +44,7 @@
 								<button type="submit" name="bill" value="${bill}"
 									class="btn btn-xs btn-danger">delete</button>
 							</form></td>
+							
 					</tr>
 				</c:forEach>
 			</tbody>
