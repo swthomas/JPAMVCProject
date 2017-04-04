@@ -72,9 +72,10 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.POST)
-	public ModelAndView logout(@ModelAttribute("sessionUser") HttpSession session) {
+	public ModelAndView logout(@ModelAttribute("sessionUser") Member member, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("sessionUser", new Member());
+		mv.setViewName("index");
 		return mv;
 	}
 }
