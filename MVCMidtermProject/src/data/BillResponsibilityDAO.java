@@ -9,4 +9,5 @@ public interface BillResponsibilityDAO {
 	public List<Member> showFamilyBillAndResponsibility(int id);
 	public BillResponsibility createResponsibility(BillResponsibility br);
 	public BillResponsibility updateResponsibility(BillResponsibility br);
+	BillResponsibility showResponsibility(int id);
 }
