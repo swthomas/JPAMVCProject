@@ -33,7 +33,7 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-					<form action="CreateMembers.do" method="POST">
+					<form action="CreateMember.do" method="POST">
 				<input type="hidden" name="familyId" value="${family.id }" />
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
