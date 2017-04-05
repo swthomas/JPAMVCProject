@@ -58,8 +58,7 @@
 			<div class="col-sm-2">
 				<form class="form-horizontal" action="AddToFrugal.do" method="POST">
 					<div class="form-group">
-						<input type="text" class="form-control" name="amount"
-							value="${bill.name}">
+						<input type="text" class="form-control" name="amount">
 					</div>
 					<div class="form-group">
 						<button type="submit" value="Edit Bill"
@@ -70,10 +69,8 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-2">
 				<form class="form-horizontal" action="AddIncome.do" method="POST">
-					<input type="hidden" name="id" value="${bill.id}">
 					<div class="form-group">
-						<input type="text" class="form-control" name="name"
-							value="${bill.name}">
+						<input type="text" class="form-control" name="amount">
 					</div>
 					<div class="form-group">
 						<button type="submit" value="Edit Bill"

@@ -4,11 +4,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import entities.Account;
+import entities.Member;
 
 public class AccountDAOImpl implements AccountDAO {
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Autowired
+	MemberDAO memberdao;
 
 	@Override
 	public Account getMemberAccount(int id) {
@@ -19,21 +25,22 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	@Override
-	public Account setBankAccount(Account account) {
-		Account acc = em.find(Account.class, account.getId());
-		acc.setBankAccount(account.getBankAccount());
-		acc.setFrugalSum(account.getFrugalSum());
+	public void setBankAccount(Double amount, int id) {
+		Member m = em.find(Member.class, id);
+		
+		
+		Double ba = m.getAccount().getBankAccount();
+		ba += amount;
+		m.getAccount().setBankAccount(ba);
 
-		return acc;
+		System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO**********************    "+ba+"   *********");
 	}
 
 	@Override
-	public Account setFrugalSum(Account a) {
-		Account acc = em.find(Account.class, a.getId());
-
-		acc.setBankAccount(a.getBankAccount());
-		acc.setFrugalSum(a.getFrugalSum());
-		return acc;
+	public void setFrugalSum(Double amount, int id) {
+		
+		memberdao.showMember(id).getAccount().setFrugalSum(memberdao.showMember(id).getAccount().getFrugalSum()+amount);
+		memberdao.showMember(id).getAccount().setBankAccount(memberdao.showMember(id).getAccount().getBankAccount()-amount);
 
 	}
 
