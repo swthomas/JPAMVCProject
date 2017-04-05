@@ -1,10 +1,17 @@
 package controllers;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.AccountDAO;
@@ -47,14 +54,18 @@ public class AccountController {
 	@RequestMapping(path = "AddBillForm.do", method = RequestMethod.POST)
 	public ModelAndView addBillForm() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("addBill");
+		mv.setViewName("addadminbill");
 
 		return mv;
 	}
 	
 	@RequestMapping(path = "CreateFamilyBill.do", method = RequestMethod.POST)
-	public ModelAndView addFamilyBill(@ModelAttribute("sessionUser") Member member, Bill bill) {
+	public ModelAndView addFamilyBill(@ModelAttribute("sessionUser") Member member, Bill bill,
+			@RequestParam("dateDue") String dueDate) throws ParseException {
 		System.out.println("FUCK YOU ***********************");
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		Date dDate = format.parse(dueDate);
+		bill.setDateDue(dDate);
 		ModelAndView mv = new ModelAndView();
 		billdao.addBill(bill);
 		mv.addObject(member);
