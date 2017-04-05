@@ -19,6 +19,12 @@
 </head>
 <body>
 
+	<form action="logout.do" method="POST">
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
+					</div>
+				</form>
+
 	<div class="container">
 		<div class="text-center">
 			<h2>Add Bill</h2>

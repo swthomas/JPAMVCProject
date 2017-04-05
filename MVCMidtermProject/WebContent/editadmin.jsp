@@ -19,6 +19,12 @@
 </head>
 <body>
 
+	<form action="logout.do" method="POST">
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
+					</div>
+				</form>
+
 <!-- THIS PAGE IS A STRETCH GOAL -->
 
 	<div class="container">
