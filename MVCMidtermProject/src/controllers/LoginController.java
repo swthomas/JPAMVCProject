@@ -74,9 +74,9 @@ public class LoginController {
 
 		Member m = loginDao.checkUserPassword(username, password);
 
-		mv.getModelMap().addAttribute("sessionUser", m);
 
 		if (m != null) {
+			mv.getModelMap().addAttribute("sessionUser", m);
 			mv.addObject("member", m);
 
 			if (m.getAdmin() == true) {
