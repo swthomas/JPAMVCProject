@@ -48,22 +48,45 @@ public class LoginController {
 	public ModelAndView goHome(Member member, @RequestParam("familyId") int id) {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
-		boolean check = familyDao.checkUser(family.getId());
+		boolean check = familyDao.checkUser(member.getUsername());
+		System.err.println("--------------" + family.getId());
 
 		if (check == true) {
-			Family f = familyDao.addFamily(family);
-			mv.addObject(member);
-			mv.addObject("family", f);
-			mv.setViewName("create");
-		}
-
-		else {
 			Family f = memberDao.createMembersList(member, family);
 			mv.addObject(member);
-			mv.addObject("family", f);
+			mv.addObject("f", f);
 			mv.setViewName("index");
+		} else {
+			System.err.println("in else");
+
+			Family f = memberDao.getFamilyById(id);
+			System.err.println("****************" + f.getId());
+			mv.addObject("family	", f);
+			mv.addObject("familyCorrection", f);
+			String badLogin = "Unable to find Username and/or Password combination";
+			mv.addObject("badLogin", badLogin);
+			mv.setViewName("createfamily");
 		}
+
 		return mv;
+		
+		//		ModelAndView mv = new ModelAndView();
+//		Family family = familyDao.getFamilyById(id);
+//		boolean check = familyDao.checkUser(family.getName());
+//	
+//		if (check == true) {
+//			Family f = familyDao.addFamily(family);
+//			mv.addObject(member);
+//			mv.addObject("family", f);
+//			mv.setViewName("index");
+//		}
+//
+//		else {
+//			String badLogin = "Invalid Entry or User already exists. \nPlease try again.";
+//			mv.addObject("badLogin", badLogin);
+//			mv.setViewName("createfamily");
+//		}
+//		return mv;
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)

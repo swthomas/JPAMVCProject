@@ -115,5 +115,12 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
+	@Override
+	public Family getFamilyById(int id) {
+		
+		return em.find(Family.class, id);
+	}
+
+
 
 }

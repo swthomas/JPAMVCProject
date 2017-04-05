@@ -35,7 +35,6 @@
 			<div class="row main">
 				<div class="main-login main-center">
 					<form  method="POST">
-						<input type="hidden" name="familyId" value="${family.id }" />
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
 							<div class="cols-sm-10">
@@ -79,19 +78,30 @@
 								</div>
 
 						<div class="form-group text-center">
-							<button formaction="CreateMember.do" type="submit" name="familyId" value="${family.id}" hidden="family"
-								class="btn btn-default btn-block">Add another user</button>
+						<c:choose>
+							<c:when test="${family != null}">
+								<button formaction="CreateMember.do" type="submit" name="familyId" value="${family.id}" hidden="family"
+									class="btn btn-default btn-block">Add Another Member</button>
+							</c:when>
+							<c:when test="${familyCorrection != null}">
+								<button formaction="CreateMember.do" type="submit" name="familyId" value="${familyCorrection.id}" hidden="family"
+									class="btn btn-default btn-block">Add Another Member</button>
+							</c:when>
+						</c:choose>
 						</div>
-					<!-- <form action="goHome.do" method="POST"> -->
-								<div class="form-group text-center">
-									<button formaction="goHome.do"  type="submit" name="familyId" value="${family.id}" hidden="family"
-	
-										class="btn btn-default btn-block">Finish</button>
-								</div>
+											<c:choose>
+							<c:when test="${family != null}">
+								<button formaction="goHome.do" type="submit" name="familyId" value="${family.id}" hidden="family"
+									class="btn btn-default btn-block">Finish</button>
+							</c:when>
+							<c:when test="${familyCorrection != null}">
+								<button formaction="goHome.do" type="submit" name="familyId" value="${familyCorrection.id}" hidden="family"
+									class="btn btn-default btn-block">Finish</button>
+							</c:when>
+						</c:choose>
 
-<!-- 					</form>
- -->				</div>
 					</form>
+ 				</div>
 			</div>
 		</div>
 	</div>
