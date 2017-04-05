@@ -50,8 +50,9 @@ public class CreateController {
 	@RequestMapping(path = "CreateFamily.do", method = RequestMethod.POST)
 	public ModelAndView createFamily(@ModelAttribute("sessionUser") Member member, Family family) {
 		ModelAndView mv = new ModelAndView();
-
-		boolean check = familyDao.checkFamily(family.getId());
+		System.out.println(family.getId());
+		boolean check = familyDao.checkFamily(family.getName());
+		System.out.println(check + "******************************");
 		if (check == true) {
 			Family f = familyDao.addFamily(family);
 			mv.addObject(member);

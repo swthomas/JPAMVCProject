@@ -30,14 +30,18 @@ public class FamilyDAOImpl implements FamilyDAO {
 	}
 
 	@Override
-	public boolean checkFamily(int id) {
-
+	public boolean checkFamily(String name) {
+		Family f = null;
 		try {
-			em.find(Family.class, id);
+			String query = "Select f From Family f where f.name = :name ";
+			f = em.createQuery(query, Family.class).setParameter("name", name).getSingleResult();
 		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("catch*******************************************");
 			return true;
 
 		}
+		System.out.println("*******************************************");
 		return false;
 	}
 
@@ -57,6 +61,12 @@ public class FamilyDAOImpl implements FamilyDAO {
 
 		return fam;
 
+	}
+
+	@Override
+	public boolean checkUser(int id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
