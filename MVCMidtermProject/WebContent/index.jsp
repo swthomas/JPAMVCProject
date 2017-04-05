@@ -21,13 +21,6 @@
 
 <div>
 
-				<form action="logout.do" method="POST">
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
-					</div>
-				</form>
-
-
 </div>
 
 	<div class="container">
