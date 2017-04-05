@@ -33,8 +33,10 @@ public class MemberDAOImpl implements MemberDAO {
 		a.setBankAccount(0.00);
 		a.setFrugalSum(0.00);
 		a.setMember(member);
+		System.out.println(member  +"*************************");
 		em.persist(a);
 		em.flush();
+		System.out.println(member  +"*************************");
 
 		return family;
 	}
