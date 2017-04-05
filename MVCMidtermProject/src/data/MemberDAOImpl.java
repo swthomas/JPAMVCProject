@@ -33,10 +33,10 @@ public class MemberDAOImpl implements MemberDAO {
 		a.setBankAccount(0.00);
 		a.setFrugalSum(0.00);
 		a.setMember(member);
-		System.out.println(member  +"*************************");
+		System.out.println(member + "*************************");
 		em.persist(a);
 		em.flush();
-		System.out.println(member  +"*************************");
+		System.out.println(member + "*************************");
 
 		return family;
 	}
@@ -100,9 +100,4 @@ public class MemberDAOImpl implements MemberDAO {
 		return em.find(Family.class, id);
 	}
 
-	@Override
-	public void updateMember(int id, String username, String password) {
-		// TODO Auto-generated method stub
-		
-	}
 }

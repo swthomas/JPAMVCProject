@@ -38,7 +38,7 @@ public class CreateController {
 
 	@Autowired
 	private BillDAO billDao;
-	
+
 	@Autowired
 	private BillResponsibilityDAO brDao;
 
@@ -58,6 +58,7 @@ public class CreateController {
 		System.out.println(check + "******************************");
 		if (check == true) {
 			Family f = familyDao.addFamily(family);
+
 			mv.addObject(member);
 			mv.addObject("family", f);
 			mv.setViewName("createfamily");
@@ -92,7 +93,6 @@ public class CreateController {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 		boolean check = familyDao.checkUser(member.getUsername());
-		System.err.println("--------------" + family.getId());
 
 		if (check == true) {
 			Family f = memberDao.createMembersList(member, family);
@@ -101,10 +101,7 @@ public class CreateController {
 			mv.addObject("familyCorrection", f);
 			mv.setViewName("createfamily");
 		} else {
-			System.err.println("in else");
-
 			Family f = memberDao.getFamilyById(id);
-			System.err.println("****************" + f.getId());
 			mv.addObject("family	", f);
 			mv.addObject("familyCorrection", f);
 			String badLogin = "Unable to find Username and/or Password combination";
@@ -154,8 +151,9 @@ public class CreateController {
 		ModelAndView mv = new ModelAndView();
 		billDao.addBill(b);
 
-		b.setBillResponsibilities(brDao.createResponsibility(b, memberDao.getFamilyMembers(member.getFamily().getId())));
-		
+		b.setBillResponsibilities(
+				brDao.createResponsibility(b, memberDao.getFamilyMembers(member.getFamily().getId())));
+
 		Member m = memberDao.showMember(member.getId());
 
 		mv.addObject(m);

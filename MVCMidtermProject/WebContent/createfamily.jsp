@@ -52,7 +52,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i
-										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+										class="fa fa-user fa" aria-hidden="true"></i></span> <input
 										type="text" class="form-control" name="fName" id="email"
 										placeholder="Enter family member first name" />
 								</div>
@@ -62,7 +62,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i
-												class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+												class="fa fa-user fa" aria-hidden="true"></i></span> <input
 												type="text" class="form-control" name="lName" id="email"
 												placeholder="Enter family member first name" />
 										</div>
