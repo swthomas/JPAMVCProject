@@ -23,7 +23,7 @@
 		<div class="text-center">
 			<h2>Change User Details</h2>
 		</div>
-		<form class="form-horizontal" action="EditMemberDetails.do" method="POST">
+		<form class="form-horizontal" action="EditUser.do" method="POST">
 		<input type="hidden" name="id" value="${member.id}">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Edit username:</label>

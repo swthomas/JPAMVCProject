@@ -15,7 +15,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="index.css">
+	
+<!-- <link rel="stylesheet" type="text/css" href="about.css"> -->
+
 </head>
 <body>
 	<div class="container">
@@ -45,33 +47,30 @@
 										financial decisions for their future. Our site lets couples
 										share their bills with each other online and establish a plan
 										to tackle them together.</p>
-									<br><br><br>
-									<img src="pics/questions.jpg">
-									<br><br>
-			
-									<form action="URL to form script" method="POST">
-									
-
-										Your name: <br> <input type="text" name="realname"><br>
-										<br> Your email: <br> <input type="text"
-											name="email"><br> <br> Your comments: <br>
-										<textarea name="comments" rows="15" cols="50"></textarea>
-										<br>
-										<br> <input type="submit" value="Submit">
-
-									</form>
-
-
-
-
-								</div>
-							</div>
-						</div>
-
 					</form>
 				</div>
+				<br> <br> <br> <img src="pics/questions.jpg"> <br>
+				<br>
+
+				<p>
+				<form action="mailto:willrobo@protonmail.com" method="POST"
+					enctype="text/plain">
+					Name:<br> <input type="text" name="name"><br>
+					E-mail:<br> <input type="text" name="mail"><br>
+					Comment:<br> <input type="text" name="comment" size="50"><br>
+					<br> <input type="submit" value="Send">
+				</form>
+
+
+
 			</div>
 		</div>
+	</div>
+
+	</form>
+	</div>
+	</div>
+	</div>
 	</div>
 
 

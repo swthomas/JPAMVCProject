@@ -19,6 +19,9 @@
 </head>
 <body>
 
+	<a href="editForm.do">Edit</a>
+
+
 	<div class="container">
 		<div class="row text-center" id="h1">
 			<h1>frugal</h1>
@@ -60,7 +63,11 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="text-center">
+
 						<div class="text-center badlogin">
+
 							<span id="badlogin"> <c:if test="${! empty badLogin}">
 									${badLogin}
 								</c:if>
@@ -78,10 +85,18 @@
 								Up</button>
 						</div>
 					</form>
+
 				</div>
+				<br><br>
+				<form action="http://localhost:8080/MVCMidtermProject/about.jsp" method="POST">
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-default btn-block"><img src="pics/about_us_button.jpg"></button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+
 
 
 </body>
