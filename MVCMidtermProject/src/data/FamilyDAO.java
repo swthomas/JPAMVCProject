@@ -11,5 +11,7 @@ public interface FamilyDAO {
 	boolean deleteFamily(int id);
 	
 	public Family getFamilyById(int id);
+
+	boolean checkFamily(int id);
 	
 }

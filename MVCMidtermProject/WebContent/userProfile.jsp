@@ -19,20 +19,22 @@
 </head>
 <body>
 
-		</div>
-	
-			<div class="container" id="accounts">
-			<h2>Family Frugal Account</h2>
-			$${member.account.frugalSum}
-			<h2>Personal Account</h2>
-			$${member.account.bankAccount}
-			<br><br>
-		</div>
+	<div class="container">
+		<h2>Family Bills</h2>
+	</div>
+
+	<div class="container" id="accounts">
+		<h2>Family Frugal Account</h2>
+		$${member.account.frugalSum}
+		<h2>Personal Account</h2>
+		$${member.account.bankAccount} <br>
+		<br>
+	</div>
 
 	<div class="container" id="userbills">
-	<h2>Family Bills</h2>
+		<h2>Family Bills</h2>
 		<table class="table-hover table-responsive">
-			<thead class="thead-inverse">
+			<thead>
 				<tr>
 					<th>Name</th>
 					<th>Amount</th>
@@ -41,68 +43,68 @@
 					<th colspan="3">Percent</th>
 				</tr>
 			</thead>
-			<tbody>			
+			<tbody>
 				<c:forEach var="bill" items="${member.family.bills}">
 					<tr>
 						<c:forEach var="br" items="${bill.billResponsibilities}">
-					 <c:if test="${br.member.id == member.id}">
-							<td class="spacing">${bill.name}</td>
-							<td class="spacing">$${bill.amount}</td>
-							<td class="spacing">${bill.dateDue}</td>
-							<td class="spacing">${bill.datePaid}</td>
-							<td class="spacing">${br.percent}%</td>
-    					</c:if> 
-    					</c:forEach>
+							<c:if test="${br.member.id == member.id}">
+								<td class="spacing">${bill.name}</td>
+								<td class="spacing">$${bill.amount}</td>
+								<td class="spacing">${bill.dateDue}</td>
+								<td class="spacing">${bill.datePaid}</td>
+								<td class="spacing">${br.percent}%</td>
+							</c:if>
+						</c:forEach>
 					</tr>
 				</c:forEach>
+
 			</tbody>
 		</table>
 	</div>
-	
-		<div class="container" id="memberbills">
+
+	<div class="container">
 		<h2>Your Bills</h2>
 		<table class="table-hover table-responsive">
-			<thead class="thead-inverse">
+			<thead>
 				<tr>
 					<th>Name</th>
 					<th>Amount</th>
 					<th>Date Due</th>
 					<th>Date Paid</th>
+					<th colspan="3">Actions</th>
 				</tr>
 			</thead>
-			<tbody>			
+			<tbody>
 				<c:forEach var="bill" items="${member.bills}">
-							<tr>
-							<td class="spacing">${bill.name}</td>
-							<td class="spacing">$${bill.amount}</td>
-							<td class="spacing">${bill.dateDue}</td>
-							<td class="spacing">${bill.datePaid}</td>
-							</tr>
 					<tr>
-
+						<td class="spacing">${bill.name}</td>
+						<td class="spacing">$${bill.amount}</td>
+						<td class="spacing">${bill.dateDue}</td>
+						<td class="spacing">${bill.datePaid}</td>
 						<td class="editbutton"><form action="EditBillForm.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-warning">edit</button>
+									class="btn btn-xs btn-warning">Edit</button>
 							</form></td>
 						<td class="deleteButton"><form action="DeleteBill.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">delete</button>
+									class="btn btn-xs btn-danger">Delete</button>
 							</form></td>
 						<td class="paidButton"><form action="PayBill.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">pay</button>
+									class="btn btn-xs btn-success">pay</button>
 							</form></td>
-							
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<form action="AddBillForm.do" method="POST">
-								<button type="submit" name="id" class="btn btn-xs btn-danger">add bill</button>
-							</form>
+	</div>
+	<form action="AddBillForm.do" method="POST">
+		<button type="submit" name="id" class="btn btn-xs btn-danger">add
+			bill</button>
+	</form>
 
 
 </body>
