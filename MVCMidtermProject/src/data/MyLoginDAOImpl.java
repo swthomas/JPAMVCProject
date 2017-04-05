@@ -20,14 +20,18 @@ public class MyLoginDAOImpl implements MyLoginDAO {
 			String query = "SELECT m FROM Member m WHERE m.username = :username AND m.password = :password";
 			m  = em.createQuery(query, Member.class).setParameter("username", username).setParameter("password", password).getSingleResult();
 			
-			if (m != null) {
-				m = em.createQuery("SELECT m FROM Member m JOIN FETCH m.bills WHERE m.id = :id", Member.class).setParameter("id", m.getId()).getSingleResult();
+			try {
+				if (m != null) {
+					m = em.createQuery("SELECT m FROM Member m JOIN FETCH m.bills WHERE m.id = :id", Member.class).setParameter("id", m.getId()).getSingleResult();
+				}
+			} catch (Exception e) {
+				m.setBills(new ArrayList<>());
+				e.printStackTrace();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
-			m.setBills(new ArrayList<>());
-			System.out.println(m.getBills().size());
+//			System.out.println(m.getBills().size());
 		}
 
 		return m;	
