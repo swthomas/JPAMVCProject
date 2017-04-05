@@ -19,11 +19,17 @@
 </head>
 <body>
 
+	<form action="logout.do" method="POST">
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
+					</div>
+				</form>
+
 	<div class="container">
 		<div class="text-center">
 			<h2>Change User Details</h2>
 		</div>
-		<form class="form-horizontal" action="EditMemberDetails.do" method="POST">
+		<form class="form-horizontal" action="EditUser.do" method="POST">
 		<input type="hidden" name="id" value="${member.id}">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Edit username:</label>

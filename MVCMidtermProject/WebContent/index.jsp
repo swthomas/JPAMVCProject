@@ -19,8 +19,9 @@
 </head>
 <body>
 
-	<a href="editForm.do">Edit</a>
+<div>
 
+</div>
 
 	<div class="container">
 		<div class="row text-center" id="h1">

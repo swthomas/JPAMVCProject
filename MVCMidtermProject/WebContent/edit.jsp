@@ -13,6 +13,13 @@
 <title>Edit and Add Users</title>
 </head>
 <body>
+
+	<form action="logout.do" method="POST">
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
+					</div>
+				</form>
+
 ****************************** ${family.id } **********************************
 	<div class="container">
 

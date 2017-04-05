@@ -19,11 +19,6 @@
 </head>
 <body>
 
-	<form action="logout.do" method="POST">
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
-					</div>
-				</form>
 
 	<div class="container">
 		<div class="row text-center" id="h1">
@@ -31,7 +26,7 @@
 			<!-- <p>Budgeting through amalgamation.</p> -->
 		</div>
 		<div class="row text-center">
-			<p>Add your family members.</p>
+			<p>Add your info.</p>
 		</div>
 
 
@@ -57,7 +52,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i
-										class="fa fa-user fa" aria-hidden="true"></i></span> <input
+										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 										type="text" class="form-control" name="fName" id="email"
 										placeholder="Enter family member first name" />
 								</div>
@@ -67,7 +62,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i
-												class="fa fa-user fa" aria-hidden="true"></i></span> <input
+												class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 												type="text" class="form-control" name="lName" id="email"
 												placeholder="Enter family member first name" />
 										</div>
@@ -85,22 +80,22 @@
 						<div class="form-group text-center">
 						<c:choose>
 							<c:when test="${family != null}">
-								<button formaction="CreateMember.do" type="submit" name="familyId" value="${family.id}" hidden="family"
+								<button formaction="CreateAdminMember.do" type="submit" name="familyId" value="${family.id}" hidden="family"
 									class="btn btn-default btn-block">Add Another Member</button>
 							</c:when>
 							<c:when test="${familyCorrection != null}">
-								<button formaction="CreateMember.do" type="submit" name="familyId" value="${familyCorrection.id}" hidden="family"
+								<button formaction="CreateAdminMember.do" type="submit" name="familyId" value="${familyCorrection.id}" hidden="family"
 									class="btn btn-default btn-block">Add Another Member</button>
 							</c:when>
 						</c:choose>
 						</div>
 											<c:choose>
 							<c:when test="${family != null}">
-								<button formaction="goHome.do" type="submit" name="familyId" value="${family.id}" hidden="family"
+								<button formaction="goAdminHome.do" type="submit" name="familyId" value="${family.id}" hidden="family"
 									class="btn btn-default btn-block">Finish</button>
 							</c:when>
 							<c:when test="${familyCorrection != null}">
-								<button formaction="goHome.do" type="submit" name="familyId" value="${familyCorrection.id}" hidden="family"
+								<button formaction="goAdminHome.do" type="submit" name="familyId" value="${familyCorrection.id}" hidden="family"
 									class="btn btn-default btn-block">Finish</button>
 							</c:when>
 						</c:choose>
