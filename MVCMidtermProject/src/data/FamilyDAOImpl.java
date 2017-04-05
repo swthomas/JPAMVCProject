@@ -18,6 +18,7 @@ public class FamilyDAOImpl implements FamilyDAO {
 
 	public Family addFamily(Family family) {
 		em.persist(family);
+		em.flush();
 
 		return family;
 	}

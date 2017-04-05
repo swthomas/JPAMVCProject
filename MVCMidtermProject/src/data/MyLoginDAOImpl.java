@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +26,8 @@ public class MyLoginDAOImpl implements MyLoginDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
+			m.setBills(new ArrayList<>());
+			System.out.println(m.getBills().size());
 		}
 
 		return m;	

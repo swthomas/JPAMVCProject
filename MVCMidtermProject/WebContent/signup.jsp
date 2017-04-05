@@ -33,13 +33,13 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa"
 										aria-hidden="true"></i></span> <input type="text"
-										class="form-control" name="name" id="name"
+										class="form-control" name="name" 
 										placeholder="Enter your family name" />
 								</div>
 							</div>
 						</div>
 
-						<div class="form-group">
+					<!-- 	<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">User
 								Name</label>
 							<div class="cols-sm-10">
@@ -50,16 +50,16 @@
 										placeholder="Enter your username" />
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="text-center">
 							<span id="badlogin"> <c:if test="${! empty badLogin}">
 									${badLogin}
 								</c:if>
 							</span>
 						</div>
-					</form>
-					<form action="CreateFamilyForm.do" method="POST">
-						<div class="form-group text-center">
+					<!-- </form>
+					<form action="CreateFamily.do" method="POST">
+						<div class="form-group text-center"> -->
 							<button type="submit" class="btn btn-default btn-block">Sign
 								Up</button>
 						</div>
