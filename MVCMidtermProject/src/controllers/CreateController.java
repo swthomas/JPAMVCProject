@@ -85,7 +85,7 @@ public class CreateController {
 	}
 
 	@RequestMapping(path = "CreateMember.do", method = RequestMethod.POST)
-	public ModelAndView createMember(Member member, @RequestParam("family") int id) {
+	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 
