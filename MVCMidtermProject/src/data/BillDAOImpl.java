@@ -26,7 +26,6 @@ public class BillDAOImpl implements BillDAO {
 		billUpdate.setName(name);
 		billUpdate.setAmount(amount);
 		billUpdate.setDateDue(dDate);
-		System.out.println("EXIT BILLDAO METHOD");
 		return billUpdate;
 	}
 		
@@ -38,7 +37,6 @@ public class BillDAOImpl implements BillDAO {
 		billUpdate.setAmount(bill.getAmount());
 		billUpdate.setDateDue(dateDue);
 		billUpdate.setDatePaid(datePaid);
-		System.out.println("EXIT BILLDAO METHOD");
 		return billUpdate;
 	}
 
@@ -57,20 +55,19 @@ public class BillDAOImpl implements BillDAO {
 	@Override
 	public List<Bill> getFamilyBills(int id) {
 		TypedQuery<Bill> query = em.createQuery("SELECT b FROM Bill b WHERE b.family.id = :id", Bill.class);
-		
 		return query.setParameter("id", id).getResultList();
 	}
 
 	@Override
 	public List<Bill> getMemberBills(int id) {
 		TypedQuery<Bill> query = em.createQuery("SELECT b FROM Bill b WHERE b.member.id = :id", Bill.class);
-		
 		return query.setParameter("id", id).getResultList();
 	}
 
 	@Override
 	public boolean deleteBill(int id) {
 		Bill b = em.find(Bill.class, id);
+		
 		if (b != null) {
 			em.remove(id);
 			return true;

@@ -37,27 +37,27 @@
 					</tr>
 					<tr>
 
-						<td class="editbutton"><form action="EditAdminBill.do"
-								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-warning">edit</button>
+						<td class="editbutton"><form action="EditAdminBill.do" method="POST">
+								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-warning">edit</button>
 							</form></td>
-						<td class="deleteButton"><form action="DeleteBill.do"
-								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">delete</button>
+							
+						<td class="deleteButton"><form action="DeleteBill.do" method="POST">
+								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-danger">delete</button>
 							</form></td>
-						<td class="paidButton"><form action="PayBill.do"
-								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">paid</button>
+							
+						<td class="paidButton"><form action="PayBill.do" method="POST">
+								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-danger">paid</button>
 							</form></td>
+							
 
 					</tr>
 				</c:forEach>
 
 			</tbody>
 		</table>
+							<form action="AddBillForm.do" method="POST">
+								<button type="submit" name="id" class="btn btn-xs btn-danger">add bill</button>
+							</form>
 	</div>
 
 	<div class="container" id="memberbills">
@@ -81,26 +81,26 @@
 					</tr>
 					<tr>
 
-						<td class="editbutton"><form action="EditAdminBill.do"
-								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-warning">edit</button>
+						<td class="editbutton"><form action="EditAdminBill.do" method="POST">
+								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-warning">edit</button>
 							</form></td>
-						<td class="deleteButton"><form action="DeleteBill.do"
-								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">delete</button>
+							
+						<td class="deleteButton"><form action="DeleteBill.do" method="POST">
+								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-danger">delete</button>
 							</form></td>
-						<td class="paidButton"><form action="PayBill.do"
-								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">paid</button>
+							
+						<td class="paidButton"><form action="PayBill.do" method="POST">
+								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-danger">paid</button>
 							</form></td>
+							
 
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+						<form action="AddBillForm.do" method="POST">
+							<button type="submit" name="id" class="btn btn-xs btn-danger">add bill</button>
+						</form>
 		
 		<div class="account">
 			<h2>Family Frugal Account</h2>
