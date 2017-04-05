@@ -51,17 +51,14 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-				<c:forEach var="member" items="family">
+ 			<div class="form-group">
+				<c:forEach var="member" items="${family.member}">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Add Responsibility for ${member.name}:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" name="dateDue">
-						</div>
+						${member.name}
 					</div>
 				</c:forEach>
-			</div>
-
+			</div> 
+			
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">Submit</button>

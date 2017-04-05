@@ -50,8 +50,9 @@ public class CreateController {
 	@RequestMapping(path = "CreateFamily.do", method = RequestMethod.POST)
 	public ModelAndView createFamily(@ModelAttribute("sessionUser") Member member, Family family) {
 		ModelAndView mv = new ModelAndView();
-
-		boolean check = familyDao.checkFamily(family.getId());
+		System.out.println(family.getId());
+		boolean check = familyDao.checkFamily(family.getName());
+		System.out.println(check + "******************************");
 		if (check == true) {
 			Family f = familyDao.addFamily(family);
 			mv.addObject(member);
@@ -84,7 +85,7 @@ public class CreateController {
 	}
 
 	@RequestMapping(path = "CreateMember.do", method = RequestMethod.POST)
-	public ModelAndView createMember(Member member, @RequestParam("family") int id) {
+	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 
@@ -97,9 +98,10 @@ public class CreateController {
 
 
 	@RequestMapping(path = "AddFamilyBillForm.do", method = RequestMethod.POST)
-	public ModelAndView addFamilyBillForm() {
+	public ModelAndView addFamilyBillForm(@ModelAttribute("sessionUser") Member member) {
 		ModelAndView mv = new ModelAndView();
 		Family f = memberDao.showMember(member.getId()).getFamily();
+		Member m1 = memberDao.showMember(id)
 		mv.addObject("family", f);
 		mv.setViewName("addfamilybill");
 
