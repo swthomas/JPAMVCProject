@@ -53,14 +53,14 @@ public class CreateController {
 	@RequestMapping(path = "CreateFamily.do", method = RequestMethod.POST)
 	public ModelAndView createFamily(@ModelAttribute("sessionUser") Member member, Family family) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(family.getId());
+
 		boolean check = familyDao.checkFamily(family.getName());
-		System.out.println(check + "******************************");
+
 		if (check == true) {
 			Family f = familyDao.addFamily(family);
 			mv.addObject(member);
 			mv.addObject("family", f);
-			mv.setViewName("createfamily");
+			mv.setViewName("createadminfamily");
 		} else {
 			String badLogin = "Family already exists. \nPlease try again.";
 			mv.addObject("badLogin", badLogin);
@@ -69,23 +69,23 @@ public class CreateController {
 		return mv;
 	}
 
-	@RequestMapping(path = "CreateFamilyAdmin.do", method = RequestMethod.POST)
-	public ModelAndView createFamilyAdmin(@ModelAttribute("sessionUser") Member member, Family family) {
-
-		ModelAndView mv = new ModelAndView();
-		Family f = familyDao.addFamily(family);
-		Member m = new Member();
-
-		if (f == null) {
-			mv.setViewName("error");
-		} else {
-			m.setAdmin(true);
-			mv.addObject(member);
-			mv.addObject("family", f);
-			mv.setViewName("createfamily");
-		}
-		return mv;
-	}
+//	@RequestMapping(path = "CreateFamilyAdmin.do", method = RequestMethod.POST)
+//	public ModelAndView createFamilyAdmin(@ModelAttribute("sessionUser") Member member, Family family) {
+//
+//		ModelAndView mv = new ModelAndView();
+//		Family f = familyDao.addFamily(family);
+//		Member m = new Member();
+//
+//		if (f == null) {
+//			mv.setViewName("error");
+//		} else {
+//			m.setAdmin(true);
+//			mv.addObject(member);
+//			mv.addObject("family", f);
+//			mv.setViewName("createfamily");
+//		}
+//		return mv;
+//	}
 
 	@RequestMapping(path = "CreateMember.do", method = RequestMethod.POST)
 	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
@@ -105,6 +105,33 @@ public class CreateController {
 
 			Family f = memberDao.getFamilyById(id);
 			System.err.println("****************" + f.getId());
+			mv.addObject("family	", f);
+			mv.addObject("familyCorrection", f);
+			String badLogin = "Unable to find Username and/or Password combination";
+			mv.addObject("badLogin", badLogin);
+			mv.setViewName("createfamily");
+		}
+
+		return mv;
+	}
+	
+	@RequestMapping(path = "CreateAdminMember.do", method = RequestMethod.POST)
+	public ModelAndView createAdminMember(Member member, @RequestParam("familyId") int id) {
+		ModelAndView mv = new ModelAndView();
+		Family family = familyDao.getFamilyById(id);
+		boolean check = familyDao.checkUser(member.getUsername());
+
+		if (check == true) {
+			Family f = memberDao.createAdminMembersList(member, family);
+			mv.addObject(member);
+			mv.addObject("family", f);
+			mv.addObject("familyCorrection", f);
+			mv.setViewName("createfamily");
+		} else {
+			System.err.println("in else");
+
+			Family f = memberDao.getFamilyById(id);
+
 			mv.addObject("family	", f);
 			mv.addObject("familyCorrection", f);
 			String badLogin = "Unable to find Username and/or Password combination";

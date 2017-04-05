@@ -46,6 +46,9 @@ public class MemberDAOImpl implements MemberDAO {
 		member.setFamily(family);
 		member.setPassword("password");
 		member.setAdmin(true);
+		
+		System.out.println("*(********************************&&&&&&&&&&&&&&&&&&&&&&&^^^^^^^^^^^^^^^^^^^^%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		
 		em.persist(member);
 		Account a = new Account();
 		a.setBankAccount(0.00);
