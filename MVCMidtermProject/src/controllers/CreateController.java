@@ -97,9 +97,10 @@ public class CreateController {
 
 
 	@RequestMapping(path = "AddFamilyBillForm.do", method = RequestMethod.POST)
-	public ModelAndView addFamilyBillForm() {
+	public ModelAndView addFamilyBillForm(@ModelAttribute("sessionUser") Member member) {
 		ModelAndView mv = new ModelAndView();
 		Family f = memberDao.showMember(member.getId()).getFamily();
+		Member m1 = memberDao.showMember(id)
 		mv.addObject("family", f);
 		mv.setViewName("addfamilybill");
 

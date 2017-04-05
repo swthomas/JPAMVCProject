@@ -105,6 +105,14 @@ public class MemberDAOImpl implements MemberDAO{
 		m = em.createQuery(q, Member.class).setParameter("id", id).getSingleResult();
 		return m;
 	}
+	
+	@Override
+	public List<Member> getFamilyMember(int id) {
+		List<Member> m = null;
+		String q = "SELECT m FROM Member WHERE familyId = :id";
+		m = em.createQuery(q, Member.class).setParameter("id", id).getResultList();
+		return m;
+	}
 
 
 
