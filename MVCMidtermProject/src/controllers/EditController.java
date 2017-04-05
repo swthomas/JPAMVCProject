@@ -59,6 +59,31 @@ public class EditController {
 		return mv;
 	}
 
+	@RequestMapping(path = "EditUser.do", method = RequestMethod.POST)
+	public ModelAndView editBill(HttpSession session, 
+			@ModelAttribute("sessionUser") Member member,
+			@RequestParam("username") String username, 
+			@RequestParam("password") String password) throws ParseException {
+		ModelAndView mv = new ModelAndView();
+	
+		Member m = memberdao.showMember(member.getId());
+		
+		m.setUsername(username);
+		m.setPassword(password);
+		
+		Member mem = memberdao.showMember(member.getId());
+
+		mv.addObject("member", mem);
+
+		if (m.getAdmin() == true) {
+			mv.setViewName("adminProfile");
+		} else {
+			mv.setViewName("userProfile");
+		}
+
+		return mv;
+	}
+	
 	@RequestMapping(path = "EditBillForm.do", method = RequestMethod.POST)
 	public ModelAndView editMemberBill(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView();
@@ -69,9 +94,13 @@ public class EditController {
 	}
 
 	@RequestMapping(path = "EditBill.do", method = RequestMethod.POST)
-	public ModelAndView editBill(HttpSession session, @ModelAttribute("sessionUser") Member member,
-			@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("amount") double amount,
-			@RequestParam("dateDue") String dueDate, @RequestParam("datePaid") String paidDate) throws ParseException {
+	public ModelAndView editBill(HttpSession session, 
+			@ModelAttribute("sessionUser") Member member,
+			@RequestParam("id") int id, 
+			@RequestParam("name") String name, 
+			@RequestParam("amount") double amount,
+			@RequestParam("dateDue") String dueDate, 
+			@RequestParam("datePaid") String paidDate) throws ParseException {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date dDate = format.parse(dueDate);
 		Bill bill = billdao.getBill(id);
