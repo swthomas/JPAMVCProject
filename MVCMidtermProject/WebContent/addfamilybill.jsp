@@ -51,14 +51,7 @@
 				</div>
 			</div>
 
- 			<div class="form-group">
-				<c:forEach var="member" items="${family.member}">
-					<div class="form-group">
-						${member.name}
-					</div>
-				</c:forEach>
-			</div> 
-			
+
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">Submit</button>

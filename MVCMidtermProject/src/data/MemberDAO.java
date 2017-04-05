@@ -12,8 +12,13 @@ public interface MemberDAO {
 	public Member createMember(Member member, Family family);
 
 	public Member updateMember(Member member);
+
 	public Member showMember(int id);
+
 	public boolean deleteMember(int id);
 
-	List<Member> getFamilyMember(int id);
+	public Family getFamilyById(int id);
+
+	List<Member> getFamilyMembers(int id);
+
 }

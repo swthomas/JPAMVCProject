@@ -18,7 +18,9 @@
 <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
+
 	<a href="editForm.do">Edit</a>
+
 
 	<div class="container">
 		<div class="row text-center" id="h1">
@@ -61,12 +63,17 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="text-center">
+
+						<div class="text-center badlogin">
+
 							<span id="badlogin"> <c:if test="${! empty badLogin}">
 									${badLogin}
 								</c:if>
 							</span>
 						</div>
+
 						<div class="form-group text-center">
 							<button type="submit" class="btn btn-default btn-block">Sign
 								In</button>

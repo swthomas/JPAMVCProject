@@ -69,4 +69,19 @@ public class AccountController {
 
 		return mv;
 	}
+	
+	@RequestMapping(path="PayBill.do",
+			 method=RequestMethod.POST)
+	 public ModelAndView payBill(@ModelAttribute("sessionUser") Member member, @RequestParam("payid") Integer id) {
+		ModelAndView mv = new ModelAndView();
+
+		billdao.payBill(id);
+
+		Member m = memberdao.showMember(member.getId());
+		
+		mv.addObject("member", m);
+		mv.setViewName("adminProfile");			
+	
+		 return mv;
+	 }
 }

@@ -16,8 +16,8 @@ import entities.Member;
 
 @Transactional
 @Repository
-public class MemberDAOImpl implements MemberDAO{
-	
+public class MemberDAOImpl implements MemberDAO {
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -31,38 +31,16 @@ public class MemberDAOImpl implements MemberDAO{
 		em.persist(member);
 		Account a = new Account();
 		a.setBankAccount(0.00);
-		a.setFrugalSum(0.00);	
+		a.setFrugalSum(0.00);
 		a.setMember(member);
 		em.persist(a);
 		em.flush();
-		
-//		for (Member m: memberList) {
-//			Member member = new Member();
-//			member = m;
-//			
-//			Account a = new Account();
-//			a.setBankAccount(0.00);
-//			a.setFrugalSum(0.00);
-//			Account a = new Account();
-//			a.setBankAccount(0.00);
-//			a.setFrugalSum(0.00);
-//			
-//			member.setAccount(a);
-//			a.setMember(member);
-//			
-//			member.setFamily(family);
-//			
-//			em.persist(member);
-//			em.flush();
-//			
-//			list.add(member);
-//		}
+
 		return family;
 	}
 
-	
 	@Override
-	public Member createMember(Member member, Family family) {		
+	public Member createMember(Member member, Family family) {
 		List<Bill> bills = new ArrayList<>();
 		member.setBills(bills);
 		member.setFamily(family);
@@ -71,7 +49,7 @@ public class MemberDAOImpl implements MemberDAO{
 		em.persist(member);
 		Account a = new Account();
 		a.setBankAccount(0.00);
-		a.setFrugalSum(0.00);	
+		a.setFrugalSum(0.00);
 		a.setMember(member);
 		em.persist(a);
 		em.flush();
@@ -90,11 +68,11 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public boolean deleteMember(int id) {
 		Member m = em.find(Member.class, id);
-		
+
 		if (m != null) {
 			em.remove(id);
 			return true;
-		}	
+		}
 		return false;
 	}
 
@@ -105,15 +83,18 @@ public class MemberDAOImpl implements MemberDAO{
 		m = em.createQuery(q, Member.class).setParameter("id", id).getSingleResult();
 		return m;
 	}
-	
+
 	@Override
-	public List<Member> getFamilyMember(int id) {
+	public List<Member> getFamilyMembers(int id) {
 		List<Member> m = null;
-		String q = "SELECT m FROM Member WHERE familyId = :id";
+		String q = "SELECT m FROM Member m WHERE m.family.id = :id";
 		m = em.createQuery(q, Member.class).setParameter("id", id).getResultList();
 		return m;
 	}
 
+	@Override
+	public Family getFamilyById(int id) {
 
-
+		return em.find(Family.class, id);
+	}
 }
