@@ -60,10 +60,9 @@ public class LoginController {
 			System.err.println("in else");
 
 			Family f = memberDao.getFamilyById(id);
-			System.err.println("****************" + f.getId());
 			mv.addObject("family	", f);
 			mv.addObject("familyCorrection", f);
-			String badLogin = "Unable to find Username and/or Password combination";
+			String badLogin = "Invalid Entry. Please try again!";
 			mv.addObject("badLogin", badLogin);
 			mv.setViewName("createfamily");
 		}

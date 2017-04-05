@@ -63,7 +63,7 @@ public class CreateController {
 			mv.addObject("family", f);
 			mv.setViewName("createadminfamily");
 		} else {
-			String badLogin = "Family already exists. \nPlease try again.";
+			String badLogin = "Invalid Entry. Please try again!";
 			mv.addObject("badLogin", badLogin);
 			mv.setViewName("signup");
 		}
@@ -93,7 +93,6 @@ public class CreateController {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 		boolean check = familyDao.checkUser(member.getUsername());
-		System.err.println("--------------" + family.getId());
 
 		if (check == true) {
 			Family f = memberDao.createMembersList(member, family);
@@ -102,13 +101,11 @@ public class CreateController {
 			mv.addObject("familyCorrection", f);
 			mv.setViewName("createfamily");
 		} else {
-			System.err.println("in else");
 
 			Family f = memberDao.getFamilyById(id);
-			System.err.println("****************" + f.getId());
 			mv.addObject("family	", f);
 			mv.addObject("familyCorrection", f);
-			String badLogin = "Unable to find Username and/or Password combination";
+			String badLogin = "Invalid Entry. Please try again!";
 			mv.addObject("badLogin", badLogin);
 			mv.setViewName("createfamily");
 		}
