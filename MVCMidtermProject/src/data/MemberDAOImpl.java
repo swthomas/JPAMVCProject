@@ -33,6 +33,7 @@ public class MemberDAOImpl implements MemberDAO {
 		a.setBankAccount(0.00);
 		a.setFrugalSum(0.00);
 		a.setMember(member);
+
 		em.persist(a);
 		em.flush();
 
@@ -47,7 +48,6 @@ public class MemberDAOImpl implements MemberDAO {
 		member.setPassword("password");
 		member.setAdmin(true);
 		
-		System.out.println("*(********************************&&&&&&&&&&&&&&&&&&&&&&&^^^^^^^^^^^^^^^^^^^^%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		
 		em.persist(member);
 		Account a = new Account();
@@ -56,6 +56,7 @@ public class MemberDAOImpl implements MemberDAO {
 		a.setMember(member);
 		em.persist(a);
 		em.flush();
+
 
 		return family;
 	}
@@ -124,4 +125,5 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

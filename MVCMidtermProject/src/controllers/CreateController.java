@@ -38,7 +38,7 @@ public class CreateController {
 
 	@Autowired
 	private BillDAO billDao;
-	
+
 	@Autowired
 	private BillResponsibilityDAO brDao;
 
@@ -58,6 +58,7 @@ public class CreateController {
 
 		if (check == true) {
 			Family f = familyDao.addFamily(family);
+
 			mv.addObject(member);
 			mv.addObject("family", f);
 			mv.setViewName("createadminfamily");
@@ -128,8 +129,6 @@ public class CreateController {
 			mv.addObject("familyCorrection", f);
 			mv.setViewName("createfamily");
 		} else {
-			System.err.println("in else");
-
 			Family f = memberDao.getFamilyById(id);
 
 			mv.addObject("family	", f);
@@ -181,8 +180,9 @@ public class CreateController {
 		ModelAndView mv = new ModelAndView();
 		billDao.addBill(b);
 
-		b.setBillResponsibilities(brDao.createResponsibility(b, memberDao.getFamilyMembers(member.getFamily().getId())));
-		
+		b.setBillResponsibilities(
+				brDao.createResponsibility(b, memberDao.getFamilyMembers(member.getFamily().getId())));
+
 		Member m = memberDao.showMember(member.getId());
 
 		mv.addObject(m);
