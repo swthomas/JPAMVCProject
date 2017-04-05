@@ -68,9 +68,9 @@
 										<button type="submit" name="id" value="${bill.id}"
 											class="btn btn-sm btn-warning">Edit</button>
 									</form></td>
-								<td class="deleteButton"><form action="DeleteBill.do"
+								<td class="deleteButton"><form action="DeleteAdminBill.do"
 										method="POST">
-										<button type="submit" name="id" value="${bill.id}"
+										<button type="submit" name="deleteid" value="${bill.id}"
 											class="btn btn-sm btn-danger">Delete</button>
 									</form></td>
 								<td class="paidButton"><form action="PayBill.do"
@@ -88,8 +88,8 @@
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
 			<div id="addBillButton">
-				<form action="*********" method="POST">
-					<button type="submit" name="id"
+				<form action="AddFamilyBillForm.do" method="POST">
+					<button type="submit" name="addid"
 						class="btn btn-md btn-primary btn-block">Add Family
 						Bill</button>
 				</form>
@@ -124,7 +124,7 @@
 							</form></td>
 						<td class="deleteButton"><form action="DeleteBill.do"
 								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
+								<button type="submit" name="deleteid" value="${bill.id}"
 									class="btn btn-sm btn-danger">Delete</button>
 							</form></td>
 						<td class="paidButton"><form action="PayBill.do"

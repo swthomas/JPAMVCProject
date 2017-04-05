@@ -50,14 +50,14 @@ public class BillResponsibilityDAOTest {
 		assert (br.getPercent() == 25);
 	}
 
-	@Test
-	public void createResponsibility() {
-		BillResponsibility br = new BillResponsibility();
-		br = em.find(BillResponsibility.class, 3);
-		BillResponsibility b = dao.updateResponsibility(br);
-		assertEquals(50, b.getPercent());
-
-	}
+//	@Test
+//	public void createResponsibility() {
+//		BillResponsibility br = new BillResponsibility();
+//		br = em.find(BillResponsibility.class, 3);
+//		BillResponsibility b = dao.updateResponsibility(br);
+//		assertEquals(50, b.getPercent());
+//
+//	}
 
 	@Test
 	public void updateResponsibility() {

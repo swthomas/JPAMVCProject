@@ -35,28 +35,7 @@ public class MemberDAOImpl implements MemberDAO{
 		a.setMember(member);
 		em.persist(a);
 		em.flush();
-		
-//		for (Member m: memberList) {
-//			Member member = new Member();
-//			member = m;
-//			
-//			Account a = new Account();
-//			a.setBankAccount(0.00);
-//			a.setFrugalSum(0.00);
-//			Account a = new Account();
-//			a.setBankAccount(0.00);
-//			a.setFrugalSum(0.00);
-//			
-//			member.setAccount(a);
-//			a.setMember(member);
-//			
-//			member.setFamily(family);
-//			
-//			em.persist(member);
-//			em.flush();
-//			
-//			list.add(member);
-//		}
+
 		return family;
 	}
 
@@ -107,9 +86,9 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	
 	@Override
-	public List<Member> getFamilyMember(int id) {
+	public List<Member> getFamilyMembers(int id) {
 		List<Member> m = null;
-		String q = "SELECT m FROM Member WHERE familyId = :id";
+		String q = "SELECT m FROM Member m WHERE m.family.id = :id";
 		m = em.createQuery(q, Member.class).setParameter("id", id).getResultList();
 		return m;
 	}
