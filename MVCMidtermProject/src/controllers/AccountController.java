@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import data.AccountDAO;
 import data.BillDAO;
 import data.MemberDAO;
-import entities.Account;
 import entities.Bill;
 import entities.Member;
 
@@ -45,37 +44,36 @@ public class AccountController {
 
 		Member temp = memberdao.showMember(member.getId());
 		
-		temp.getAccount().setFrugalSum(amount);
+		temp.getAccount().setFrugalSum(temp.getAccount().getFrugalSum()+amount);
+		temp.getAccount().setBankAccount(temp.getAccount().getBankAccount()-amount);
 
 		Member m = memberdao.showMember(member.getId());
 
-		mv.addObject("member", m);
-		mv.setViewName("adminProfile");			
-	
+		if (m.getAdmin() == true) {
+			mv.setViewName("adminProfile");
+		} else {
+			mv.setViewName("userProfile");
+		}		
 		 return mv;
 	 }
 	
-	@RequestMapping(path = "SetBankAccount.do", method = RequestMethod.POST)
-	public ModelAndView SetAccount(Account a, Double income) {
+	@RequestMapping(path="AddIncome.do", method=RequestMethod.POST)
+	 public ModelAndView addIncome(@ModelAttribute("sessionUser") Member member, @RequestParam("amount") Double amount) {
 		ModelAndView mv = new ModelAndView();
-		Account account = accountdao.setBankAccount(a);
 
-		mv.addObject("account", account);
-		mv.setViewName("*******");
+		Member temp = memberdao.showMember(member.getId());
+		
+		temp.getAccount().setBankAccount(temp.getAccount().getBankAccount()+amount);
 
-		return mv;
-	}
-	
-	@RequestMapping(path = "SetFrugalAccount.do", method = RequestMethod.POST)
-	public ModelAndView show(Account a) {
-		ModelAndView mv = new ModelAndView();
-		Account account = accountdao.setFrugalSum(a);
+		Member m = memberdao.showMember(member.getId());
 
-		mv.addObject("account", account);
-		mv.setViewName("*******");
-
-		return mv;
-	}
+		if (m.getAdmin() == true) {
+			mv.setViewName("adminProfile");
+		} else {
+			mv.setViewName("userProfile");
+		}		
+		 return mv;
+	 }
 	
 	@RequestMapping(path="PayBill.do",
 			 method=RequestMethod.POST)

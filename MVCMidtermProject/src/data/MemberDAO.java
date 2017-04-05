@@ -23,4 +23,6 @@ public interface MemberDAO {
 
 	public void updateMember(int id, String username, String password);
 
+	Family createAdminMembersList(Member member, Family family);
+
 }
