@@ -27,7 +27,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Add name:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="name">
+					<input type="text" class="form-control" name="billname">
 				</div>
 			</div>
 			<div class="form-group">

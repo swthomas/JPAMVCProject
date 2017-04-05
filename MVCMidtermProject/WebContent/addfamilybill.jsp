@@ -26,13 +26,14 @@
 
 		<form class="form-horizontal" action="CreateFamilyBill.do"
 			method="POST">
-			
-			<input type="hidden" class="form-control" name="familyId" value="${family}">
+
+			<input type="hidden" class="form-control" name="familybillid"
+				value="${family.id}">
 
 			<div class="form-group">
 				<label class="control-label col-sm-2">Add name:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="name">
+					<input type="text" class="form-control" name="billname">
 				</div>
 			</div>
 
@@ -48,6 +49,17 @@
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="dateDue">
 				</div>
+			</div>
+
+			<div class="form-group">
+				<c:forEach var="member" items="family">
+					<div class="form-group">
+						<label class="control-label col-sm-2">Add Responsibility for ${member.name}:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="dateDue">
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 
 			<div class="form-group">
