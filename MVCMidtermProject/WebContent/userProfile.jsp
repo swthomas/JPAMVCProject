@@ -20,7 +20,8 @@
 <body>
 
 	<div class="container">
-		<h2>frugal</h2>
+		<h1>frugal</h1>
+		<h2>User Dashboard</h2>
 		<div class="row" id="accounts">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-4 text-center">
@@ -39,7 +40,7 @@
 		</div>
 	</div>
 
-	<div class="container" id="userbills">
+	<div class="container">
 		<h2>Family Bills</h2>
 		<table class="table-hover table-responsive">
 			<thead>
