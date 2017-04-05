@@ -132,9 +132,14 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", billResponsibilities=" + billResponsibilities + ", bills="
-				+ bills + ", account=" + account + ", username=" + username + ", password=" + password + ", fName="
-				+ fName + ", lName=" + lName + ", familyId="  + ", admin=" + admin + "]";
+		return "Member [id=" + id + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "Member [id=" + id + ", billResponsibilities=" + billResponsibilities + ", bills="
+//				+ bills + ", account=" + account + ", username=" + username + ", password=" + password + ", fName="
+//				+ fName + ", lName=" + lName + ", familyId="  + ", admin=" + admin + "]";
+//	}
 	
 }

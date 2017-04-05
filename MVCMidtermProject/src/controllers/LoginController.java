@@ -63,18 +63,15 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 
 		Member m = loginDao.checkUserPassword(username, password);
-		mv.getModelMap().addAttribute("sessionUser", member);
+		
+		mv.getModelMap().addAttribute("sessionUser", m);
 
 		if (m != null) {
-
-			System.out.println("**************************************");
-			System.out.println(m.getFamily().getBills().size());
+			mv.addObject("member", m);
 
 			if (m.getAdmin() == true) {
-				mv.addObject("member", m);
 				mv.setViewName("adminProfile");
 			} else {
-				mv.addObject("member", m);
 				mv.setViewName("userProfile");
 			}
 		} else {
