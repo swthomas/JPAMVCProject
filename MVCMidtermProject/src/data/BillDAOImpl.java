@@ -20,7 +20,18 @@ public class BillDAOImpl implements BillDAO {
 	private EntityManager em;
 
 	@Override
-	public Bill updateBill(Bill bill, Date dateDue, Date datePaid) {
+	public Bill updateBill(Bill bill, Date dDate, String name, double amount){
+		Bill billUpdate = em.find(Bill.class, bill.getId());
+
+		billUpdate.setName(name);
+		billUpdate.setAmount(amount);
+		billUpdate.setDateDue(dDate);
+		System.out.println("EXIT BILLDAO METHOD");
+		return billUpdate;
+	}
+		
+	@Override
+	public Bill updateBill(Bill bill, Date dateDue, Date datePaid, String name, double amount) {
 		Bill billUpdate = em.find(Bill.class, bill.getId());
 
 		billUpdate.setName(bill.getName());

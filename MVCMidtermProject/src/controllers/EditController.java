@@ -37,17 +37,6 @@ public class EditController {
 	@Autowired
 	MemberDAO memberdao;
 	
-//	@RequestMapping(path = "SetBankAccount.do", method = RequestMethod.POST)
-//	public ModelAndView SetAccount(@ModelAttribute("sessionUser") Account a) {
-//		ModelAndView mv = new ModelAndView();
-//		Account account = accountdao.setBankAccount(a);
-//
-//		mv.addObject("account", account);
-//		mv.setViewName("editbill");
-//
-//		return mv;
-//	}
-	
 	@RequestMapping(path = "GetBill.do", method = RequestMethod.POST)
 	public ModelAndView getBill(@ModelAttribute("sessionUser") Bill bill) {
 		ModelAndView mv = new ModelAndView();
@@ -57,16 +46,6 @@ public class EditController {
 
 		return mv;
 	}
-
-//	@RequestMapping(path = "EditUserBill.do", method = RequestMethod.POST)
-//	public ModelAndView editUserBill(@ModelAttribute("sessionUser") Integer id) {
-//		ModelAndView mv = new ModelAndView();
-//		billdao.updateBill(bill);
-//		mv.addObject("bill", bill);
-//		mv.setViewName("editbill");
-//		
-//		return mv;
-//	}
 
 	@RequestMapping(path = "EditAdminBill.do", method = RequestMethod.POST)
 	public ModelAndView editAdminBill(@RequestParam("id")Integer id) {
@@ -88,9 +67,16 @@ public class EditController {
 			) throws ParseException {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date dDate = format.parse(dueDate);
+		Bill bill = billdao.getBill(id);		
+		
+		if (!paidDate.equals("")){
 		Date pDate = format.parse(paidDate);
-		Bill bill = billdao.getBill(id);
-		billdao.updateBill(bill, dDate, pDate);
+		billdao.updateBill(bill, dDate, pDate, name, amount);
+		}
+		else {
+			billdao.updateBill(bill, dDate, name, amount);
+		}
+		
 		Member m = memberdao.showMember(member.getId());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("member", m);
@@ -109,9 +95,16 @@ public class EditController {
 			) throws ParseException {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date dDate = format.parse(dueDate);
-		Date pDate = format.parse(paidDate);
 		Bill bill = billdao.getBill(id);
-		billdao.updateBill(bill, dDate, pDate);
+		
+		if (!paidDate.equals("")){
+		Date pDate = format.parse(paidDate);
+		billdao.updateBill(bill, dDate, pDate, name, amount);
+		}
+		else {
+			billdao.updateBill(bill, dDate, name, amount);
+		}
+		
 		Member m = memberdao.showMember(member.getId());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("member", m);
@@ -129,5 +122,4 @@ public class EditController {
 		 return mv;
 
 	 }
-
 }

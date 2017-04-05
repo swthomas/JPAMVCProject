@@ -12,7 +12,8 @@ public interface BillDAO {
 //	add member bill?
 //	add family bill?
 	public Bill getBill(int id);
-	public Bill updateBill(Bill bill, Date dateDue, Date datePaid);
+	public Bill updateBill(Bill bill, Date dateDue, Date datePaid, String name, double amount);
 	public boolean deleteBill(int id);
+	Bill updateBill(Bill bill, Date dDate, String name, double amount);
 	
 }
