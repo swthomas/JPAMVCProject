@@ -5,6 +5,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import entities.Account;
 import entities.Member;
@@ -25,6 +26,7 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	@Override
+	@Transactional
 	public void setBankAccount(Double amount, int id) {
 		Member m = em.find(Member.class, id);
 		
@@ -34,6 +36,7 @@ public class AccountDAOImpl implements AccountDAO {
 		m.getAccount().setBankAccount(ba);
 
 		System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO**********************    "+ba+"   *********");
+		em.persist(m);
 	}
 
 	@Override
