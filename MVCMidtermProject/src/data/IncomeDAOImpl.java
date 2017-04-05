@@ -27,12 +27,14 @@ public class IncomeDAOImpl implements IncomeDAO {
 
 	@Override
 	public Income getIncome(Income income) {
-//		Income newIncome = em.find(Income.class, income.getId());
-//		newIncome.getName();
-//		newIncome.getDate();
-//		newIncome.getAmount();
-//		return newIncome;
 		return em.find(Income.class, income.getId());
+	}
+	
+	@Override
+	public Income addIncome(Income income) {
+		em.persist(income);
+		em.flush();
+		return income;
 	}
 
 }
