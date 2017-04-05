@@ -75,7 +75,7 @@
 									</form></td>
 								<td class="paidButton"><form action="PayBill.do"
 										method="POST">
-										<button type="submit" name="id" value="${bill.id}"
+										<button type="submit" name="payid" value="${bill.id}"
 											class="btn btn-sm btn-success">pay</button>
 									</form></td>
 							</c:if>
