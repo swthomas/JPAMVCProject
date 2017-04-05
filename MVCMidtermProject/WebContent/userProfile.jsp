@@ -20,6 +20,12 @@
 </head>
 <body>
 
+	<form action="logout.do" method="POST">
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
+					</div>
+				</form>
+
 	<div class="container">
 		<h1>frugal</h1>
 		<h2>User Dashboard</h2>

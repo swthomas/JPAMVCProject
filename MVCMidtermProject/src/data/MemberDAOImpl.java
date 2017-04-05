@@ -33,10 +33,29 @@ public class MemberDAOImpl implements MemberDAO {
 		a.setBankAccount(0.00);
 		a.setFrugalSum(0.00);
 		a.setMember(member);
-		System.out.println(member  +"*************************");
 		em.persist(a);
 		em.flush();
-		System.out.println(member  +"*************************");
+
+		return family;
+	}
+	
+	@Override
+	public Family createAdminMembersList(Member member, Family family) {
+		List<Bill> bills = new ArrayList<>();
+		member.setBills(bills);
+		member.setFamily(family);
+		member.setPassword("password");
+		member.setAdmin(true);
+		
+		System.out.println("*(********************************&&&&&&&&&&&&&&&&&&&&&&&^^^^^^^^^^^^^^^^^^^^%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		
+		em.persist(member);
+		Account a = new Account();
+		a.setBankAccount(0.00);
+		a.setFrugalSum(0.00);
+		a.setMember(member);
+		em.persist(a);
+		em.flush();
 
 		return family;
 	}
