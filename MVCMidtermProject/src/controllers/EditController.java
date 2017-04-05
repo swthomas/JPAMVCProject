@@ -47,7 +47,7 @@ public class EditController {
 		return mv;
 	}
 
-	@RequestMapping(path = "editUserForm.do", method = RequestMethod.POST)
+	@RequestMapping(path = "EditUserForm.do", method = RequestMethod.POST)
 	public ModelAndView getUserForm(@ModelAttribute("sessionUser") Member member) {
 		ModelAndView mv = new ModelAndView();
 				
@@ -61,19 +61,14 @@ public class EditController {
 
 	@RequestMapping(path = "EditUser.do", method = RequestMethod.POST)
 	public ModelAndView editBill(HttpSession session, 
-			@ModelAttribute("sessionUser") Member member,
-			@RequestParam("username") String username, 
-			@RequestParam("password") String password) throws ParseException {
+			@ModelAttribute("sessionUser") Member member, Member memberTemp) throws ParseException {
 		ModelAndView mv = new ModelAndView();
-	
-		Member m = memberdao.showMember(member.getId());
 		
-		m.setUsername(username);
-		m.setPassword(password);
+		memberdao.updateMember(memberTemp);
 		
-		Member mem = memberdao.showMember(member.getId());
+		Member m = memberdao.showMember(member.getId()); // finds session user with "member"
 
-		mv.addObject("member", mem);
+		mv.addObject("member", m);
 
 		if (m.getAdmin() == true) {
 			mv.setViewName("adminProfile");
