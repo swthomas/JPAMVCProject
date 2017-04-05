@@ -17,7 +17,7 @@ public class FamilyDAOImpl implements FamilyDAO {
 
 	public Family addFamily(Family family) {
 		em.persist(family);
-		
+
 		return family;
 	}
 
@@ -30,6 +30,18 @@ public class FamilyDAOImpl implements FamilyDAO {
 	}
 
 	@Override
+	public boolean checkFamily(int id) {
+
+		try {
+			em.find(Family.class, id);
+		} catch (Exception e) {
+			return true;
+
+		}
+		return false;
+	}
+
+	@Override
 	public boolean deleteFamily(int id) {
 		Family f = em.find(Family.class, id);
 
@@ -39,12 +51,12 @@ public class FamilyDAOImpl implements FamilyDAO {
 		}
 		return false;
 	}
-	
+
 	public Family getFamilyById(int id) {
 		Family fam = em.find(Family.class, id);
-		
+
 		return fam;
-		
+
 	}
 
 }
