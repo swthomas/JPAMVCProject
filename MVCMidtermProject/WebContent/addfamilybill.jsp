@@ -26,13 +26,14 @@
 
 		<form class="form-horizontal" action="CreateFamilyBill.do"
 			method="POST">
-			
-			<input type="hidden" class="form-control" name="familyId" value="${family}">
+
+			<input type="hidden" class="form-control" name="familybillid"
+				value="${family.id}">
 
 			<div class="form-group">
 				<label class="control-label col-sm-2">Add name:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="name">
+					<input type="text" class="form-control" name="billname">
 				</div>
 			</div>
 
@@ -50,6 +51,14 @@
 				</div>
 			</div>
 
+ 			<div class="form-group">
+				<c:forEach var="member" items="${family.member}">
+					<div class="form-group">
+						${member.name}
+					</div>
+				</c:forEach>
+			</div> 
+			
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">Submit</button>

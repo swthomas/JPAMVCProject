@@ -47,20 +47,28 @@
 									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
 									type="text" class="form-control" name="email" id="email"
 									placeholder="Enter your Email" />
-								<form action="CreateFamilyAdmin.do" method="POST">
-						<div class="form-group text-center">
-							<button type="submit" class="btn btn-default btn-block">Sign
-								Up</button>
-				</form>
+								
+								<!-- <form action="CreateFamilyAdmin.do" method="POST"> -->
+									<div class="form-group text-center">
+									<div class="text-center">
+							<span id="badlogin">
+								<c:if test="${! empty badLogin}">
+									${badLogin}
+								</c:if>
+							</span>
+						</div>
+										<button type="submit" class="btn btn-default btn-block">Sign
+											Up</button>
+								</form>
 
-			</div>
-		</div>
+							</div>
+						</div>
 
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
+						<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+						<script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+						<!-- Include all compiled plugins (below), or include individual files as needed -->
+						<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

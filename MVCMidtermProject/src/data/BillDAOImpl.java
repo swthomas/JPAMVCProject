@@ -66,12 +66,18 @@ public class BillDAOImpl implements BillDAO {
 
 	@Override
 	public boolean deleteBill(int id) {
-		Bill b = em.find(Bill.class, id);
-		System.out.println(b.getName() + " ******** in delete Bill");
-		if (b != null) {
-			em.remove(b);
-			return true;
+		try{
+			Bill b = em.find(Bill.class, id);
+			System.out.println(b.getName() + " ******** in delete Bill");
+			if (b != null) {
+				em.remove(b);
+				return true;
+			}
 		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+
 		return false;
 	}
 

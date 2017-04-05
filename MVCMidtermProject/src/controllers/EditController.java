@@ -95,11 +95,18 @@ public class EditController {
 	
 	@RequestMapping(path="DeleteBill.do",
 			 method=RequestMethod.POST)
-	 public ModelAndView removeBill(@ModelAttribute("sessionUser") Member member, @RequestParam("id") Integer id) {
-		System.out.println(id + "Bill ID**************************");
-		billdao.deleteBill(id);
+	 public ModelAndView removeBill(@ModelAttribute("sessionUser") Member member, @RequestParam("deleteid") Integer id) {
 		ModelAndView mv = new ModelAndView();
+		
+		System.out.println(id + "Bill ID**************************");
+		
+		billdao.deleteBill(id);
+		
+		System.out.println(member.getId());
+		System.out.println("###################################");
+		
 		Member m = memberdao.showMember(member.getId());
+		
 		mv.addObject("member", m);
 		
 		if (m.getAdmin() == true) {

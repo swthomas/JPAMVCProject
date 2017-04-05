@@ -48,11 +48,21 @@ public class LoginController {
 	public ModelAndView goHome(Member member, @RequestParam("familyId") int id) {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
+		boolean check = familyDao.checkUser(family.getId());
 
-		Family f = memberDao.createMembersList(member, family);
-		mv.addObject(member);
-		mv.addObject("family", f);
-		mv.setViewName("index");
+		if (check == true) {
+			Family f = familyDao.addFamily(family);
+			mv.addObject(member);
+			mv.addObject("family", f);
+			mv.setViewName("create");
+		}
+
+		else {
+			Family f = memberDao.createMembersList(member, family);
+			mv.addObject(member);
+			mv.addObject("family", f);
+			mv.setViewName("index");
+		}
 		return mv;
 	}
 
@@ -63,7 +73,7 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 
 		Member m = loginDao.checkUserPassword(username, password);
-		
+
 		mv.getModelMap().addAttribute("sessionUser", m);
 
 		if (m != null) {
