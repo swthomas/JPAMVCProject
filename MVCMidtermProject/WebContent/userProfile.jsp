@@ -20,15 +20,23 @@
 <body>
 
 	<div class="container">
-		<h2>Family Bills</h2>
-	</div>
-
-	<div class="container" id="accounts">
-		<h2>Family Frugal Account</h2>
-		$${member.account.frugalSum}
-		<h2>Personal Account</h2>
-		$${member.account.bankAccount} <br>
-		<br>
+		<h2>frugal</h2>
+		<div class="row" id="accounts">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-4 text-center">
+				<div class="panel panel-default">
+					<div class="panel-heading">Family Frugal Account</div>
+					<div class="panel-body">$${member.account.frugalSum}</div>
+				</div>
+			</div>
+			<div class="col-sm-4 text-center">
+				<div class="panel panel-default">
+					<div class="panel-heading">Personal Account</div>
+					<div class="panel-body">$${member.account.bankAccount}</div>
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
 	</div>
 
 	<div class="container" id="userbills">
@@ -81,30 +89,37 @@
 						<td class="spacing">$${bill.amount}</td>
 						<td class="spacing">${bill.dateDue}</td>
 						<td class="spacing">${bill.datePaid}</td>
-						<td class="editbutton"><form action="EditBillForm.do"
+						<td class="editButton"><form action="EditBillForm.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-warning">Edit</button>
+									class="btn btn-sm btn-warning">Edit</button>
 							</form></td>
 						<td class="deleteButton"><form action="DeleteBill.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">Delete</button>
+									class="btn btn-sm btn-danger">Delete</button>
 							</form></td>
 						<td class="paidButton"><form action="PayBill.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-success">pay</button>
+									class="btn btn-sm btn-success">pay</button>
 							</form></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<div id="addBillButton">
+				<form action="AddBillForm.do" method="POST">
+					<button type="submit" name="id"
+						class="btn btn-md btn-primary btn-block">Add Personal
+						Bill</button>
+				</form>
+			</div>
+		</div>
+		<div class="col-sm-4"></div>
 	</div>
-	<form action="AddBillForm.do" method="POST">
-		<button type="submit" name="id" class="btn btn-xs btn-danger">add
-			bill</button>
-	</form>
 
 
 </body>
