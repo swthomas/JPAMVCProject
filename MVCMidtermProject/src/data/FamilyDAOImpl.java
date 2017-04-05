@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import entities.Family;
+import entities.Member;
 
 @Transactional
 @Repository
@@ -64,8 +65,19 @@ public class FamilyDAOImpl implements FamilyDAO {
 	}
 
 	@Override
-	public boolean checkUser(int id) {
-		// TODO Auto-generated method stub
+	public boolean checkUser(String name) {
+		Member m = null;
+		try {
+			String query = "Select f From Member f where f.username = :name ";
+			m = em.createQuery(query, Member.class).setParameter("name", name).getSingleResult();
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("catch*******************************************");
+			return true;
+
+		}
+		System.err.println("*******************************************" + m);
+		
 		return false;
 	}
 
