@@ -72,3 +72,10 @@ th {
     color: white;
 }
 
+#editUserButton {
+	padding-bottom: 30px;
+}
+
+#addBillButton {
+	padding-bottom: 5px;
+}

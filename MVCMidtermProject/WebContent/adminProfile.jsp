@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,13 +28,17 @@
 			<div class="col-sm-4 text-center">
 				<div class="panel panel-default">
 					<div class="panel-heading">Family Frugal Account</div>
-					<div class="panel-body">$${member.account.frugalSum}</div>
+					<div class="panel-body">
+					$<fmt:formatNumber type="number" minFractionDigits="2" value="${member.account.frugalSum}"/>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4 text-center">
 				<div class="panel panel-default">
 					<div class="panel-heading">Personal Account</div>
-					<div class="panel-body">$${member.account.bankAccount}</div>
+					<div class="panel-body">
+					$<fmt:formatNumber type="number" minFractionDigits="2" value="${member.account.bankAccount}"/>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-2"></div>
@@ -59,7 +64,9 @@
 						<c:forEach var="br" items="${bill.billResponsibilities}">
 							<c:if test="${br.member.id == member.id}">
 								<td class="spacing">${bill.name}</td>
-								<td class="spacing">$${bill.amount}</td>
+								<td class="spacing">
+								$<fmt:formatNumber type="number" minFractionDigits="2" value="${bill.amount}"/>
+								</td>
 								<td class="spacing">${bill.dateDue}</td>
 								<td class="spacing">${bill.datePaid}</td>
 								<td class="spacing">${br.percent}%</td>
@@ -75,7 +82,7 @@
 									</form></td>
 								<td class="paidButton"><form action="PayBill.do"
 										method="POST">
-										<button type="submit" name="id" value="${bill.id}"
+										<button type="submit" name="payid" value="${bill.id}"
 											class="btn btn-sm btn-success">pay</button>
 									</form></td>
 							</c:if>
@@ -114,7 +121,9 @@
 				<c:forEach var="bill" items="${member.bills}">
 					<tr>
 						<td class="spacing">${bill.name}</td>
-						<td class="spacing">$${bill.amount}</td>
+						<td class="spacing">
+						$<fmt:formatNumber type="number" minFractionDigits="2" value="${bill.amount}"/>
+						</td>
 						<td class="spacing">${bill.dateDue}</td>
 						<td class="spacing">${bill.datePaid}</td>
 						<td class="editButton"><form action="EditBillForm.do"
