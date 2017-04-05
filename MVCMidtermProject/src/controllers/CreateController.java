@@ -85,7 +85,7 @@ public class CreateController {
 	}
 
 	@RequestMapping(path = "CreateMember.do", method = RequestMethod.POST)
-	public ModelAndView createMember(Member member, @RequestParam("familyId") int id) {
+	public ModelAndView createMember(Member member, @RequestParam("family") int id) {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 
@@ -98,10 +98,10 @@ public class CreateController {
 
 
 	@RequestMapping(path = "AddFamilyBillForm.do", method = RequestMethod.POST)
-	public ModelAndView addFamilyBillForm(@ModelAttribute("sessionUser") Member member) {
+	public ModelAndView addFamilyBillForm() {
 		ModelAndView mv = new ModelAndView();
-//		Family f = memberDao.showMember(member.getId()).getFamily();
-//		mv.addObject("family", f);
+		Family f = memberDao.showMember(member.getId()).getFamily();
+		mv.addObject("family", f);
 		mv.setViewName("addfamilybill");
 
 		return mv;
@@ -118,15 +118,16 @@ public class CreateController {
 	@RequestMapping(path = "CreateFamilyBill.do", method = RequestMethod.POST)
 	public ModelAndView addFamilyBill(HttpSession session,
 			@ModelAttribute("sessionUser") Member member,
-			@RequestParam("family") Family family,
-			@RequestParam("name") String name,
+			@RequestParam("familybillid") Integer familyId,
+			@RequestParam("billname") String billname,
 			@RequestParam("amount") double amount,
-			@RequestParam("dateDue") String dueDate,
-			@RequestParam("familyId") int familyId
+			@RequestParam("dateDue") String dueDate
 			) throws ParseException {
 		Bill b = new Bill();
-		b.setName(name);
-		b.setFamily(family);
+		Family f = familyDao.getFamilyById(familyId);
+		
+		b.setName(billname);
+		b.setFamily(f);
 		b.setAmount(amount);
 		b.setMember(member);
 		
@@ -148,12 +149,12 @@ public class CreateController {
 	@RequestMapping(path = "CreateBill.do", method = RequestMethod.POST)
 	public ModelAndView addBill(HttpSession session,
 			@ModelAttribute("sessionUser") Member member,
-			@RequestParam("name") String name,
+			@RequestParam("billname") String billname,
 			@RequestParam("amount") double amount,
 			@RequestParam("dateDue") String dueDate
 			) throws ParseException {
 		Bill b = new Bill();
-		b.setName(name);
+		b.setName(billname);
 		b.setAmount(amount);
 		b.setMember(member);
 		

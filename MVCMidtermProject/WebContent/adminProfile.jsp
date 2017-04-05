@@ -56,7 +56,7 @@
 			</tbody>
 		</table>
 							<form action="AddFamilyBillForm.do" method="POST">
-								<button type="submit" name="id" class="btn btn-xs btn-danger">add bill</button>
+								<button type="submit" name="addid" class="btn btn-xs btn-danger">add bill</button>
 							</form>
 	</div>
 
@@ -86,7 +86,7 @@
 							</form></td>
 							
 						<td class="deleteButton"><form action="DeleteBill.do" method="POST">
-								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-danger">delete</button>
+								<button type="submit" name="deleteid" value="${bill.id}" class="btn btn-xs btn-danger">delete</button>
 							</form></td>
 							
 						<td class="paidButton"><form action="PayBill.do" method="POST">

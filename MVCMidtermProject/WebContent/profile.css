@@ -1,3 +1,7 @@
+h2 {
+	text-align: center;
+}
+
 #list {
 	margin 0 auto;
 	width: 100%;
@@ -5,6 +9,10 @@
 
 table {
 	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 table tr {
@@ -13,27 +21,42 @@ table tr {
 }
 
 table th {
-    font-weight: bold;
-    padding-left: 50px;
-
+	font-weight: bold;
+	padding-left: 50px;
 }
 
 table td {
-	text-align:right;
+	text-align: left;
 	padding-top: 10px;
-	padding-left: 10px;
 }
 
-.viewButton {
-	padding-left: 120px;
+th, td {
+    text-align: left;
+    padding: 6px;
 }
 
-.addButtonTop {
-	position:fixed;
-	right:0;
+tr:nth-child(even) {
+	background-color: #f2f2f2
 }
 
-.thead-inverse {
-	background: black;
-	color: #fff;
+.deleteButton {
+	text-align: center;
 }
+
+.editButton {
+	text-align: right;
+}
+
+.payButton {
+	text-align: left;
+}
+
+.spacing {
+	padding-left: 50px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
