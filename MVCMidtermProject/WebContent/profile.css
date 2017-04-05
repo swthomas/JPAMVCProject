@@ -7,6 +7,10 @@ h2 {
 	width: 100%;
 }
 
+#accounts {
+	margin-top: 30px;
+}
+
 table {
 	margin-bottom: 50px;
 	margin-left: auto;
@@ -39,12 +43,16 @@ tr:nth-child(even) {
 	background-color: #f2f2f2
 }
 
-.deleteButton {
-	text-align: center;
+.panel-heading {
+	font-weight: bold;
 }
 
 .editButton {
 	text-align: right;
+}
+
+.deleteButton {
+	text-align: center;
 }
 
 .payButton {

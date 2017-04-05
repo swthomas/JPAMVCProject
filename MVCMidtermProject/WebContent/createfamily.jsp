@@ -79,7 +79,7 @@
 								</div>
 
 						<div class="form-group text-center">
-							<button formaction="CreateMember.do" type="submit" name="family" value="${family.id}" hidden="family"
+							<button formaction="CreateMember.do" type="submit" name="familyId" value="${family.id}" hidden="family"
 								class="btn btn-default btn-block">Add another user</button>
 						</div>
 					<!-- <form action="goHome.do" method="POST"> -->

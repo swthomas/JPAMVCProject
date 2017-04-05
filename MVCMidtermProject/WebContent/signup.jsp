@@ -1,74 +1,71 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<!-- Website CSS style -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Website Font style -->
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
-<!-- Google Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Passion+One'
-	rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oxygen'
-	rel='stylesheet' type='text/css'>
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="index.css">
-<title>Admin</title>
+<title>Sign Up</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row main">
-			<div class="main-login main-center">
-				<h5>Frugal Sign Up.</h5>
-				<form action="CreateFamily.do" method="POST">
 
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Family
-							Name</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa"
-									aria-hidden="true"></i></span> <input type="text" class="form-control"
-									name="name" id="name" placeholder="Enter your Name" />
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+					<form class="" method="POST" action="CreateFamily.do">
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Family
+								Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa"
+										aria-hidden="true"></i></span> <input type="text"
+										class="form-control" name="name" id="name"
+										placeholder="Enter your family name" />
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="form-group">
-						<label for="email" class="cols-sm-2 control-label">User
-							Name</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
-									type="text" class="form-control" name="email" id="email"
-									placeholder="Enter your Email" />
-								
-								<!-- <form action="CreateFamilyAdmin.do" method="POST"> -->
-									<div class="form-group text-center">
-									<div class="text-center">
-							<span id="badlogin">
-								<c:if test="${! empty badLogin}">
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">User
+								Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-user fa-lg" aria-hidden="true"></i></span> <input
+										type="text" class="form-control" name="username" id="username"
+										placeholder="Enter your username" />
+								</div>
+							</div>
+						</div>
+						<div class="text-center">
+							<span id="badlogin"> <c:if test="${! empty badLogin}">
 									${badLogin}
 								</c:if>
 							</span>
 						</div>
-										<button type="submit" class="btn btn-default btn-block">Sign
-											Up</button>
-								</form>
-
-							</div>
+					</form>
+					<form action="CreateFamilyForm.do" method="POST">
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-default btn-block">Sign
+								Up</button>
 						</div>
-
-
-						<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-						<script
-							src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-						<!-- Include all compiled plugins (below), or include individual files as needed -->
-						<script src="js/bootstrap.min.js"></script>
+					</form>
+				</div>
+			</div>
+		</div>
 </body>
 </html>
