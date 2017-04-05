@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,9 @@ public class BillDAOImpl implements BillDAO {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Autowired
+	BillResponsibilityDAO brdao;
 
 	@Override
 	public Bill updateBill(Bill bill, Date dDate, String name, double amount){
@@ -85,7 +89,8 @@ public class BillDAOImpl implements BillDAO {
 	public boolean deleteAdminBill(int id) {
 		try{
 			Bill b = em.find(Bill.class, id);
-
+			brdao.deleteBillResponsibility(b);
+			
 			if (b != null) {
 				em.remove(b);
 				return true;

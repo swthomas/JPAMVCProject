@@ -42,7 +42,7 @@
 							</form></td>
 							
 						<td class="deleteButton"><form action="DeleteAdminBill.do" method="POST">
-								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-danger">delete</button>
+								<button type="submit" name="deleteid" value="${bill.id}" class="btn btn-xs btn-danger">delete</button>
 							</form></td>
 							
 						<td class="paidButton"><form action="PayBill.do" method="POST">

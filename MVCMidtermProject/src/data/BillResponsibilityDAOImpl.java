@@ -28,16 +28,25 @@ public class BillResponsibilityDAOImpl implements BillResponsibilityDAO {
 	@Override
 	public List<BillResponsibility> createResponsibility(Bill bill, List<Member> members) {
 		List<BillResponsibility> responsibilityList = new ArrayList<>();
-		
-		for (Member m: members){
-		BillResponsibility br = new BillResponsibility();
-		br.setBill(bill);
-		br.setMember(m);
-		br.setPercent(50);
-		em.persist(br);
-		em.flush();
-		responsibilityList.add(br);
+
+		for (Member m : members) {
+			BillResponsibility br = new BillResponsibility();
+			br.setBill(bill);
+			br.setMember(m);
+			br.setPercent(50);
+			em.persist(br);
+			em.flush();
+			responsibilityList.add(br);
 		}
 		return responsibilityList;
+	}
+
+	@Override
+	public void deleteBillResponsibility(Bill bill) {
+		List<BillResponsibility> brs = bill.getBillResponsibilities();
+
+		for (BillResponsibility br : brs) {
+			em.remove(br);
+		}
 	}
 }
