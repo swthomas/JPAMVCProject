@@ -122,4 +122,5 @@ public class LoginController {
 		mv.setViewName("index");
 		return mv;
 	}
+	
 }
