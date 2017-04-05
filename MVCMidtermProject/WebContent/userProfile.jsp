@@ -59,11 +59,12 @@
 			<div class="col-sm-2">
 				<form class="form-horizontal" action="AddToFrugal.do" method="POST">
 					<div class="form-group">
-							<input type="text" class="form-control" name="amount"
-								value="${bill.name}">
+						<input type="text" class="form-control" name="amount"
+							value="${bill.name}">
 					</div>
 					<div class="form-group">
-							<button type="submit" value="Edit Bill" class="btn btn-primary btn-block">Add funds to frugal</button>
+						<button type="submit" value="Edit Bill"
+							class="btn btn-primary btn-block">Add funds to frugal</button>
 					</div>
 				</form>
 			</div>
@@ -72,11 +73,12 @@
 				<form class="form-horizontal" action="AddIncome.do" method="POST">
 					<input type="hidden" name="id" value="${bill.id}">
 					<div class="form-group">
-							<input type="text" class="form-control" name="name"
-								value="${bill.name}">
+						<input type="text" class="form-control" name="name"
+							value="${bill.name}">
 					</div>
 					<div class="form-group">
-							<button type="submit" value="Edit Bill" class="btn btn-primary btn-block">Add income</button>
+						<button type="submit" value="Edit Bill"
+							class="btn btn-primary btn-block">Add income</button>
 					</div>
 				</form>
 			</div>
@@ -182,5 +184,6 @@
 			</div>
 			<div class="col-sm-4"></div>
 		</div>
+	</div>
 </body>
 </html>

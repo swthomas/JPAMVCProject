@@ -53,6 +53,36 @@
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-2">
+				<form class="form-horizontal" action="AddToFrugal.do" method="POST">
+					<div class="form-group">
+						<input type="text" class="form-control" name="amount"
+							value="${bill.name}">
+					</div>
+					<div class="form-group">
+						<button type="submit" value="Edit Bill"
+							class="btn btn-primary btn-block">Add funds to frugal</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2">
+				<form class="form-horizontal" action="AddIncome.do" method="POST">
+					<input type="hidden" name="id" value="${bill.id}">
+					<div class="form-group">
+						<input type="text" class="form-control" name="name"
+							value="${bill.name}">
+					</div>
+					<div class="form-group">
+						<button type="submit" value="Edit Bill"
+							class="btn btn-primary btn-block">Add income</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
 	</div>
 
 	<div class="container">
@@ -154,17 +184,31 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="col-sm-4"></div>
-		<div class="col-sm-4">
-			<div id="addBillButton">
-				<form action="AddBillForm.do" method="POST">
-					<button type="submit" name="id"
-						class="btn btn-md btn-primary btn-block">Add Personal
-						Bill</button>
-				</form>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<div id="addBillButton">
+					<form action="AddBillForm.do" method="POST">
+						<button type="submit" name="id"
+							class="btn btn-md btn-primary btn-block">Add Personal
+							Bill</button>
+					</form>
+				</div>
+				<div class="col-sm-4"></div>
 			</div>
 		</div>
-		<div class="col-sm-4"></div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<div id="editUserButton">
+					<form action="EditUserForm.do" method="POST">
+						<button type="submit" name="memberid"
+							class="btn btn-md btn-primary btn-block">Edit User</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
 	</div>
 
 </body>
