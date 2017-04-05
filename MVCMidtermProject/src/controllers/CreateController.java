@@ -1,7 +1,14 @@
 package controllers;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +37,7 @@ public class CreateController {
 
 	@Autowired 
 	private BillDAO billDao;
+	
 
 	@RequestMapping(path = "CreateFamilyForm.do", method = RequestMethod.POST)
 	public ModelAndView goToCreateFamilyForm(@ModelAttribute("sessionUser") Member member) {
@@ -85,63 +93,85 @@ public class CreateController {
 	    	mv.setViewName("createfamily");
 		return mv;
 	}
+
+	@RequestMapping(path = "AddFamilyBillForm.do", method = RequestMethod.POST)
+	public ModelAndView addFamilyBillForm(@ModelAttribute("sessionUser") Member member) {
+		ModelAndView mv = new ModelAndView();
+//		Family f = memberDao.showMember(member.getId()).getFamily();
+//		mv.addObject("family", f);
+		mv.setViewName("addfamilybill");
+
+		return mv;
+	}
 	
-//	*********** BEGIN NEW ADD BILLS************************
+	@RequestMapping(path = "AddBillForm.do", method = RequestMethod.POST)
+	public ModelAndView addMemberBillForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("addnewbill");
+
+		return mv;
+	}
+
+	@RequestMapping(path = "CreateFamilyBill.do", method = RequestMethod.POST)
+	public ModelAndView addFamilyBill(HttpSession session,
+			@ModelAttribute("sessionUser") Member member,
+			@RequestParam("family") Family family,
+			@RequestParam("name") String name,
+			@RequestParam("amount") double amount,
+			@RequestParam("dateDue") String dueDate,
+			@RequestParam("familyId") int familyId
+			) throws ParseException {
+		Bill b = new Bill();
+		b.setName(name);
+		b.setFamily(family);
+		b.setAmount(amount);
+		b.setMember(member);
+		
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		Date dDate = format.parse(dueDate);
+		b.setDateDue(dDate);
+		
+		ModelAndView mv = new ModelAndView();
+		billDao.addBill(b);
+		
+		Member m = memberDao.showMember(member.getId());
+		
+		mv.addObject(m);	
+		mv.setViewName("adminProfile");
+		
+		return mv;
+	}
 	
-//	@RequestMapping(path = "CreateMemberBillForm.do", method = RequestMethod.POST)
-//	public ModelAndView createMemberBillForm(@ModelAttribute("sessionUser") Bill bill) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject(bill);
-//		mv.setViewName("addmemberbill");
-//		return mv;	
-//	}
-//	
-//	@RequestMapping(path = "CreateMemberBill.do", method = RequestMethod.POST)
-//	public ModelAndView createMemberBill(Bill bill, @RequestParam("memberId") int id) {
-//		ModelAndView mv = new ModelAndView();
-//		Member member = memberDao.showMember(id);
-//		
-//		Member m = (Member) billDao.getMemberBills(member.getId());
-//		mv.addObject(bill);
-//		mv.addObject("m", m);
-//		mv.setViewName("userProfile");
-//		return mv;
-//	}
-//	
-//	@RequestMapping(path = "CreateFamilyBillForm.do", method = RequestMethod.POST)
-//	public ModelAndView createFamilyBillForm(@ModelAttribute("sessionUser") Bill bill) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject(bill);
-//		mv.setViewName("addfamilybill");
-//		return mv;	
-//	}
-//
-//	@RequestMapping(path = "CreateFamilyBill.do", method = RequestMethod.POST)
-//	public ModelAndView createFamilyBill(Bill bill, @RequestParam("familyId") int id) {
-//		ModelAndView mv = new ModelAndView();
-//		Family family = familyDao.getFamilyById(id);
-//		
-//		Family f = (Family) billDao.getFamilyBills(family.getId());
-//		mv.addObject(bill);
-//		mv.addObject("f", f);
-//		mv.setViewName("adminProfile");
-//		return mv;
-//	}
-	
-//	************ NEW ADD BILL METHOD END
-	
-//	@RequestMapping(path = "CreateMembers.do", method = RequestMethod.POST)
-//	public ModelAndView createMember(@ModelAttribute("sessionUser")Member member, Family family) {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		if(member == null){
-//	    	mv.setViewName("error");
-//	    }
-//	    else{
-//	    	Member m = memberDao.createMember(member, family);
-//	    	mv.addObject("members", m);
-//	    	mv.setViewName("confirmation");
-//	    }
-//		return mv;
-//	}
+	@RequestMapping(path = "CreateBill.do", method = RequestMethod.POST)
+	public ModelAndView addBill(HttpSession session,
+			@ModelAttribute("sessionUser") Member member,
+			@RequestParam("name") String name,
+			@RequestParam("amount") double amount,
+			@RequestParam("dateDue") String dueDate
+			) throws ParseException {
+		Bill b = new Bill();
+		b.setName(name);
+		b.setAmount(amount);
+		b.setMember(member);
+		
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		Date dDate = format.parse(dueDate);
+		b.setDateDue(dDate);
+		
+		ModelAndView mv = new ModelAndView();
+		billDao.addBill(b);
+		
+		Member m = memberDao.showMember(member.getId());
+		
+		mv.addObject(m);
+		
+		if (m.getAdmin() == true){
+			mv.setViewName("adminProfile");
+		}
+		else {
+			mv.setViewName("userProfile");
+		}
+		
+		return mv;
+	}
 }

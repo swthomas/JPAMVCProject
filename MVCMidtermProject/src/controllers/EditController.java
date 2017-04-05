@@ -46,18 +46,18 @@ public class EditController {
 
 		return mv;
 	}
-
-	@RequestMapping(path = "EditAdminBill.do", method = RequestMethod.POST)
-	public ModelAndView editAdminBill(@RequestParam("id")Integer id) {
+	
+	@RequestMapping(path = "EditBillForm.do", method = RequestMethod.POST)
+	public ModelAndView editMemberBill(@RequestParam("id")Integer id) {
 		ModelAndView mv = new ModelAndView();
 		Bill b = billdao.getBill(id);
 		mv.addObject("bill", b);
-		mv.setViewName("editadminbill");
+		mv.setViewName("editbill");
 		return mv;
 	}
 
-	@RequestMapping(path = "EditAdminBillFields.do", method = RequestMethod.POST)
-	public ModelAndView editAdminFields(HttpSession session,
+	@RequestMapping(path = "EditBill.do", method = RequestMethod.POST)
+	public ModelAndView editBill(HttpSession session,
 			@ModelAttribute("sessionUser") Member member,
 			@RequestParam("id") int id,
 			@RequestParam("name") String name,
@@ -76,50 +76,39 @@ public class EditController {
 		else {
 			billdao.updateBill(bill, dDate, name, amount);
 		}
-		
 		Member m = memberdao.showMember(member.getId());
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("member", m);
-		mv.setViewName("adminProfile");
+		
+		if (m.getAdmin() == true) {
+			mv.setViewName("adminProfile");			
+		}
+		else {
+			mv.setViewName("userProfile");
+		}	
+		
 		return mv;
 	}
 
-	@RequestMapping(path = "EditUserBillFields.do", method = RequestMethod.POST)
-	public ModelAndView editUserFields(HttpSession session,
-			@ModelAttribute("sessionUser") Member member,
-			@RequestParam("id") int id,
-			@RequestParam("name") String name,
-			@RequestParam("amount") double amount,
-			@RequestParam("dateDue") String dueDate,
-			@RequestParam("datePaid") String paidDate
-			) throws ParseException {
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-		Date dDate = format.parse(dueDate);
-		Bill bill = billdao.getBill(id);
-		
-		if (!paidDate.equals("")){
-		Date pDate = format.parse(paidDate);
-		billdao.updateBill(bill, dDate, pDate, name, amount);
-		}
-		else {
-			billdao.updateBill(bill, dDate, name, amount);
-		}
-		
-		Member m = memberdao.showMember(member.getId());
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("member", m);
-		mv.setViewName("userProfile");
-		return mv;
-	}
+
 	
 	@RequestMapping(path="DeleteBill.do",
 			 method=RequestMethod.POST)
-	 public ModelAndView removeBill(@ModelAttribute("sessionUser") Member member, @RequestParam("id") int id) {
-		System.out.println(id + "**************************");
+	 public ModelAndView removeBill(@ModelAttribute("sessionUser") Member member, @RequestParam("id") Integer id) {
+		System.out.println(id + "Bill ID**************************");
 		billdao.deleteBill(id);
 		ModelAndView mv = new ModelAndView();
-		 mv.addObject("member", member);
-		 mv.setViewName("userProfile");
+		Member m = memberdao.showMember(member.getId());
+		mv.addObject("member", m);
+		
+		if (m.getAdmin() == true) {
+			mv.setViewName("adminProfile");			
+		}
+		else {
+			mv.setViewName("userProfile");
+		}
+		
 		 return mv;
 
 	 }

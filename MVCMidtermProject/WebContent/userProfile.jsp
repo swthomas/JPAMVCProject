@@ -19,6 +19,16 @@
 </head>
 <body>
 
+		</div>
+	
+			<div class="container" id="accounts">
+			<h2>Family Frugal Account</h2>
+			$${member.account.frugalSum}
+			<h2>Personal Account</h2>
+			$${member.account.bankAccount}
+			<br><br>
+		</div>
+
 	<div class="container" id="userbills">
 	<h2>Family Bills</h2>
 		<table class="table-hover table-responsive">
@@ -45,7 +55,6 @@
     					</c:forEach>
 					</tr>
 				</c:forEach>
-				
 			</tbody>
 		</table>
 	</div>
@@ -71,7 +80,7 @@
 							</tr>
 					<tr>
 
-						<td class="editbutton"><form action="EditUserBill.do"
+						<td class="editbutton"><form action="EditBillForm.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
 									class="btn btn-xs btn-warning">edit</button>
@@ -84,15 +93,17 @@
 						<td class="paidButton"><form action="PayBill.do"
 								method="POST">
 								<button type="submit" name="id" value="${bill.id}"
-									class="btn btn-xs btn-danger">paid</button>
+									class="btn btn-xs btn-danger">pay</button>
 							</form></td>
 							
 					</tr>
 				</c:forEach>
-				
 			</tbody>
 		</table>
-	</div>
+		<form action="AddBillForm.do" method="POST">
+								<button type="submit" name="id" class="btn btn-xs btn-danger">add bill</button>
+							</form>
+
 
 </body>
 </html>

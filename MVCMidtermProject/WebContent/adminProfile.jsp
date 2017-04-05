@@ -37,7 +37,7 @@
 					</tr>
 					<tr>
 
-						<td class="editbutton"><form action="EditAdminBill.do" method="POST">
+						<td class="editbutton"><form action="EditBill.do" method="POST">
 								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-warning">edit</button>
 							</form></td>
 							
@@ -55,7 +55,7 @@
 
 			</tbody>
 		</table>
-							<form action="AddBillForm.do" method="POST">
+							<form action="AddFamilyBillForm.do" method="POST">
 								<button type="submit" name="id" class="btn btn-xs btn-danger">add bill</button>
 							</form>
 	</div>
@@ -81,7 +81,7 @@
 					</tr>
 					<tr>
 
-						<td class="editbutton"><form action="EditAdminBill.do" method="POST">
+						<td class="editbutton"><form action="EditBill.do" method="POST">
 								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-warning">edit</button>
 							</form></td>
 							

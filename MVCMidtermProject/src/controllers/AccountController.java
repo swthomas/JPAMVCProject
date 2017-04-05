@@ -6,21 +6,27 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.AccountDAO;
 import data.BillDAO;
+import data.MemberDAO;
+import data.MemberDAOImpl;
 import entities.Account;
 import entities.Bill;
 import entities.Member;
 
 @Controller
+@SessionAttributes("sessionUser")
 public class AccountController {
 	
 	@Autowired
@@ -28,6 +34,19 @@ public class AccountController {
 	
 	@Autowired
 	BillDAO billdao;
+	
+	@Autowired
+	MemberDAO memberdao;
+	
+	@RequestMapping(path = "PayBillForm.do", method = RequestMethod.POST)
+	public ModelAndView payBillForm(Bill bill) {
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("bill", bill);
+		mv.setViewName("paybill");
+
+		return mv;
+	}
 	
 	@RequestMapping(path = "SetBankAccount.do", method = RequestMethod.POST)
 	public ModelAndView SetAccount(Account a, Double income) {
@@ -47,40 +66,6 @@ public class AccountController {
 
 		mv.addObject("account", account);
 		mv.setViewName("*******");
-
-		return mv;
-	}
-
-	@RequestMapping(path = "AddBillForm.do", method = RequestMethod.POST)
-	public ModelAndView addBillForm() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("addadminbill");
-
-		return mv;
-	}
-	
-	@RequestMapping(path = "CreateFamilyBill.do", method = RequestMethod.POST)
-	public ModelAndView addFamilyBill(@ModelAttribute("sessionUser") Member member, Bill bill,
-			@RequestParam("dateDue") String dueDate) throws ParseException {
-		System.out.println("FUCK YOU ***********************");
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-		Date dDate = format.parse(dueDate);
-		bill.setDateDue(dDate);
-		ModelAndView mv = new ModelAndView();
-		billdao.addBill(bill);
-		mv.addObject(member);
-		mv.setViewName("userPorfile");
-
-		return mv;
-	}
-	
-	@RequestMapping(path = "CreateMemberBill.do", method = RequestMethod.POST)
-	public ModelAndView addBill(@ModelAttribute("sessionUser") Member member, Bill bill) {
-		System.out.println("FUCK YOU ***********************");
-		ModelAndView mv = new ModelAndView();
-		billdao.addBill(bill);
-		mv.addObject(member);
-		mv.setViewName("userPorfile");
 
 		return mv;
 	}
