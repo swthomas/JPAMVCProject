@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import entities.Bill;
 import entities.BillResponsibility;
 import entities.Member;
 
@@ -24,23 +26,18 @@ public class BillResponsibilityDAOImpl implements BillResponsibilityDAO {
 	}
 
 	@Override
-	public BillResponsibility createResponsibility(BillResponsibility br) {
+	public List<BillResponsibility> createResponsibility(Bill bill, List<Member> members) {
+		List<BillResponsibility> responsibilityList = new ArrayList<>();
+		
+		for (Member m: members){
+		BillResponsibility br = new BillResponsibility();
+		br.setBill(bill);
+		br.setMember(m);
+		br.setPercent(50);
 		em.persist(br);
 		em.flush();
-		return br;
-	}
-
-	@Override
-	public BillResponsibility updateResponsibility(BillResponsibility br) {
-		
-		BillResponsibility respUpdate = em.find(BillResponsibility.class, br.getId());
-		respUpdate.setPercent(br.getPercent());
-		return respUpdate;
-	}
-
-	@Override
-	public List<Member> showFamilyBillAndResponsibility(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		responsibilityList.add(br);
+		}
+		return responsibilityList;
 	}
 }

@@ -80,5 +80,20 @@ public class BillDAOImpl implements BillDAO {
 
 		return false;
 	}
+	
+	@Override
+	public boolean deleteAdminBill(int id) {
+		try{
+			Bill b = em.find(Bill.class, id);
 
+			if (b != null) {
+				em.remove(b);
+				return true;
+			}
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return false;
+	}
 }

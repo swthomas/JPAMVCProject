@@ -41,7 +41,7 @@
 								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-warning">edit</button>
 							</form></td>
 							
-						<td class="deleteButton"><form action="DeleteBill.do" method="POST">
+						<td class="deleteButton"><form action="DeleteAdminBill.do" method="POST">
 								<button type="submit" name="id" value="${bill.id}" class="btn btn-xs btn-danger">delete</button>
 							</form></td>
 							
