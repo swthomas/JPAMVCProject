@@ -13,11 +13,12 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-<a href="editForm.do">Edit</a>
+	<a href="editForm.do">Edit</a>
 
 	<div class="container">
 		<div class="row text-center" id="h1">
@@ -26,8 +27,9 @@
 		</div>
 		<div class="row text-center">
 			<p>Through acrimonious amalgamation, you and your partner can
-				climb the mountain to financial freedom.</p><hr>
-				<img src="pics/tree.jpg">
+				climb the mountain to financial freedom.</p>
+			<hr>
+			<img src="pics/tree.jpg">
 		</div>
 
 
@@ -41,10 +43,10 @@
 							<label for="username" class="cols-sm-2 control-label">Username</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="fa fa-user fa" aria-hidden="true"></i></span> <input
-										type="text" class="form-control" name="username"
-										id="usernamename" placeholder="Enter your Username" />
+									<span class="input-group-addon"><i class="fa fa-user fa"
+										aria-hidden="true"></i></span> <input type="text"
+										class="form-control" name="username" id="usernamename"
+										placeholder="Enter your Username" />
 								</div>
 							</div>
 						</div>
@@ -60,8 +62,7 @@
 							</div>
 						</div>
 						<div class="text-center">
-							<span id="badlogin">
-								<c:if test="${! empty badLogin}">
+							<span id="badlogin"> <c:if test="${! empty badLogin}">
 									${badLogin}
 								</c:if>
 							</span>
@@ -77,10 +78,18 @@
 								Up</button>
 						</div>
 					</form>
+
 				</div>
+				<br><br>
+				<form action="http://localhost:8080/MVCMidtermProject/about.jsp" method="POST">
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-default btn-block"><img src="pics/about_us_button.jpg"></button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+
 
 
 </body>
