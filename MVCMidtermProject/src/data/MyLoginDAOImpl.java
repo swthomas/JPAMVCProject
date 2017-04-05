@@ -15,18 +15,18 @@ public class MyLoginDAOImpl implements MyLoginDAO {
 	@Override
 	public Member checkUserPassword(String username, String password) throws SQLException{
 		Member m = null;
-		Member n = null;
 		try {
 			String query = "SELECT m FROM Member m WHERE m.username = :username AND m.password = :password";
 			m  = em.createQuery(query, Member.class).setParameter("username", username).setParameter("password", password).getSingleResult();
+			
 			if (m != null) {
 				m = em.createQuery("SELECT m FROM Member m JOIN FETCH m.bills WHERE m.id = :id", Member.class).setParameter("id", m.getId()).getSingleResult();
-				n=m;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println(e);
 		}
 
-		return n;		
+		return m;	
 	}
 }

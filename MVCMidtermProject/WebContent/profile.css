@@ -2,9 +2,17 @@ h2 {
 	text-align: center;
 }
 
+h1 {
+	text-align: center;
+}
+
 #list {
 	margin 0 auto;
 	width: 100%;
+}
+
+#accounts {
+	margin-top: 30px;
 }
 
 table {
@@ -39,12 +47,16 @@ tr:nth-child(even) {
 	background-color: #f2f2f2
 }
 
-.deleteButton {
-	text-align: center;
+.panel-heading {
+	font-weight: bold;
 }
 
 .editButton {
 	text-align: right;
+}
+
+.deleteButton {
+	text-align: center;
 }
 
 .payButton {
@@ -60,3 +72,10 @@ th {
     color: white;
 }
 
+#editUserButton {
+	padding-bottom: 30px;
+}
+
+#addBillButton {
+	padding-bottom: 5px;
+}

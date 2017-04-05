@@ -3,7 +3,6 @@ package controllers;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -20,9 +19,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.BillDAO;
+import data.BillResponsibilityDAO;
 import data.FamilyDAO;
 import data.MemberDAO;
 import entities.Bill;
+import entities.BillResponsibility;
 import entities.Family;
 import entities.Member;
 
@@ -37,6 +38,9 @@ public class CreateController {
 
 	@Autowired
 	private BillDAO billDao;
+	
+	@Autowired
+	private BillResponsibilityDAO brDao;
 
 	@RequestMapping(path = "CreateFamilyForm.do", method = RequestMethod.POST)
 	public ModelAndView goToCreateFamilyForm(@ModelAttribute("sessionUser") Member member) {
@@ -115,6 +119,8 @@ public class CreateController {
 	public ModelAndView addFamilyBillForm(@ModelAttribute("sessionUser") Member member) {
 		ModelAndView mv = new ModelAndView();
 		Family f = memberDao.showMember(member.getId()).getFamily();
+		List<Member> memberList = memberDao.getFamilyMembers(member.getFamily().getId());
+		mv.addObject("memberList", memberList);
 		mv.addObject("family", f);
 		mv.setViewName("addfamilybill");
 
@@ -148,6 +154,8 @@ public class CreateController {
 		ModelAndView mv = new ModelAndView();
 		billDao.addBill(b);
 
+		b.setBillResponsibilities(brDao.createResponsibility(b, memberDao.getFamilyMembers(member.getFamily().getId())));
+		
 		Member m = memberDao.showMember(member.getId());
 
 		mv.addObject(m);

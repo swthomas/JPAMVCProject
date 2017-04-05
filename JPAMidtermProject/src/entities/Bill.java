@@ -23,7 +23,7 @@ public class Bill {
 	private int id;
 	
 	@OneToMany(mappedBy="bill", fetch=FetchType.EAGER)
-	private Set<BillResponsibility> billResponsibilities;
+	private List<BillResponsibility> billResponsibilities;
 	
 	@ManyToOne
 	@JoinColumn(name="familyId")
@@ -55,11 +55,11 @@ public class Bill {
 		this.id = id;
 	}
 
-	public Set<BillResponsibility> getBillResponsibilities() {
+	public List<BillResponsibility> getBillResponsibilities() {
 		return billResponsibilities;
 	}
 
-	public void setBillResponsibilities(Set<BillResponsibility> billResponsibilities) {
+	public void setBillResponsibilities(List<BillResponsibility> billResponsibilities) {
 		this.billResponsibilities = billResponsibilities;
 	}
 

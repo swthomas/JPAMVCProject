@@ -13,5 +13,7 @@ public interface BillDAO {
 	public boolean deleteBill(int id);
 	public List<Bill> getFamilyBills(int id);
 	public List<Bill> getMemberBills(int id);
+	boolean deleteAdminBill(int id);
+	boolean payBill(int id);
 	
 }

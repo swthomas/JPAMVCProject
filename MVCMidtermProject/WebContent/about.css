@@ -7,9 +7,8 @@
  */
  
 
-.badlogin {
-	color: white;
-	margin-bottom: 12px;
+#badlogin {
+	color: red;
 }
 
 #playground-container {
