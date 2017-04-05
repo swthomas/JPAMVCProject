@@ -19,9 +19,7 @@
 </head>
 <body>
 
-<div>
-
-</div>
+	<div></div>
 
 	<div class="container">
 		<div class="row text-center" id="h1">
@@ -67,18 +65,18 @@
 
 						<div class="text-center">
 
-						<div class="text-center badlogin">
+							<div class="text-center badlogin">
 
-							<span id="badlogin"> <c:if test="${! empty badLogin}">
+								<span id="badlogin"> <c:if test="${! empty badLogin}">
 									${badLogin}
 								</c:if>
-							</span>
-						</div>
+								</span>
+							</div>
 
-						<div class="form-group text-center">
-							<button type="submit" class="btn btn-default btn-block">Sign
-								In</button>
-						</div>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-default btn-block">Sign
+									In</button>
+							</div>
 					</form>
 					<form action="CreateFamilyForm.do" method="POST">
 						<div class="form-group text-center">
@@ -87,18 +85,22 @@
 						</div>
 					</form>
 
-				</div>
-				<br><br>
-				<form action="http://localhost:8080/MVCMidtermProject/about.jsp" method="POST">
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-default btn-block"><img src="pics/about_us_button.jpg"></button>
-					</div>
-				</form>
+				
+				<br> <br>
+
+				
+
+					<form action="http://localhost:8080/MVCMidtermProject/about.jsp"
+						method="POST">
+						<button type="submit" class="btn btn-md btn-primary btn-block">About Us</button>
+					</form>
+				
 			</div>
+
+</div>
+
 		</div>
 	</div>
-
-
-
+	
 </body>
 </html>
