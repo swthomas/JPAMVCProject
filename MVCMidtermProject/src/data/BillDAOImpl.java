@@ -44,6 +44,8 @@ public class BillDAOImpl implements BillDAO {
 		billUpdate.setAmount(bill.getAmount());
 		billUpdate.setDateDue(dateDue);
 		billUpdate.setDatePaid(datePaid);
+		em.persist(billUpdate);
+		em.flush();
 		return billUpdate;
 	}
 
@@ -75,7 +77,6 @@ public class BillDAOImpl implements BillDAO {
 	public boolean deleteBill(int id) {
 		try{
 			Bill b = em.find(Bill.class, id);
-			System.out.println(b.getName() + " ******** in delete Bill");
 			if (b != null) {
 				em.remove(b);
 				return true;

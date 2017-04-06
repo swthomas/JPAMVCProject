@@ -84,10 +84,10 @@ public class AccountController {
 	
 	@RequestMapping(path="PayBill.do",
 			 method=RequestMethod.POST)
-	 public ModelAndView payBill(@ModelAttribute("sessionUser") Member member, @RequestParam("payid") Integer id) {
+	 public ModelAndView payBill(@ModelAttribute("sessionUser") Member member, @RequestParam("payid") Integer payid) {
 		ModelAndView mv = new ModelAndView();
 
-		billdao.payBill(id, member.getAccount().getId());
+		billdao.payBill(payid, member.getAccount().getId());
 
 		double amount = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberdao.showMember(member.getId());

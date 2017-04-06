@@ -89,7 +89,6 @@ public class FamilyDAOImpl implements FamilyDAO {
 		String query = "Select m FROM Member m where m.family.id = :id";
 		members = em.createQuery(query, Member.class).setParameter("id", id).getResultList();
 
-		System.out.println("**********************" + members + "#######################");
 		return members;
 	}
 

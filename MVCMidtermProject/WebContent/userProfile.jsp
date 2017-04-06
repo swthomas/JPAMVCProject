@@ -160,7 +160,7 @@
 							</form></td>
 						<td class="deleteButton"><form action="DeleteBill.do"
 								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
+								<button type="submit" name="deleteid" value="${bill.id}"
 									class="btn btn-sm btn-danger">Delete</button>
 							</form></td>
 						<td class="paidButton"><form action="PayBill.do"

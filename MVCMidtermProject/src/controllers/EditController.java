@@ -84,26 +84,27 @@ public class EditController {
 	}
 	
 	@RequestMapping(path = "EditBillForm.do", method = RequestMethod.POST)
-	public ModelAndView editMemberBill(@RequestParam("id") Integer id) {
+	public ModelAndView editMemberBill(@ModelAttribute("sessionUser") Member member, @RequestParam("billid") Integer id) {
 		ModelAndView mv = new ModelAndView();
 		Bill b = billdao.getBill(id);
 		mv.addObject("bill", b);
 		mv.setViewName("editbill");
+		System.out.println("EDITBILLFORM " + member.getId());
 		return mv;
 	}
 
 	@RequestMapping(path = "EditBill.do", method = RequestMethod.POST)
 	public ModelAndView editBill(HttpSession session, 
 			@ModelAttribute("sessionUser") Member member,
-			@RequestParam("id") int id, 
+			@RequestParam("billid") int billid, 
 			@RequestParam("name") String name, 
 			@RequestParam("amount") double amount,
 			@RequestParam("dateDue") String dueDate, 
 			@RequestParam("datePaid") String paidDate) throws ParseException {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date dDate = format.parse(dueDate);
-		Bill bill = billdao.getBill(id);
-
+		Bill bill = billdao.getBill(billid);
+		
 		if (!paidDate.equals("")) {
 			Date pDate = format.parse(paidDate);
 			billdao.updateBill(bill, dDate, pDate, name, amount);
@@ -131,10 +132,10 @@ public class EditController {
 	}
 
 	@RequestMapping(path = "DeleteBill.do", method = RequestMethod.POST)
-	public ModelAndView removeBill(@ModelAttribute("sessionUser") Member member, @RequestParam("deleteid") Integer id) {
+	public ModelAndView removeBill(@ModelAttribute("sessionUser") Member member, @RequestParam("deleteid") Integer deleteid) {
 		ModelAndView mv = new ModelAndView();
 
-		billdao.deleteBill(id);
+		billdao.deleteBill(deleteid);
 
 		double amount = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberdao.showMember(member.getId());
@@ -144,7 +145,6 @@ public class EditController {
 			mv.addObject("amount", amount);
 			mv.setViewName("adminProfile");
 		} else {
-			mv.addObject(m);
 			mv.addObject("member", m);
 			mv.addObject("amount", amount);
 			mv.setViewName("userProfile");
