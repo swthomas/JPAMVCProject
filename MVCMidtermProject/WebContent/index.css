@@ -44,7 +44,9 @@ h1.title {
 
 h1 {
 	font-family: 'Arsenal', sans-serif;
-	padding-bottom: 5px;
+	padding-bottom: 20px;
+	font-size: 60px;
+	color: grey;
 }
 
 hr{
