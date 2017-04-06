@@ -17,7 +17,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	
 <!-- <link rel="stylesheet" type="text/css" href="about.css"> -->
-
+<link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 

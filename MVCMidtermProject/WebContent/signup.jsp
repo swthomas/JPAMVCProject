@@ -17,6 +17,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="index.css">
+<link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon"/>
 <title>Sign Up</title>
 </head>
 <body>
