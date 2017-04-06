@@ -1,6 +1,9 @@
 package data;
 
+import java.util.List;
+
 import entities.Family;
+import entities.Member;
 
 public interface FamilyDAO {
 
@@ -15,5 +18,7 @@ public interface FamilyDAO {
 	boolean checkFamily(String name);
 
 	boolean checkUser(String name);
+
+	List<Member> getMemberByFamily(int id);
 
 }

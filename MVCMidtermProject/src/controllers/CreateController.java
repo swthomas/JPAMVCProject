@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.AccountDAO;
 import data.BillDAO;
 import data.BillResponsibilityDAO;
 import data.FamilyDAO;
@@ -38,6 +39,9 @@ public class CreateController {
 
 	@Autowired
 	private BillDAO billDao;
+
+	@Autowired
+	private AccountDAO accountDao;
 
 	@Autowired
 	private BillResponsibilityDAO brDao;
@@ -204,15 +208,19 @@ public class CreateController {
 		ModelAndView mv = new ModelAndView();
 		billDao.addBill(b);
 
+		double amount2 = accountDao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberDao.showMember(member.getId());
-
-		mv.addObject(m);
-
+		
 		if (m.getAdmin() == true) {
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("adminProfile");
 		} else {
+			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("userProfile");
-		}
+		}	
 
 		return mv;
 	}

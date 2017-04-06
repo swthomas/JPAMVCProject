@@ -65,16 +65,20 @@ public class EditController {
 		ModelAndView mv = new ModelAndView();
 		
 		memberdao.updateMember(memberTemp);
+
+		double amount = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
+		Member m = memberdao.showMember(member.getId());
 		
-		Member m = memberdao.showMember(member.getId()); // finds session user with "member"
-
-		mv.addObject("member", m);
-
 		if (m.getAdmin() == true) {
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
 			mv.setViewName("adminProfile");
 		} else {
+			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
 			mv.setViewName("userProfile");
-		}
+		}	
 
 		return mv;
 	}
@@ -106,16 +110,22 @@ public class EditController {
 		} else {
 			billdao.updateBill(bill, dDate, name, amount);
 		}
-		Member m = memberdao.showMember(member.getId());
 
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("member", m);
-
+		
+		double amount2 = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
+		Member m = memberdao.showMember(member.getId());
+		
 		if (m.getAdmin() == true) {
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("adminProfile");
 		} else {
+			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("userProfile");
-		}
+		}	
 
 		return mv;
 	}
@@ -126,15 +136,19 @@ public class EditController {
 
 		billdao.deleteBill(id);
 
+		double amount = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberdao.showMember(member.getId());
-
-		mv.addObject("member", m);
-
+		
 		if (m.getAdmin() == true) {
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
 			mv.setViewName("adminProfile");
 		} else {
+			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
 			mv.setViewName("userProfile");
-		}
+		}	
 
 		return mv;
 	}
@@ -146,9 +160,11 @@ public class EditController {
 
 		billdao.deleteAdminBill(id);
 
+		double amount = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberdao.showMember(member.getId());
 
 		mv.addObject("member", m);
+		mv.addObject("amount", amount);
 		mv.setViewName("adminProfile");
 
 		return mv;

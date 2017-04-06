@@ -1,5 +1,7 @@
 package data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -16,6 +18,9 @@ public class AccountDAOImpl implements AccountDAO {
 	
 	@Autowired
 	MemberDAO memberdao;
+
+	@Autowired
+	FamilyDAO familydao;
 
 	@Override
 	public Account getMemberAccount(int id) {
@@ -35,7 +40,6 @@ public class AccountDAOImpl implements AccountDAO {
 		ba += amount;
 		m.getAccount().setBankAccount(ba);
 
-		System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO**********************    "+ba+"   *********");
 		em.persist(m);
 	}
 
@@ -50,10 +54,20 @@ public class AccountDAOImpl implements AccountDAO {
 		m.getAccount().setBankAccount(ba);
 		m.getAccount().setFrugalSum(fa);
 		
-		
-//		memberdao.showMember(id).getAccount().setFrugalSum(memberdao.showMember(id).getAccount().getFrugalSum()+amount);
-//		memberdao.showMember(id).getAccount().setBankAccount(memberdao.showMember(id).getAccount().getBankAccount()-amount);
 		em.persist(m);
+	}
+	
+	@Override
+	public double getFamilyFrugalTotal(int id) {
+		List<Member> m = familydao.getMemberByFamily(id);
+		double amount = 0;
+		
+		for (Member member : m) {
+			amount += member.getAccount().getFrugalSum();
+		}
+		
+		
+		return amount;
 	}
 
 }

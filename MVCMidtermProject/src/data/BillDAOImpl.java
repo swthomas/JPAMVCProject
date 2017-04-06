@@ -23,6 +23,9 @@ public class BillDAOImpl implements BillDAO {
 	@Autowired
 	BillResponsibilityDAO brdao;
 
+	@Autowired
+	AccountDAO accountdao;
+
 	@Override
 	public Bill updateBill(Bill bill, Date dDate, String name, double amount){
 		Bill billUpdate = em.find(Bill.class, bill.getId());
@@ -103,12 +106,14 @@ public class BillDAOImpl implements BillDAO {
 	}
 	
 	@Override
-	public boolean payBill(int id) {
+	public boolean payBill(int billid, int accountid) {
 		try{
-			Bill b = em.find(Bill.class, id);
+			Bill b = em.find(Bill.class, billid);
 			
 			if (b != null) {
 				b.setDatePaid(new Date());
+				accountdao.setBankAccount((-b.getAmount()), accountid);
+				
 				return true;
 			}
 		}
@@ -117,4 +122,6 @@ public class BillDAOImpl implements BillDAO {
 		}
 		return false;
 	}
+
+	
 }
