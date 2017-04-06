@@ -17,18 +17,16 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="profile.css">
-<link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon" />
+<link
+	href="https://fonts.googleapis.com/css?family=Arsenal|Cabin|Oxygen|Palanquin|Ubuntu+Condensed"
+	rel="stylesheet">
 </head>
 <body>
 
-	<form action="logout.do" method="POST">
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
-					</div>
-				</form>
-
 	<div class="container">
-		<h1>frugal</h1>
+		<h1>fr&#252gal</h1>
+		<hr>
 		<h2>Admin Dashboard</h2>
 		<div class="row">
 			<div class="col-sm-4"></div>
@@ -43,8 +41,8 @@
 				</div>
 			</div>
 			<div class="col-sm-4"></div>
-		</div>		
-		
+		</div>
+
 		<div class="row" id="accounts">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-4 text-center">
@@ -123,21 +121,35 @@
 								<td class="spacing">${bill.dateDue}</td>
 								<td class="spacing">${bill.datePaid}</td>
 								<td class="spacing">${br.percent}%</td>
-								<td class="editButton"><form action="EditBillForm.do"
-										method="POST">
-										<button type="submit" name="billid" value="${bill.id}"
-											class="btn btn-sm btn-warning">Edit</button>
-									</form></td>
+								<c:choose>
+									<c:when test="${empty bill.datePaid}">
+										<td class="editButton"><form action="EditBillForm.do"
+												method="POST">
+												<button type="submit" name="billid" value="${bill.id}"
+													class="btn btn-sm btn-warning">Edit</button>
+											</form></td>
+									</c:when>
+									<c:otherwise>
+										<td></td>
+									</c:otherwise>
+								</c:choose>
 								<td class="deleteButton"><form action="DeleteAdminBill.do"
 										method="POST">
 										<button type="submit" name="deleteid" value="${bill.id}"
 											class="btn btn-sm btn-danger">Delete</button>
 									</form></td>
-								<td class="paidButton"><form action="PayBill.do"
-										method="POST">
-										<button type="submit" name="payid" value="${bill.id}"
-											class="btn btn-sm btn-success">pay</button>
-									</form></td>
+								<c:choose>
+									<c:when test="${empty bill.datePaid}">
+										<td class="paidButton"><form action="PayBill.do"
+												method="POST">
+												<button type="submit" name="payid" value="${bill.id}"
+													class="btn btn-sm btn-primary">Pay</button>
+											</form></td>
+									</c:when>
+									<c:otherwise>
+										<td class="paid">PAID</td>
+									</c:otherwise>
+								</c:choose>
 							</c:if>
 						</c:forEach>
 					</tr>
@@ -178,21 +190,35 @@
 						</td>
 						<td class="spacing">${bill.dateDue}</td>
 						<td class="spacing">${bill.datePaid}</td>
-						<td class="editButton"><form action="EditBillForm.do"
-								method="POST">
-								<button type="submit" name="billid" value="${bill.id}"
-									class="btn btn-sm btn-warning">Edit</button>
-							</form></td>
+						<c:choose>
+							<c:when test="${empty bill.datePaid}">
+								<td class="editButton"><form action="EditBillForm.do"
+										method="POST">
+										<button type="submit" name="billid" value="${bill.id}"
+											class="btn btn-sm btn-warning">Edit</button>
+									</form></td>
+							</c:when>
+							<c:otherwise>
+								<td></td>
+							</c:otherwise>
+						</c:choose>
 						<td class="deleteButton"><form action="DeleteBill.do"
 								method="POST">
 								<button type="submit" name="deleteid" value="${bill.id}"
 									class="btn btn-sm btn-danger">Delete</button>
 							</form></td>
-						<td class="paidButton"><form action="PayBill.do"
-								method="POST">
-								<button type="submit" name="payid" value="${bill.id}"
-									class="btn btn-sm btn-success">pay</button>
-							</form></td>
+						<c:choose>
+							<c:when test="${empty bill.datePaid}">
+								<td class="paidButton"><form action="PayBill.do"
+										method="POST">
+										<button type="submit" name="payid" value="${bill.id}"
+											class="btn btn-sm btn-primary">Pay</button>
+									</form></td>
+							</c:when>
+							<c:otherwise>
+								<td class="paid">PAID</td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -223,6 +249,12 @@
 			<div class="col-sm-4"></div>
 		</div>
 	</div>
-
+	<form action="logout.do" method="POST">
+		<div class="form-group text-center">
+			<button type="submit" class="btn btn-default btn-block">
+				<img src="pics/button_logout.jpg">
+			</button>
+		</div>
+	</form>
 </body>
 </html>

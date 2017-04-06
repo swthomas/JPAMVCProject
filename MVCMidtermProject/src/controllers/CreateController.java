@@ -183,9 +183,11 @@ public class CreateController {
 		b.setBillResponsibilities(
 				brDao.createResponsibility(b, memberDao.getFamilyMembers(member.getFamily().getId())));
 
+		double amount2 = accountDao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberDao.showMember(member.getId());
 
 		mv.addObject(m);
+		mv.addObject("amount", amount2);
 		mv.setViewName("adminProfile");
 
 		return mv;

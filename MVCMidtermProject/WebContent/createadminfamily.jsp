@@ -17,20 +17,9 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Arsenal|Cabin|Oxygen|Palanquin|Ubuntu+Condensed" rel="stylesheet">
 </head>
 <body>
-
-
-	<div class="container">
-		<div class="row text-center" id="h1">
-			<h1>frugal</h1>
-			<!-- <p>Budgeting through amalgamation.</p> -->
-		</div>
-		<div class="row text-center">
-			<p>Add your info.</p>
-		</div>
-
-
 
 		<div class="container">
 			<div class="row main">

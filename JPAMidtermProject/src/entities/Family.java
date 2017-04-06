@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Family {
@@ -21,6 +22,7 @@ public class Family {
 	@OneToMany(mappedBy="family")
 	private List<Member> members;
 	
+	@OrderBy("dateDue, name")
 	@OneToMany(mappedBy="family", fetch=FetchType.EAGER)
 	private Set<Bill> bills;
 	
