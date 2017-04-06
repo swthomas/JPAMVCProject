@@ -17,15 +17,17 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="profile.css">
-<link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
 	<form action="logout.do" method="POST">
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
-					</div>
-				</form>
+		<div class="form-group text-center">
+			<button type="submit" class="btn btn-default btn-block">
+				<img src="pics/button_logout.jpg">
+			</button>
+		</div>
+	</form>
 
 	<div class="container">
 		<h1>frugal</h1>
@@ -60,8 +62,7 @@
 			<div class="col-sm-2">
 				<form class="form-horizontal" action="AddToFrugal.do" method="POST">
 					<div class="form-group">
-						<input type="text" class="form-control" name="amount"
-							value="${bill.name}">
+						<input type="text" class="form-control" name="amount">
 					</div>
 					<div class="form-group">
 						<button type="submit" value="Edit Bill"
@@ -72,10 +73,8 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-2">
 				<form class="form-horizontal" action="AddIncome.do" method="POST">
-					<input type="hidden" name="id" value="${bill.id}">
 					<div class="form-group">
-						<input type="text" class="form-control" name="name"
-							value="${bill.name}">
+						<input type="text" class="form-control" name="amount">
 					</div>
 					<div class="form-group">
 						<button type="submit" value="Edit Bill"

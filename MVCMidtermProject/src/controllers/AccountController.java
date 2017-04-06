@@ -75,9 +75,7 @@ public class AccountController {
 			mv.addObject(m);
 			mv.setViewName("userProfile");
 		}		
-		System.out.println(amount);
-		System.out.println(m.getAccount().getBankAccount());
-		 return mv;
+		return mv;
 	 }
 	
 	@RequestMapping(path="PayBill.do",
