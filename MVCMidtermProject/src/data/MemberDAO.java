@@ -21,8 +21,6 @@ public interface MemberDAO {
 
 	List<Member> getFamilyMembers(int id);
 
-	public void updateMember(int id, String username, String password);
-
 	Family createAdminMembersList(Member member, Family family);
 
 }

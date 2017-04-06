@@ -126,10 +126,4 @@ public class MemberDAOImpl implements MemberDAO {
 		return em.find(Family.class, id);
 	}
 
-	@Override
-	public void updateMember(int id, String username, String password) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

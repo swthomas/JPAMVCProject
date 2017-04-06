@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Member {
@@ -32,6 +33,7 @@ public class Member {
 	@OneToMany(mappedBy="member", cascade = {CascadeType.PERSIST})
 	private List<BillResponsibility> billResponsibilities;
 	
+	@OrderBy("dateDue, name")
 	@OneToMany(mappedBy="member", cascade = {CascadeType.PERSIST})
 	private List<Bill> bills;
 	
