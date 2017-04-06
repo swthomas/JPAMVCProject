@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	
-<!-- <link rel="stylesheet" type="text/css" href="about.css"> -->
+<link rel="stylesheet" type="text/css" href="about.css">
 <link rel="shortcut icon" href="/pics/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
@@ -26,10 +26,12 @@
 						<button type="submit" class="btn btn-default btn-block"><img src="pics/button_logout.jpg"></button>
 					</div>
 				</form>
+				
+				
 
 	<div class="container">
 		<div class="row text-center" id="h1">
-			<h1>frugal</h1>
+			<h1><img src="pics/frugal.jpg"></h1>
 			<!-- <p>Budgeting through amalgamation.</p> -->
 		</div>
 		<div class="row text-center">
