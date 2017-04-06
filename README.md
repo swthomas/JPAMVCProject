@@ -7,8 +7,6 @@ The goal was to implement C.R.U.D. (Create, Read, Update, Delete), which is one 
 
 ### Technologies used:
 Some of the technologies used in this project were session attributes, @Autowired annotations, as well as learning the latest capabilities of the Spring IO IDE. The team also utilized JPA and MVC project associated both with Gradle natures. Another key component of the project was learning about new dependencies in our persistence XML’s to pull in EntityManagers.
-# DB Schema
-![Alt text](relative/path/to/db.jpg?raw=true "Title")
 
 ### What future feature sets you would like to add?
 Some other features we would like to include in the project in the future would be allowing the user to edit more fields. We would also like to create a more user friendly version of the project while focusing on formatting using CSS and HTML.
