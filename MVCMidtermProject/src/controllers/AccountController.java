@@ -41,13 +41,14 @@ public class AccountController {
 	@RequestMapping(path="AddToFrugal.do", method=RequestMethod.POST)
 	 public ModelAndView addToFrugal(@ModelAttribute("sessionUser") Member member, @RequestParam("amount") Double amount) {
 		ModelAndView mv = new ModelAndView();
-
-		Member temp = memberdao.showMember(member.getId());
 		
-		temp.getAccount().setFrugalSum(temp.getAccount().getFrugalSum()+amount);
-		temp.getAccount().setBankAccount(temp.getAccount().getBankAccount()-amount);
+		accountdao.setFrugalSum(amount, member.getId());
 
 		Member m = memberdao.showMember(member.getId());
+		
+//		temp.getAccount().setFrugalSum(temp.getAccount().getFrugalSum()+amount);
+//		temp.getAccount().setBankAccount(temp.getAccount().getBankAccount()-amount);
+
 
 		if (m.getAdmin() == true) {
 			mv.addObject(m);

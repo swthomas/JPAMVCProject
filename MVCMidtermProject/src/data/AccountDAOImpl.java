@@ -40,11 +40,20 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	@Override
+	@Transactional
 	public void setFrugalSum(Double amount, int id) {
+		Member m = em.find(Member.class, id);
+		Double ba = m.getAccount().getBankAccount();
+		ba -= amount;
+		Double fa = m.getAccount().getFrugalSum();
+		fa += amount;
+		m.getAccount().setBankAccount(ba);
+		m.getAccount().setFrugalSum(fa);
 		
-		memberdao.showMember(id).getAccount().setFrugalSum(memberdao.showMember(id).getAccount().getFrugalSum()+amount);
-		memberdao.showMember(id).getAccount().setBankAccount(memberdao.showMember(id).getAccount().getBankAccount()-amount);
-
+		
+//		memberdao.showMember(id).getAccount().setFrugalSum(memberdao.showMember(id).getAccount().getFrugalSum()+amount);
+//		memberdao.showMember(id).getAccount().setBankAccount(memberdao.showMember(id).getAccount().getBankAccount()-amount);
+		em.persist(m);
 	}
 
 }
