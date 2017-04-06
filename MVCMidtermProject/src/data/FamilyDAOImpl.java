@@ -1,5 +1,7 @@
 package data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -73,13 +75,22 @@ public class FamilyDAOImpl implements FamilyDAO {
 			m = em.createQuery(query, Member.class).setParameter("name", name).getSingleResult();
 		} catch (Exception e) {
 			System.out.println(e);
-			System.out.println("catch*******************************************");
 			return true;
 
 		}
-		System.err.println("*******************************************" + m);
 		
 		return false;
+	}
+	
+	@Override
+	public List<Member> getMemberByFamily(int id) {
+		List<Member> members = null;
+
+		String query = "Select m FROM Member m where m.family.id = :id";
+		members = em.createQuery(query, Member.class).setParameter("id", id).getResultList();
+
+		System.out.println("**********************" + members + "#######################");
+		return members;
 	}
 
 }

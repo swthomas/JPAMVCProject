@@ -30,11 +30,26 @@
 	<div class="container">
 		<h1>frugal</h1>
 		<h2>Admin Dashboard</h2>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4 text-center">
+				<div class="panel panel-default">
+					<div class="panel-heading">Family Frugal Total</div>
+					<div class="panel-body">
+						$
+						<fmt:formatNumber type="number" minFractionDigits="2"
+							value="${amount}" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>		
+		
 		<div class="row" id="accounts">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-4 text-center">
 				<div class="panel panel-default">
-					<div class="panel-heading">Family Frugal Account</div>
+					<div class="panel-heading">Family Frugal Contributions</div>
 					<div class="panel-body">
 						$
 						<fmt:formatNumber type="number" minFractionDigits="2"

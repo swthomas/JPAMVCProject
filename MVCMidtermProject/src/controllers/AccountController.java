@@ -44,17 +44,17 @@ public class AccountController {
 		
 		accountdao.setFrugalSum(amount, member.getId());
 
+		double amount2 = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberdao.showMember(member.getId());
 		
-//		temp.getAccount().setFrugalSum(temp.getAccount().getFrugalSum()+amount);
-//		temp.getAccount().setBankAccount(temp.getAccount().getBankAccount()-amount);
-
-
 		if (m.getAdmin() == true) {
-			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("adminProfile");
 		} else {
 			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("userProfile");
 		}		
 		 return mv;
@@ -66,15 +66,19 @@ public class AccountController {
 		
 		accountdao.setBankAccount(amount, member.getId());
 		
+		double amount2 = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberdao.showMember(member.getId());
-
+		
 		if (m.getAdmin() == true) {
-			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("adminProfile");
 		} else {
 			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount2);
 			mv.setViewName("userProfile");
-		}		
+		}	
 		return mv;
 	 }
 	
@@ -83,13 +87,44 @@ public class AccountController {
 	 public ModelAndView payBill(@ModelAttribute("sessionUser") Member member, @RequestParam("payid") Integer id) {
 		ModelAndView mv = new ModelAndView();
 
-		billdao.payBill(id);
+		billdao.payBill(id, member.getAccount().getId());
 
+		double amount = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
 		Member m = memberdao.showMember(member.getId());
 		
-		mv.addObject("member", m);
-		mv.setViewName("adminProfile");			
+		if (m.getAdmin() == true) {
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
+			mv.setViewName("adminProfile");
+		} else {
+			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
+			mv.setViewName("userProfile");
+		}			
 	
 		 return mv;
 	 }
+	
+	@RequestMapping(path="GetFrugalFamilySum.do", method=RequestMethod.POST)
+	 public ModelAndView getFrugalFamilySum(@ModelAttribute("sessionUser") Member member) {
+		ModelAndView mv = new ModelAndView();
+		
+		double amount = accountdao.getFamilyFrugalTotal(member.getFamily().getId());
+		
+		Member m = memberdao.showMember(member.getId());
+
+		if (m.getAdmin() == true) {
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
+			mv.setViewName("adminProfile");
+		} else {
+			mv.addObject(m);
+			mv.addObject("member", m);
+			mv.addObject("amount", amount);
+			mv.setViewName("userProfile");
+		}		
+		return mv;
+	 }
+	
 }

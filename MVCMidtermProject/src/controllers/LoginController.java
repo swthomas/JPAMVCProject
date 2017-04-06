@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.AccountDAO;
 import data.FamilyDAO;
 import data.MemberDAO;
 import data.MyLoginDAO;
@@ -30,6 +31,9 @@ public class LoginController {
 
 	@Autowired
 	private MyLoginDAO loginDao;
+
+	@Autowired
+	private AccountDAO accountDao;
 
 	@ModelAttribute("sessionUser")
 	public Member member() {
@@ -49,7 +53,6 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 		boolean check = familyDao.checkUser(member.getUsername());
-		System.err.println("--------------" + family.getId());
 
 		if (check == true) {
 			Family f = memberDao.createMembersList(member, family);
@@ -57,8 +60,6 @@ public class LoginController {
 			mv.addObject("f", f);
 			mv.setViewName("index");
 		} else {
-			System.err.println("in else");
-
 			Family f = memberDao.getFamilyById(id);
 			mv.addObject("family	", f);
 			mv.addObject("familyCorrection", f);
@@ -75,7 +76,6 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		Family family = familyDao.getFamilyById(id);
 		boolean check = familyDao.checkUser(member.getUsername());
-		System.err.println("--------------" + family.getId());
 
 		if (check == true) {
 			Family f = memberDao.createAdminMembersList(member, family);
@@ -84,9 +84,7 @@ public class LoginController {
 			mv.setViewName("index");
 		} else {
 			System.err.println("in else");
-
 			Family f = memberDao.getFamilyById(id);
-			System.err.println("****************" + f.getId());
 			mv.addObject("family	", f);
 			mv.addObject("familyCorrection", f);
 			String badLogin = "Unable to find Username and/or Password combination";
@@ -105,16 +103,20 @@ public class LoginController {
 
 		Member m = loginDao.checkUserPassword(username, password);
 
-
 		if (m != null) {
 			mv.getModelMap().addAttribute("sessionUser", m);
-			mv.addObject("member", m);
-
+			double amount = accountDao.getFamilyFrugalTotal(m.getFamily().getId());
+			
 			if (m.getAdmin() == true) {
+				mv.addObject("member", m);
+				mv.addObject("amount", amount);
 				mv.setViewName("adminProfile");
 			} else {
+				mv.addObject(m);
+				mv.addObject("member", m);
+				mv.addObject("amount", amount);
 				mv.setViewName("userProfile");
-			}
+			}	
 		} else {
 			String badLogin = "Unable to find Username and/or Password combination";
 			mv.addObject("badLogin", badLogin);
