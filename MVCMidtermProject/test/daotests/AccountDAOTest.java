@@ -50,20 +50,20 @@ public class AccountDAOTest {
 		}
 		
 
-		@Test
-		public void setBankAccount() {
-			Account account = new Account();
-			account = em.find(Account.class, 3);
-//			assert(account.getBankAccount() == 300);
-			Account a = dao.setBankAccount(account);
-			assertEquals(23000, a.getBankAccount(), 0.1);
-		}
-		@Test
-		public void setFrugalSum() {
-			Account account = em.find(Account.class, 1);
-			dao.setFrugalSum(account);
-			assert(account.getFrugalSum() == 1000);
-		}
+//		@Test
+//		public void setBankAccount() {
+//			Account account = new Account();
+//			account = em.find(Account.class, 3);
+////			assert(account.getBankAccount() == 300);
+//			Account a = dao.setBankAccount(account);
+//			assertEquals(23000, a.getBankAccount(), 0.1);
+//		}
+//		@Test
+//		public void setFrugalSum() {
+//			Account account = em.find(Account.class, 1);
+//			dao.setFrugalSum(account);
+//			assert(account.getFrugalSum() == 1000);
+//		}
 
 
 		@After
