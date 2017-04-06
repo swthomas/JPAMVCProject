@@ -41,7 +41,6 @@
 						$
 						<fmt:formatNumber type="number" minFractionDigits="2"
 							value="${member.account.frugalSum}" />
-
 					</div>
 				</div>
 			</div>
