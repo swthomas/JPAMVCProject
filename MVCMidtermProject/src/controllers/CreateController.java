@@ -172,7 +172,6 @@ public class CreateController {
 		b.setName(billname);
 		b.setFamily(f);
 		b.setAmount(amount);
-		b.setMember(member);
 
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date dDate = format.parse(dueDate);

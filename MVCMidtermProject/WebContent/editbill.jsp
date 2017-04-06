@@ -30,7 +30,7 @@
 			<h2>Edit Bill</h2>
 		</div>
 		<form class="form-horizontal" action="EditBill.do" method="POST">
-		<input type="hidden" name="id" value="${bill.id}">
+		<input type="hidden" name="billid" value="${bill.id}">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Edit name:</label>
 				<div class="col-sm-10">

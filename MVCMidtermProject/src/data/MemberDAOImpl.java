@@ -101,8 +101,14 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public Member showMember(int id) {
 		Member m = null;
-		String q = "SELECT m FROM Member m JOIN FETCH m.bills WHERE m.id = :id";
-		m = em.createQuery(q, Member.class).setParameter("id", id).getSingleResult();
+		try {
+			String q = "SELECT m FROM Member m JOIN FETCH m.bills WHERE m.id = :id";
+			m = em.createQuery(q, Member.class).setParameter("id", id).getSingleResult();
+		} catch (Exception e) {
+			m = em.find(Member.class, id);
+			m.setBills(new ArrayList<>());
+			e.printStackTrace();
+		}
 		return m;
 	}
 

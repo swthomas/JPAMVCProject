@@ -125,7 +125,7 @@
 								<td class="spacing">${br.percent}%</td>
 								<td class="editButton"><form action="EditBillForm.do"
 										method="POST">
-										<button type="submit" name="id" value="${bill.id}"
+										<button type="submit" name="billid" value="${bill.id}"
 											class="btn btn-sm btn-warning">Edit</button>
 									</form></td>
 								<td class="deleteButton"><form action="DeleteAdminBill.do"
@@ -180,7 +180,7 @@
 						<td class="spacing">${bill.datePaid}</td>
 						<td class="editButton"><form action="EditBillForm.do"
 								method="POST">
-								<button type="submit" name="id" value="${bill.id}"
+								<button type="submit" name="billid" value="${bill.id}"
 									class="btn btn-sm btn-warning">Edit</button>
 							</form></td>
 						<td class="deleteButton"><form action="DeleteBill.do"
