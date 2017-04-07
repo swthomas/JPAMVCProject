@@ -28,7 +28,7 @@
 			<h2>Add a Bill</h2>
 		</div>
 		<div class="main-login main-center">
-			<form class="" method="POST" action="CreateFamilyBill.do">
+			<form class="" method="POST" action="CreateBill.do">
 				<input type="hidden" class="form-control" name="familybillid"
 					value="${family.id}">
 				<div class="form-group">
