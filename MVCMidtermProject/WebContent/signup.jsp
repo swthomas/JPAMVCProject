@@ -49,8 +49,7 @@
 					<!-- </form>
 					<form action="CreateFamily.do" method="POST">
 						<div class="form-group text-center"> -->
-					<button type="submit" class="btn btn-default btn-block">Sign
-						Up</button>
+					<button type="submit" class="btn btn-default btn-block">Continue</button>
 				</form>
 			</div>
 		</div>
