@@ -11,7 +11,7 @@ The purpose of the application was to allow two people to manage their bills as 
 ### Technologies used:
 * Spring MVC (model-view-controller)
 * JPA (Java Persistence API)
-* MySQL databse
+* MySQL and MySQL Workbench
 * HTML/CSS/Boostrap
 
 Some of the technologies used in this project were session attributes, @Autowired annotations, as well as learning the latest capabilities of the Spring IO IDE. The team also utilized JPA and MVC, associating both with Gradle natures. Another key component of the project was learning about new dependencies in our persistence XML’s to pull in EntityManagers.
