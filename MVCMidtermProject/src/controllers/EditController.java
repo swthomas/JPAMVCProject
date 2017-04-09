@@ -101,7 +101,7 @@ public class EditController {
 			@RequestParam("amount") double amount,
 			@RequestParam("dateDue") String dueDate, 
 			@RequestParam("datePaid") String paidDate) throws ParseException {
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date dDate = format.parse(dueDate);
 		Bill bill = billdao.getBill(billid);
 		
