@@ -27,15 +27,11 @@ The purpose of the application was to allow two people to manage their bills as 
 * Spring MVC (model-view-controller)
 * Spring STS (Spring Tool Suite)
 * JPA (Java Persistence API)
-<<<<<<< HEAD
 * Gradle Managed Dependencies
 * MySQL and MySQL Workbench
 * Java Server Pages and JSTL/EL
 * HTML/CSS/Bootstrap
-=======
 * MySQL and MySQL Workbench
-* HTML/CSS/Boostrap
->>>>>>> 7decb311a98fdbd5fd0dbba8ca69f99dd6f211cb
 
 Some of the technologies used in this project were session attributes, @Autowired annotations, as well as learning the latest capabilities of the Spring IO IDE. The team also utilized JPA and MVC, associating both with Gradle natures. Another key component of the project was learning about new dependencies in our persistence XML’s to pull in EntityManagers.
 
