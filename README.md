@@ -35,7 +35,7 @@ The purpose of the application was to allow two people to manage their bills as 
 
 Some of the technologies used in this project were session attributes, @Autowired annotations, as well as learning the latest capabilities of the Spring IO IDE. The team also utilized JPA and MVC, associating both with Gradle natures. Another key component of the project was learning about new dependencies in our persistence XML’s to pull in EntityManagers.
 
-### What future feature sets you would like to add?
+### Future features we would like to add:
 * For families, adding the ability to add a child as a user and listing his or her chores
 * Calendar dropdown for the dates
 * Make bill responsibility percentage functional, allowing admins to assign a percentage of a family bill to a user
