@@ -3,7 +3,7 @@
 ## Application URL
 <a href="http://gregengler.com:8080/MVCMidtermProject/">**Click Here**</a>
 
-Login Username = JohnWaldorf
+Login Username = JohnWaldorf<br>
       Password = password
 
 ### Who did the project?
