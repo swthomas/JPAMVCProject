@@ -3,8 +3,8 @@
 ## Application URL
 <a href="http://gregengler.com:8080/MVCMidtermProject/">**Click Here**</a>
 
-Login Username = JohnWaldorf<br>
-      Password = password
+Username = JohnWaldorf<br>
+Password = password
 
 ### Who did the project?
 This Create, Read, Update, Destroy (CRUD) project was designed, created, and coded by David Burnett, Greg Engler, Seth Thomas, and Will Roberts. The goal was to implement Gradle with the Spring tools IO IDE in order to develop a unique web application. This project not only illustrates all of our abilities to collaborate through communication and GitHub, but also competently design and build a full stack web application.
